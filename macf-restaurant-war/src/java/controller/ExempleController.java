@@ -1,0 +1,36 @@
+package controller;
+
+import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import kernel.ActionController;
+import restaurant.service.ArticleManagerInterface;
+
+public class ExempleController extends ActionController {
+
+    private static final Logger LOG = Logger.getLogger(ExempleController.class.getName());
+    
+    public String create(HttpServletRequest request, HttpServletResponse response)
+        throws Exception {
+        
+        // on appelle un ejb via son nom en remote.
+        ArticleManagerInterface articleManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
+        
+        // l'ejb devient viable
+        LOG.info(articleManager == null ? "null !!!!" : articleManager.toString());
+        
+        return "home";
+    }
+    
+    public String delete(HttpServletRequest request, HttpServletResponse response)
+        throws Exception {
+        
+        // on appelle un ejb via son nom en remote.
+        ArticleManagerInterface articleManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
+        
+        // l'ejb devient viable
+        LOG.info(articleManager == null ? "null !!!!" : articleManager.toString());
+        
+        return "home";
+    }
+}
