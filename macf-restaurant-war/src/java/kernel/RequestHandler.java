@@ -1,6 +1,5 @@
 package kernel;
 
-import kernel.ControllerInterface;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
@@ -36,7 +35,10 @@ public class RequestHandler extends HttpServlet {
     private void registerControllers(){
         this.controllers = new HashMap<>();
         this.loader.reload();
+        LOG.info(this.loader.toString());
         this.loader.forEach((ControllerInterface controller) -> {
+            
+            LOG.info(controller.toString());
             
             if(controllers.containsKey(controller.getName())) {
                 String msg = String.format(

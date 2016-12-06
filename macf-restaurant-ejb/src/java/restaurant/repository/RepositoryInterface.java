@@ -1,9 +1,9 @@
 package restaurant.repository;
 
 import java.util.Collection;
-import javax.ejb.Stateless;
+import javax.ejb.LocalBean;
 
-@Stateless
+@LocalBean
 public interface RepositoryInterface<E> {
     
     void save(E instance);

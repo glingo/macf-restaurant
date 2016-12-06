@@ -1,21 +1,32 @@
 package restaurant.repository;
 
 import java.util.Collection;
+import javax.annotation.PostConstruct;
+import javax.ejb.Init;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-@Stateless
 public abstract class EntityRepository<E> implements RepositoryInterface<E> {
     
     @PersistenceContext
     protected EntityManager em;
     
-    private final Class<E> clazz;
-    private final String className;
+    private Class<E> clazz;
+    private String className;
 
     public EntityRepository() {
+//        this.clazz = getManagedClass();
+//        
+//        assert clazz != null 
+//                : "Supported Class of a repository must not be null";
+//        
+//        this.className = clazz.getSimpleName();
+    }
+    
+    @PostConstruct
+    public void init(){
         this.clazz = getManagedClass();
         
         assert clazz != null 
@@ -35,7 +46,7 @@ public abstract class EntityRepository<E> implements RepositoryInterface<E> {
     
     protected abstract Class<E> getManagedClass();
     
-    protected final String getManagedClassName(){
+    protected String getManagedClassName(){
         return getManagedClass().getSimpleName();
     }
     

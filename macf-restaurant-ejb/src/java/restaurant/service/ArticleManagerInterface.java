@@ -4,6 +4,7 @@ import restaurant.model.catalogue.Article;
 import restaurant.model.catalogue.Categorie;
 import restaurant.model.catalogue.Ingredient;
 
+//import javax.ejb.LocalBean;
 import javax.ejb.Local;
 //import javax.ejb.Remote;
 
