@@ -19,7 +19,7 @@ public class RequestHandler extends HttpServlet {
     private final ServiceLoader<ControllerInterface> loader = ServiceLoader.load(ControllerInterface.class);
     
     private final String wrapParameterName = "section";
-    private final String urlPrefix = "/WEB-INF/";
+    private final String urlPrefix = "/WEB-INF/jsp/";
     private final String urlSufix  = ".jsp";
     
     private HashMap<String, ControllerInterface> controllers;

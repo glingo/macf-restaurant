@@ -52,9 +52,7 @@ public abstract class EntityRepository<E> implements RepositoryInterface<E> {
     
     @Override
     public void save(E instance) {
-        em.getTransaction().begin();
         em.persist(instance);
-        em.getTransaction().commit();
     }
 
     @Override
