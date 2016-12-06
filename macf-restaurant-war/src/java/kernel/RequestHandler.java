@@ -23,7 +23,7 @@ public class RequestHandler extends HttpServlet {
     private final String urlSufix  = ".jsp";
     
     private HashMap<String, ControllerInterface> controllers;
-
+    
     @Override
     public void init() throws ServletException {
         super.init();

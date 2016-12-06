@@ -8,7 +8,7 @@ import restaurant.model.catalogue.Article;
 import restaurant.model.catalogue.Categorie;
 import restaurant.model.catalogue.Ingredient;
 
-@Stateless
+@Stateless(name="article-manager")
 public class ArticleManager implements ArticleManagerInterface {
     private static final Logger LOG = Logger.getLogger(ArticleManager.class.getName());
     

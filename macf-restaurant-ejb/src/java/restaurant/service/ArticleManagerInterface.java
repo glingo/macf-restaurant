@@ -9,8 +9,9 @@ import javax.ejb.Local;
 //import javax.ejb.Remote;
 
 import java.util.List;
+import javax.ejb.Remote;
 
-@Local
+@Remote
 public interface ArticleManagerInterface {
 
     Article create(String libelle, float prix, String image, int valeurNutritive, boolean choixCuisson);
