@@ -107,6 +107,9 @@ public class RequestHandler extends HttpServlet {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, msg);
         } catch (Exception exc) {
             
+            exc.printStackTrace();
+            
+            LOG.warning(exc.getMessage());
             // handle exception.
             response.sendError(HttpServletResponse.SC_NOT_FOUND, exc.getMessage());
         }

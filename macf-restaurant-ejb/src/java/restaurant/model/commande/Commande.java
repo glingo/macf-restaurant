@@ -1,5 +1,6 @@
 package restaurant.model.commande;
 
+import java.io.Serializable;
 import restaurant.model.salle.Emplacement;
 import restaurant.model.paiement.Paiement;
 import restaurant.model.administratif.Serveur;
@@ -17,7 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Commande {
+public class Commande implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

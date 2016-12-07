@@ -1,4 +1,6 @@
 controller.HomeController
 controller.DefaultController
 controller.ErroneousController
-controller.ExempleController
+
+# Exemples 
+exemple.controller.ExempleController

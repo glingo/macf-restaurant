@@ -1,7 +1,10 @@
 package restaurant.model.administratif;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,13 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Etablissement {
+public class Etablissement implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Column(length = 14, nullable = false, unique = true)
     private String numSiret;
+    
+    @Column(nullable = false)
     private String nom;
     private String numVoie;
     private String nomVoie;
@@ -26,6 +32,23 @@ public class Etablissement {
     
     @OneToMany
     private List<Employe> employes = new ArrayList<>();
+
+    public Etablissement() {
+        this.employes = new ArrayList<>();
+    }
+
+    public Etablissement(String numSiret, String nom, String numVoie, String nomVoie, String complementAdresse, String codePostal, String ville, String tel) {
+        this();
+        this.numSiret = numSiret;
+        this.nom = nom;
+        this.numVoie = numVoie;
+        this.nomVoie = nomVoie;
+        this.complementAdresse = complementAdresse;
+        this.codePostal = codePostal;
+        this.ville = ville;
+        this.tel = tel;
+    }
+    
 
     public Long getId() {
         return id;

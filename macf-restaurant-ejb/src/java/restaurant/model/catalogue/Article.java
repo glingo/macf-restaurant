@@ -5,10 +5,13 @@ import restaurant.model.commande.LigneDeCommande;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -25,15 +28,18 @@ public class Article implements Serializable {
     private int         valeursNutritives;
     private boolean     choixCuisson;
     
-    @ManyToOne
+    @Enumerated
     private Categorie   categorie;
-    @ManyToOne
+    
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Tva         tva;
     
     @OneToMany
     private List<Ingredient>      ingredients      = new ArrayList<>();
-    @OneToMany
+    
+    @ManyToMany
     private List<Menu>            menus            = new ArrayList<>();
+    
     @OneToMany
     private List<LigneDeCommande> ligneDeCommandes = new ArrayList<>();
 
@@ -126,13 +132,17 @@ public class Article implements Serializable {
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
-
+    
     public List<Menu> getMenus() {
         return menus;
     }
 
     public void setMenus(List<Menu> menus) {
         this.menus = menus;
+    }
+    
+    public void addMenu(Menu menu) {
+        this.menus.add(menu);
     }
 
     public List<LigneDeCommande> getLigneDeCommandes() {
@@ -142,6 +152,11 @@ public class Article implements Serializable {
     public void setLigneDeCommandes(List<LigneDeCommande> ligneDeCommandes) {
         this.ligneDeCommandes = ligneDeCommandes;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Article{" + "id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", categorie=" + categorie + '}';
+    }
+
     
 }

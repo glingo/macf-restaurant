@@ -1,5 +1,6 @@
 package restaurant.service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -35,12 +36,14 @@ public class ArticleManager implements ArticleManagerInterface {
 
     @Override
     public Article update(Article article) {
+        
         throw new UnsupportedOperationException();
     }
 
     @Override
     public List<Article> getAll() {
-        throw new UnsupportedOperationException();
+        Collection<Article> all = repository.findAll();
+        return (List<Article>) all;
     }
 
     @Override

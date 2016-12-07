@@ -18,7 +18,7 @@ public abstract class ActionController extends Controller {
             String msg = String.format(
                 "No action parameter found for the %s section", getName());
             
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, msg);
+            throw new Exception(msg);
         }
         
         Method method = ReflectionUtils.findMethod(this.getClass(), action, new Class[]{HttpServletRequest.class, HttpServletResponse.class});

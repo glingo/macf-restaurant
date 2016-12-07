@@ -1,13 +1,15 @@
 package restaurant.model.administratif;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
@@ -19,10 +21,22 @@ public abstract class Employe implements Serializable {
 
     private String  nom;
     private String  penom;
-    private int     code;
     
-    @OneToOne
+    @Column(length = 4, unique = true)
+    private String     code;
+    
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Etablissement employeur;
+
+    public Employe() {
+    }
+
+    public Employe(String nom, String penom, String code, Etablissement employeur) {
+        this.nom = nom;
+        this.penom = penom;
+        this.code = code;
+        this.employeur = employeur;
+    }
 
     public Long getId() {
         return id;
@@ -48,11 +62,11 @@ public abstract class Employe implements Serializable {
         this.penom = penom;
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

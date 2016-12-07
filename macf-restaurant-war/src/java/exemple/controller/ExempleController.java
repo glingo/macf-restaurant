@@ -1,4 +1,4 @@
-package controller;
+package exemple.controller;
 
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,7 @@ public class ExempleController extends ActionController {
 
     private static final Logger LOG = Logger.getLogger(ExempleController.class.getName());
 
-    private ArticleManagerInterface articleManager;
+    private final ArticleManagerInterface articleManager;
     
     public ExempleController() {
         articleManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
@@ -24,7 +24,7 @@ public class ExempleController extends ActionController {
 //        ArticleManagerInterface articleManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
         
         // l'ejb devient viable
-        LOG.info(articleManager == null ? "null !!!!" : articleManager.toString());
+//        LOG.info(articleManager == null ? "null !!!!" : articleManager.toString());
         
         Article article = articleManager.create("test", 0, "", 0, true);
         LOG.info(article.getId().toString());
@@ -38,8 +38,22 @@ public class ExempleController extends ActionController {
 //        ArticleManagerInterface articleManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
         
         // l'ejb devient viable
-        LOG.info(articleManager == null ? "null !!!!" : articleManager.toString());
+//        LOG.info(articleManager == null ? "null !!!!" : articleManager.toString());
         
         return "home";
+    }
+    
+    public String list(HttpServletRequest request, HttpServletResponse response)
+        throws Exception {
+        
+        // on appelle un ejb via son nom en remote.
+//        ArticleManagerInterface articleManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
+        
+        // l'ejb devient viable
+//        LOG.info(articleManager == null ? "null !!!!" : articleManager.toString());
+        
+        request.setAttribute("articles", articleManager.getAll());
+        
+        return "article/list";
     }
 }

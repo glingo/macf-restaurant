@@ -12,6 +12,13 @@ public class Serveur extends Caissier {
     @OneToMany
     public List<Commande> commandes = new ArrayList<>();
 
+    public Serveur() {
+    }
+
+    public Serveur(String nom, String penom, String code, Etablissement employeur) {
+        super(nom, penom, code, employeur);
+    }
+
     public List<Commande> getCommandes() {
         return commandes;
     }
