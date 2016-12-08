@@ -19,11 +19,11 @@ public class RequestHandler extends HttpServlet {
     private final ServiceLoader<ControllerInterface> loader = ServiceLoader.load(ControllerInterface.class);
     
     private final String wrapParameterName = "section";
-    private final String urlPrefix = "/WEB-INF/";
+    private final String urlPrefix = "/WEB-INF/jsp/";
     private final String urlSufix  = ".jsp";
     
     private HashMap<String, ControllerInterface> controllers;
-
+    
     @Override
     public void init() throws ServletException {
         super.init();
@@ -107,6 +107,9 @@ public class RequestHandler extends HttpServlet {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, msg);
         } catch (Exception exc) {
             
+            exc.printStackTrace();
+            
+            LOG.warning(exc.getMessage());
             // handle exception.
             response.sendError(HttpServletResponse.SC_NOT_FOUND, exc.getMessage());
         }

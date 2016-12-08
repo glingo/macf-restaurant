@@ -1,5 +1,6 @@
 package restaurant.model.commande;
 
+import java.io.Serializable;
 import restaurant.model.catalogue.Menu;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import javax.persistence.OneToOne;
 import restaurant.model.catalogue.Article;
 
 @Entity
-public class LigneDeCommande {
+public class LigneDeCommande implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,21 +25,21 @@ public class LigneDeCommande {
     private float prix;
     
     @Enumerated(EnumType.STRING)
-    public StatutCommande statut;
+    private StatutCommande statut;
     @Enumerated(EnumType.STRING)
-    public TypeCuisson cuisson;
+    private TypeCuisson cuisson;
     
     @OneToOne
-    public Commande commande;
+    private Commande commande;
     @OneToOne
-    public Menu menu;
+    private Menu menu;
     @OneToOne
-    public LigneDeCommande ligneDeCommande;
+    private LigneDeCommande ligneDeCommande;
     @OneToOne
-    public Article article;
+    private Article article;
     
     @OneToMany
-    public List<LigneDeCommande> sousLigneDeCommande = new ArrayList<>();
+    private List<LigneDeCommande> sousLigneDeCommande = new ArrayList<>();
 
     public Long getId() {
         return id;

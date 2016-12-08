@@ -1,5 +1,6 @@
 package restaurant.model.catalogue;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -9,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Tva {
+public class Tva implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +20,13 @@ public class Tva {
     
     @OneToMany
     private List<Article> articles = new ArrayList<>();
+
+    public Tva() {
+    }
+
+    public Tva(float taux) {
+        this.taux = taux;
+    }
 
     public Long getId() {
         return id;

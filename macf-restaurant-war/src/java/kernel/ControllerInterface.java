@@ -9,6 +9,4 @@ public interface ControllerInterface {
     
     String handle(HttpServletRequest request, HttpServletResponse response) throws Exception;
     
-//    void handle(HttpServletRequest request, HttpServletResponse response);
-    
 }

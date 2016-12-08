@@ -1,33 +1,22 @@
 package restaurant.model.catalogue;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-@Entity
-public class Categorie implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public enum Categorie {
     
+    ENTREE("Entrée", "ENT"), 
+    PLAT("Plat", "PLT"), 
+    DESSERT("Déssert", "DSR"), 
+    BOISSON("Boisson", "BSN");
+//    BOISSON_ALCOOL("Boisson alcoolisée", "BSA");
+
     private String libelle;
     private String code;
-    
-    @OneToMany
-    private List<Article> articles = new ArrayList<>();
 
-    public Long getId() {
-        return id;
+    private Categorie() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    private Categorie(String libelle, String code) {
+        this.libelle = libelle;
+        this.code = code;
     }
 
     public String getLibelle() {
@@ -44,14 +33,6 @@ public class Categorie implements Serializable {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public List<Article> getArticles() {
-        return articles;
-    }
-
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
     }
     
 }
