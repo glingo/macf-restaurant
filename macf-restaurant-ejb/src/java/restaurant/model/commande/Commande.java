@@ -6,12 +6,15 @@ import restaurant.model.paiement.Paiement;
 import restaurant.model.administratif.Serveur;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -28,15 +31,15 @@ public class Commande implements Serializable {
     private Date    date;
     private String  numero;
     
-    @OneToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Emplacement emplacement;
-    @OneToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Serveur     serveur;
     
     @OneToMany
-    private List<LigneDeCommande> ligneDeCommandes = new ArrayList<>();
+    private Collection<LigneDeCommande> ligneDeCommandes = new ArrayList<>();
     @OneToMany
-    private List<Paiement>        paiements        = new ArrayList<>();
+    private Collection<Paiement>        paiements        = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -78,19 +81,19 @@ public class Commande implements Serializable {
         this.serveur = serveur;
     }
 
-    public List<LigneDeCommande> getLigneDeCommandes() {
+    public Collection<LigneDeCommande> getLigneDeCommandes() {
         return ligneDeCommandes;
     }
 
-    public void setLigneDeCommandes(List<LigneDeCommande> ligneDeCommandes) {
+    public void setLigneDeCommandes(Collection<LigneDeCommande> ligneDeCommandes) {
         this.ligneDeCommandes = ligneDeCommandes;
     }
 
-    public List<Paiement> getPaiements() {
+    public Collection<Paiement> getPaiements() {
         return paiements;
     }
 
-    public void setPaiements(List<Paiement> paiements) {
+    public void setPaiements(Collection<Paiement> paiements) {
         this.paiements = paiements;
     }
     

@@ -3,13 +3,16 @@ package restaurant.model.commande;
 import java.io.Serializable;
 import restaurant.model.catalogue.Menu;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import restaurant.model.catalogue.Article;
@@ -29,17 +32,17 @@ public class LigneDeCommande implements Serializable {
     @Enumerated(EnumType.STRING)
     private TypeCuisson cuisson;
     
-    @OneToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Commande commande;
-    @OneToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Menu menu;
-    @OneToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private LigneDeCommande ligneDeCommande;
-    @OneToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Article article;
     
     @OneToMany
-    private List<LigneDeCommande> sousLigneDeCommande = new ArrayList<>();
+    private Collection<LigneDeCommande> sousLigneDeCommande = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -113,11 +116,11 @@ public class LigneDeCommande implements Serializable {
         this.article = article;
     }
 
-    public List<LigneDeCommande> getSousLigneDeCommande() {
+    public Collection<LigneDeCommande> getSousLigneDeCommande() {
         return sousLigneDeCommande;
     }
 
-    public void setSousLigneDeCommande(List<LigneDeCommande> sousLigneDeCommande) {
+    public void setSousLigneDeCommande(Collection<LigneDeCommande> sousLigneDeCommande) {
         this.sousLigneDeCommande = sousLigneDeCommande;
     }
     
