@@ -33,9 +33,9 @@ public class RequestHandler extends HttpServlet {
     }
     
     private void registerControllers(){
+        LOG.info("Registering all controllers.");
         this.controllers = new HashMap<>();
         this.loader.reload();
-        LOG.info(this.loader.toString());
         this.loader.forEach((ControllerInterface controller) -> {
             
             LOG.info(controller.toString());
@@ -54,13 +54,22 @@ public class RequestHandler extends HttpServlet {
                 "A controller has been registered with name %s", 
                 controller.getName()));
         });
+        
+        LOG.info("All controllers are registered.");
     }
     
     private void handle(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
+        LOG.info(String.format("Handeling a request : %s.", 
+                request.getContextPath()));
+        
         String wrapParameter = request.getParameter(wrapParameterName);
         
         if(wrapParameter == null) {
+            
+            LOG.info("we did not find a section parameter in request, "
+                    + "let's redirect to home !");
+        
             // we did not find a section parameter in request !
             // we may wanted to see the home page.
             // let's redirect to the home page :
@@ -80,6 +89,7 @@ public class RequestHandler extends HttpServlet {
         }
         
         if(response.isCommitted()) {
+            LOG.info("This response has already been committed !");
             return;
         }
         
