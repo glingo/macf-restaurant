@@ -2,11 +2,13 @@ package restaurant.model.catalogue;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,8 +21,8 @@ public class Ingredient implements Serializable {
     private String nom;
     private boolean disponible;
     
-    @OneToMany
-    private List<Article> articles = new ArrayList<>();
+    @ManyToMany
+    private Collection<Article> articles = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -46,11 +48,11 @@ public class Ingredient implements Serializable {
         this.disponible = disponible;
     }
 
-    public List<Article> getArticles() {
+    public Collection<Article> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(Collection<Article> articles) {
         this.articles = articles;
     }
     

@@ -20,6 +20,7 @@ public class DataProvider implements Provider {
     
     @Override
     public void provide(){
+        System.out.println("=========================>>>> dans provide()");
         
         // creation de l'etablissement:
         Etablissement etablissement = new Etablissement("45196258700010", "La tablée", "14", "Rue fictive", "", "75016", "Paris", "0102030405");
@@ -157,7 +158,7 @@ public class DataProvider implements Provider {
         em.persist(soir);
         
         em.flush();
-        
+        System.out.println("================== fin jeu de test !!");
     }
     
 }

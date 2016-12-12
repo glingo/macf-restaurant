@@ -2,6 +2,7 @@ package restaurant.model.catalogue;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,10 +24,10 @@ public class Menu implements Serializable {
     private float prix;
     
     @ManyToMany(mappedBy = "menus", cascade = CascadeType.PERSIST)
-    private List<Article>         articles         = new ArrayList<>();
+    private Collection<Article>         articles         = new ArrayList<>();
     
     @OneToMany
-    private List<LigneDeCommande> ligneDeCommandes = new ArrayList<>();
+    private Collection<LigneDeCommande> ligneDeCommandes = new ArrayList<>();
 
     public Menu() {
     }
@@ -73,11 +74,11 @@ public class Menu implements Serializable {
         this.prix = prix;
     }
 
-    public List<Article> getArticles() {
+    public Collection<Article> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(Collection<Article> articles) {
         this.articles = articles;
     }
     
@@ -86,11 +87,11 @@ public class Menu implements Serializable {
         article.addMenu(this);
     }
 
-    public List<LigneDeCommande> getLigneDeCommandes() {
+    public Collection<LigneDeCommande> getLigneDeCommandes() {
         return ligneDeCommandes;
     }
 
-    public void setLigneDeCommandes(List<LigneDeCommande> ligneDeCommandes) {
+    public void setLigneDeCommandes(Collection<LigneDeCommande> ligneDeCommandes) {
         this.ligneDeCommandes = ligneDeCommandes;
     }
     

@@ -3,7 +3,6 @@ package restaurant.repository;
 import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -55,18 +54,6 @@ public abstract class EntityRepository<E> implements RepositoryInterface<E> {
     
     public CriteriaBuilder getBuilder() {
         return builder;
-    }
-    
-    protected E singleResultOrNull(TypedQuery<E> query){
-        E result = null;
-        
-        try {
-            result = query.getSingleResult();
-        }catch(NoResultException noResExc) {
-            // just ignore.
-        }
-        
-        return result;
     }
     
 }

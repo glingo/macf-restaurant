@@ -1,7 +1,7 @@
 controller.HomeController
-controller.SecurityController
+controller.DefaultController
+controller.ErroneousController
 
 # Exemples 
 exemple.controller.ExempleController
-exemple.controller.DefaultController
-exemple.controller.ErroneousController
+exemple.controller.AutreExempleController

@@ -20,6 +20,7 @@ public class Launcher {
         try {
             InitialContext ctx = new InitialContext();
             Provider provider = (Provider) ctx.lookup("java:global/macf-restaurant/macf-restaurant-ejb/data-provider");
+            System.out.println("------------------------------------->>>> "+provider);
             provider.provide();
         } catch (NamingException ex) {
             Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);

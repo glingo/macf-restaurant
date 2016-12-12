@@ -4,6 +4,7 @@ import java.io.Serializable;
 import restaurant.model.commande.LigneDeCommande;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -31,17 +32,17 @@ public class Article implements Serializable {
     @Enumerated
     private Categorie   categorie;
     
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Tva         tva;
     
-    @OneToMany
-    private List<Ingredient>      ingredients      = new ArrayList<>();
+    @ManyToMany
+    private Collection<Ingredient>      ingredients      = new ArrayList<>();
     
     @ManyToMany
-    private List<Menu>            menus            = new ArrayList<>();
+    private Collection<Menu>            menus            = new ArrayList<>();
     
     @OneToMany
-    private List<LigneDeCommande> ligneDeCommandes = new ArrayList<>();
+    private Collection<LigneDeCommande> ligneDeCommandes = new ArrayList<>();
 
     public Article() {
     }
@@ -125,19 +126,19 @@ public class Article implements Serializable {
         this.tva = tva;
     }
 
-    public List<Ingredient> getIngredients() {
+    public Collection<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(Collection<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
     
-    public List<Menu> getMenus() {
+    public Collection<Menu> getMenus() {
         return menus;
     }
 
-    public void setMenus(List<Menu> menus) {
+    public void setMenus(Collection<Menu> menus) {
         this.menus = menus;
     }
     
@@ -145,11 +146,11 @@ public class Article implements Serializable {
         this.menus.add(menu);
     }
 
-    public List<LigneDeCommande> getLigneDeCommandes() {
+    public Collection<LigneDeCommande> getLigneDeCommandes() {
         return ligneDeCommandes;
     }
 
-    public void setLigneDeCommandes(List<LigneDeCommande> ligneDeCommandes) {
+    public void setLigneDeCommandes(Collection<LigneDeCommande> ligneDeCommandes) {
         this.ligneDeCommandes = ligneDeCommandes;
     }
 
