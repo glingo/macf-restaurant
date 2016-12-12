@@ -77,6 +77,10 @@ public abstract class Employe implements Serializable {
     public void setEmployeur(Etablissement employeur) {
         this.employeur = employeur;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Employe{" + "id=" + id + ", nom=" + nom + ", penom=" + penom + ", code=" + code + ", employeur=" + employeur + '}';
+    }
+
 }

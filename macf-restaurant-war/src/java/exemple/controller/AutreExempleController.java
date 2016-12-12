@@ -7,7 +7,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import kernel.ActionController;
+import kernel.controller.ActionController;
 import restaurant.exempleEJB.SessionBeanLocal;
 
 public class AutreExempleController extends ActionController {

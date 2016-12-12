@@ -1,15 +1,21 @@
-package kernel;
+package kernel.controller;
 
 import java.lang.reflect.Method;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import kernel.util.ReflectionUtils;
 
 public abstract class ActionController extends Controller {
+
+    private static final Logger LOG = Logger.getLogger(ActionController.class.getName());
     
     private final String ACTION_PARAMETER = "action";
 
     @Override
-    public String handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String doHandle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        LOG.entering("ActionController", "doHandle");
         
         String action = request.getParameter(ACTION_PARAMETER);
         
@@ -17,6 +23,8 @@ public abstract class ActionController extends Controller {
             // we did not find an action parameter in request !
             String msg = String.format(
                 "No action parameter found for the %s section", getName());
+            
+            LOG.info(msg);
             
             throw new Exception(msg);
         }
@@ -28,18 +36,28 @@ public abstract class ActionController extends Controller {
             String msg = String.format(
                 "No method named %s found in %s controller", action, getName());
             
+            LOG.info(msg);
+            
             throw new Exception(msg);
         }
         
-        Object returned = method.invoke(this, request, response);
+        Object url = method.invoke(this, request, response);
         
-        if(!(returned instanceof String)) {
+        if(!(url instanceof String)) {
+            
+            if(response.isCommitted()) {
+                return null;
+            }
+        
             String msg = String.format(
-                "The method should return String, got %s", returned == null ? method.getReturnType() : returned.getClass());
+                "The method should return String, got %s", url == null ? method.getReturnType() : url.getClass());
+            
+            LOG.info(msg);
+            
             throw new Exception(msg);
         }
         
-        return (String) returned;
+        return (String) url;
     }
     
 }

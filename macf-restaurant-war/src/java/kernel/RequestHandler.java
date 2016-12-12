@@ -1,5 +1,6 @@
 package kernel;
 
+import kernel.controller.ControllerInterface;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
@@ -19,8 +20,6 @@ public class RequestHandler extends HttpServlet {
     private final ServiceLoader<ControllerInterface> loader = ServiceLoader.load(ControllerInterface.class);
     
     private final String wrapParameterName = "section";
-    private final String urlPrefix = "/WEB-INF/jsp/";
-    private final String urlSufix  = ".jsp";
     
     private HashMap<String, ControllerInterface> controllers;
     
@@ -58,7 +57,7 @@ public class RequestHandler extends HttpServlet {
         LOG.info("All controllers are registered.");
     }
     
-    private void handle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         LOG.info(String.format("Handeling a request : %s.", 
                 request.getContextPath()));
@@ -86,46 +85,14 @@ public class RequestHandler extends HttpServlet {
             // we send a not found error.
             // No controllerFound for this section.
             response.sendError(HttpServletResponse.SC_NOT_FOUND, msg);
-        }
-        
-        if(response.isCommitted()) {
-            LOG.info("This response has already been committed !");
             return;
         }
         
-        try {
-            // get controller from controller pool.
-            ControllerInterface controller = controllers.get(wrapParameter);
+        // get controller from controller pool.
+        ControllerInterface controller = controllers.get(wrapParameter);
 
-            // process controller and get the view name.
-            String url = controller.handle(request, response);
-
-            // encode url.
-            url = response.encodeURL(urlPrefix + url + urlSufix);
-
-            // include.
-//            getServletContext().getRequestDispatcher(url).include(request, response);
-        
-            // or forward ?
-            getServletContext().getRequestDispatcher(url).forward(request, response);
-        
-        } catch (FileNotFoundException notFoundException) {
-            
-            String msg = String.format("No jsp page found at %s.", 
-                notFoundException.getMessage());
-
-            LOG.warning(msg);
-            
-            // we send a not found error.
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, msg);
-        } catch (Exception exc) {
-            
-            exc.printStackTrace();
-            
-            LOG.warning(exc.getMessage());
-            // handle exception.
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, exc.getMessage());
-        }
+        // delegate handling to controller
+        controller.handle(request, response);
         
     }
     
@@ -142,7 +109,19 @@ public class RequestHandler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        handle(request, response);
+        try {
+            
+            handle(request, response);
+            
+        } catch (ServletException exc) {
+            
+            exc.printStackTrace();
+            
+            LOG.warning(exc.getMessage());
+            
+            // handle exception.
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, exc.getMessage());
+        }
         
     }
 

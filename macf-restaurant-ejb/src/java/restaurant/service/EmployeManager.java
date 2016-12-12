@@ -14,7 +14,6 @@ public class EmployeManager {
     @EJB
     private EmployeRepository repository;
     
-    
     public Employe login(String code) {
         
         LOG.info("Tentative de login");

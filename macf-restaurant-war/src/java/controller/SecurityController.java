@@ -3,11 +3,9 @@ package controller;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import kernel.ActionController;
-import restaurant.model.administratif.Caissier;
-import restaurant.model.administratif.Cuisinier;
+import javax.servlet.http.HttpSession;
+import kernel.controller.ActionController;
 import restaurant.model.administratif.Employe;
-import restaurant.model.administratif.Serveur;
 import restaurant.service.EmployeManager;
 
 public class SecurityController extends ActionController {
@@ -26,7 +24,6 @@ public class SecurityController extends ActionController {
         LOG.entering("SecurityController", "login");
         
         Object submit = request.getParameter("login_submit");
-        LOG.info(submit != null ? submit.toString() : "login_submit : null");
         
         if(submit == null) {
             LOG.info("on renvois vers le formulaire.");
@@ -35,30 +32,44 @@ public class SecurityController extends ActionController {
         }
         
         String code = (String) request.getParameter("code");
-        LOG.info(code != null ? code : "code : null");
         
         Employe employe = employeManager.login(code);
         
+        if(employe == null) {
+            LOG.info("Nous ne nous connaissons pas !");
+            // on renvois vers le formulaire.
+            danger("Votre code est inconnu !");
+            return "login";
+        }
+        
+        success("Bienvenue !");
+        
+        // store in session :
+        getSession().setAttribute("user", employe);
+        
+        redirect(request.getContextPath() + "?section=home");
+        
+        // dispatch to jsp :
+        String type = employe.getClass().getSimpleName().toLowerCase();
+        
+        LOG.info(String.format("c'est un %s !", type));
+        
         LOG.exiting("SecurityController", "login");
         
-        if(employe instanceof Serveur) {
-            LOG.info("c'est un serveur !");
-            LOG.info("on envois vers employe/serveur !");
-            return "employe/serveur";
+        return "employe/" + type;
+    }
+    
+    public void logout(HttpServletRequest request, HttpServletResponse response)
+        throws Exception {
+        
+        HttpSession session = request.getSession(false);
+
+        if(session != null) {
+            session.removeAttribute("user");
+            session.invalidate();
         }
         
-        if(employe instanceof Cuisinier) {
-            LOG.info("c'est un cuisinier !");
-            return "employe/cuisinier";
-        }
-        
-        if(employe instanceof Caissier) {
-            LOG.info("c'est un caissier !");
-            return "employe/caissier";
-        }
-        
-        // on renvois vers le formulaire.
-        return "login";
+        redirect(request.getContextPath());
     }
     
 }

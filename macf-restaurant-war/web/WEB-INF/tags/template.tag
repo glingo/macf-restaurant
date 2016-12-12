@@ -95,15 +95,38 @@
                     
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="/macf-restaurant-war/?section=security&action=login" class="glyphicon glyphicon-user">
-                            </a>
+                            <c:choose>
+                                <c:when test="${not empty user}">
+                                    <a href="/macf-restaurant-war/?section=security&action=logout" class="glyphicon glyphicon-log-out"></a>
+                                </c:when>
+
+                                <c:otherwise>
+                                    <a href="/macf-restaurant-war/?section=security&action=login" class="glyphicon glyphicon-log-in"></a>
+                                </c:otherwise>
+                            </c:choose>
                         </li>
                     </ul>
-                    
                 </div><!-- /.navbar-collapse -->
-                
             </div><!-- /.container-fluid -->
         </nav>
+        
+        <c:if test="${not empty flashbag}">
+            
+            <c:forEach var="entry" items="${ flashbag.getAll() }">
+                
+                <c:forEach var="flash" items="${ entry.value }">
+                    <div class="alert alert-${ entry.key } alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        
+                        <c:out value="${ flash }" />
+                    </div>
+
+                </c:forEach>
+                
+               
+            </c:forEach>
+           
+        </c:if>
         
         <jsp:doBody />
 
