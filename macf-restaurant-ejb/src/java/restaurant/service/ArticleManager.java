@@ -13,6 +13,7 @@ import restaurant.repository.ArticleRepository;
 
 @Stateless(name="article-manager")
 public class ArticleManager implements ArticleManagerInterface {
+    
     private static final Logger LOG = Logger.getLogger(ArticleManager.class.getName());
     
     @EJB
@@ -65,4 +66,5 @@ public class ArticleManager implements ArticleManagerInterface {
     public void delete(Article article) {
         throw new UnsupportedOperationException();
     }
+
 }

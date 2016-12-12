@@ -94,7 +94,10 @@ public class RequestHandler extends HttpServlet {
             url = response.encodeURL(urlPrefix + url + urlSufix);
 
             // include.
-            getServletContext().getRequestDispatcher(url).include(request, response);
+//            getServletContext().getRequestDispatcher(url).include(request, response);
+        
+            // or forward ?
+            getServletContext().getRequestDispatcher(url).forward(request, response);
         
         } catch (FileNotFoundException notFoundException) {
             

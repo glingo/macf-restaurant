@@ -46,28 +46,28 @@
         --%>
         <c:import url="${ baseDIR }template/browserAlert.jsp" />
 
-        <nav class="navbar navbar-side">
+        <nav class="navbar navbar-default navbar-fixed-top">
             
             <div class="container-fluid">
                 
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header header">
+                <div class="navbar-header">
                     
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
                     
-                    <a class="navbar-brand logo" href="/macf-restaurant-war/">
-                        <img alt="" src="images/logo.png" class="desktop visible-md visible-lg">
-                        <img alt="" src="images/mobile-logo.png" class="mobile hidden-md hidden-lg">
+                    <a class="navbar-brand" href="/macf-restaurant-war/">
+                        <img alt="" src="images/logo.png" class="logo visible-md visible-lg">
+                        <img alt="" src="images/mobile-logo.png" class="logo hidden-md hidden-lg">
                     </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="collapse navbar-collapse" id="main-menu">
                     
                     <ul class="nav navbar-nav">
                         
@@ -92,11 +92,20 @@
                             </ul>
                         </li>
                     </ul>
+                    
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/macf-restaurant-war/?section=security&action=login" class="glyphicon glyphicon-user">
+                            </a>
+                        </li>
+                    </ul>
+                    
                 </div><!-- /.navbar-collapse -->
+                
             </div><!-- /.container-fluid -->
         </nav>
-
-
+        
+        <jsp:doBody />
 
         <%-- Importation de la jsp contenant les scripts javascript --%>
         <c:import url="${ baseDIR }template/scripts.jsp"/>

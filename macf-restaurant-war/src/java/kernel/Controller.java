@@ -1,8 +1,10 @@
 package kernel;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.http.HttpServletResponse;
 
 public abstract class Controller implements ControllerInterface {
 
@@ -13,6 +15,10 @@ public abstract class Controller implements ControllerInterface {
     @Override
     public String getName() {
         return getClass().getSimpleName().replace("Controller", "").toLowerCase();
+    }
+    
+    protected void redirect(String location, HttpServletResponse response) throws IOException{
+        response.sendRedirect(location);
     }
     
     protected final <T> T get(String name){
