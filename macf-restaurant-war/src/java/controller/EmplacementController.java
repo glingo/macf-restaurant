@@ -14,7 +14,7 @@ import restaurant.service.EmplacementManagerInterface;
 //extends d'ActionController dans kernel/controller/action controller ( permet l'appel de plusieurs méthodes)
 public class EmplacementController extends ActionController {
 
-    //appel du LOG pour pouvoir 
+    //appel du LOG pour pouvoir tester le controller 
 
     private static final Logger LOG = Logger.getLogger(EmplacementController.class.getName());
 
