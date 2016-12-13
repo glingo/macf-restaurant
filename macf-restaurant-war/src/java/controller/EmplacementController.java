@@ -12,15 +12,15 @@ import kernel.controller.ActionController;
 import restaurant.service.EmplacementManagerInterface;
 
 //extends d'ActionController dans kernel/controller/action controller ( permet l'appel de plusieurs méthodes)
-public class GestionSalleController extends ActionController {
+public class EmplacementController extends ActionController {
 
     //appel du LOG pour pouvoir 
 
-    private static final Logger LOG = Logger.getLogger(GestionSalleController.class.getName());
+    private static final Logger LOG = Logger.getLogger(EmplacementController.class.getName());
 
    // private final EmplacementManagerInterface emplacementManager;
 
-    public GestionSalleController() {
+    public EmplacementController() {
         //dans le contructeur on appelle la methode get ( presente dans l'interface controller). Elle est le lookup.
        // emplacementManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
     }
@@ -43,7 +43,7 @@ public class GestionSalleController extends ActionController {
         return "home";
     }
     
-    public String List(HttpServletRequest request, HttpServletResponse response)
+    public String list(HttpServletRequest request, HttpServletResponse response)
             throws Exception{
         
         LOG.info("J'affiche la liste de tous les emplacement");
@@ -51,7 +51,7 @@ public class GestionSalleController extends ActionController {
         return "emplacement/list";
     }
     
-    public String ListZone(HttpServletRequest request, HttpServletResponse response)
+    public String listZone(HttpServletRequest request, HttpServletResponse response)
             throws Exception{
         
         LOG.info("J'affiche la liste des emplacements par zone");
