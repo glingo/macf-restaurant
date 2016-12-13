@@ -48,7 +48,8 @@ public class ArticleManager implements ArticleManagerInterface {
 
     @Override
     public List<Article> getByCategorie(Categorie categorie) {
-        throw new UnsupportedOperationException();
+        Collection<Article> cat = repository.findByCategorie(categorie);
+        return (List<Article>) cat;
     }
 
     @Override

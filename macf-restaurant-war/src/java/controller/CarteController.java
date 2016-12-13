@@ -20,16 +20,14 @@ public class CarteController extends ActionController{
         articleManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
     }
     
-    public List<Article> getAll(){
-        Collection<Article> all;
-        all = articleManager.getAll();
-        return (List<Article>) all;
+    public String list (HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.setAttribute("articles", articleManager.getAll());
+        return "article/list";
     }
     
-    public List<Article> getByCat (Categorie cat){
-        Collection<Article> byCat;
-        byCat = articleManager.getByCategorie(cat);
-        return (List<Article>) byCat;
+    public String listByCategorie (HttpServletRequest request, HttpServletResponse response, Categorie categorie) throws Exception {
+       request.setAttribute("articles", articleManager.getByCategorie(categorie));
+        return "article/list";
     }
    
 }
