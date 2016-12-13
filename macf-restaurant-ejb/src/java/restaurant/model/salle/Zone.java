@@ -1,6 +1,7 @@
 package restaurant.model.salle;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,5 +19,15 @@ public class Zone {
     private String numero;
     
     @OneToMany
-    private List<Emplacement> emplacements = new ArrayList<>();
+    //on créer l'arraylist ici plutot que dans le constructeur par défault. Reviens au même. 
+    private Collection<Emplacement> emplacements = new ArrayList<>();
+    
+    public Zone(){
+        
+    }
+    
+    public Zone(String numero){
+        this();
+        this.numero = numero;
+    }
 }

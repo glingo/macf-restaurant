@@ -11,6 +11,9 @@ import restaurant.model.catalogue.Article;
 import restaurant.model.catalogue.Categorie;
 import restaurant.model.catalogue.Menu;
 import restaurant.model.catalogue.Tva;
+import restaurant.model.salle.Emplacement;
+import restaurant.model.salle.StatutEmplacement;
+import restaurant.model.salle.Zone;
 
 @Stateless(name = "data-provider")
 public class DataProvider implements Provider {
@@ -20,6 +23,7 @@ public class DataProvider implements Provider {
     
     @Override
     public void provide(){
+        System.out.println("=========================>>>> dans provide()");
         
         // creation de l'etablissement:
         Etablissement etablissement = new Etablissement("45196258700010", "La tablée", "14", "Rue fictive", "", "75016", "Paris", "0102030405");
@@ -155,9 +159,53 @@ public class DataProvider implements Provider {
                 clafouti, ile, flan, cremeCaramel, cremeChocolat, cremeVanille);
         
         em.persist(soir);
+ 
+        em.flush();
+        
+        
+        
+        //creation des zones 
+        Zone z01 = new Zone("1");
+        Zone z02 = new Zone("2");
+        Zone z03 = new Zone("3");
+        Zone z04 = new Zone("4");
+        
+        em.persist(z01);
+        em.persist(z02);
+        em.persist(z03);
+        em.persist(z04);
         
         em.flush();
         
+        
+        //création des emplacements
+        Emplacement empl01 = new Emplacement("1-4", 4, StatutEmplacement.LIBRE, z01);
+        Emplacement empl02 = new Emplacement("2-2", 2, StatutEmplacement.EN_NETTOYAGE, z01);
+        Emplacement empl03 = new Emplacement("3-6", 6, StatutEmplacement.OCCUPE, z03);
+        Emplacement empl04 = new Emplacement("4-2", 2, StatutEmplacement.LIBRE, z01);
+        Emplacement empl05 = new Emplacement("5-2", 2, StatutEmplacement.OCCUPE, z03);
+        Emplacement empl06 = new Emplacement("6-4", 4, StatutEmplacement.LIBRE, z02);
+        Emplacement empl07 = new Emplacement("7-6", 6, StatutEmplacement.EN_NETTOYAGE, z04);
+        Emplacement empl08 = new Emplacement("8-2", 2, StatutEmplacement.LIBRE, z02);
+        Emplacement empl09 = new Emplacement("9-4", 4, StatutEmplacement.OCCUPE, z04);
+        Emplacement empl10 = new Emplacement("10-2", 2, StatutEmplacement.OCCUPE, z02);
+        
+        
+        em.persist(empl01);
+        em.persist(empl02);
+        em.persist(empl03);
+        em.persist(empl04);
+        em.persist(empl05);
+        em.persist(empl06);
+        em.persist(empl07);
+        em.persist(empl08);
+        em.persist(empl09);
+        em.persist(empl10);
+        
+        em.flush();
+
+        
+        System.out.println("================== fin jeu de test !!");
     }
     
 }

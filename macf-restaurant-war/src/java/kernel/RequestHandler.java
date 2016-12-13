@@ -1,5 +1,6 @@
 package kernel;
 
+import kernel.controller.ControllerInterface;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
@@ -19,8 +20,6 @@ public class RequestHandler extends HttpServlet {
     private final ServiceLoader<ControllerInterface> loader = ServiceLoader.load(ControllerInterface.class);
     
     private final String wrapParameterName = "section";
-    private final String urlPrefix = "/WEB-INF/jsp/";
-    private final String urlSufix  = ".jsp";
     
     private HashMap<String, ControllerInterface> controllers;
     
@@ -33,9 +32,9 @@ public class RequestHandler extends HttpServlet {
     }
     
     private void registerControllers(){
+        LOG.info("Registering all controllers.");
         this.controllers = new HashMap<>();
         this.loader.reload();
-        LOG.info(this.loader.toString());
         this.loader.forEach((ControllerInterface controller) -> {
             
             LOG.info(controller.toString());
@@ -54,13 +53,22 @@ public class RequestHandler extends HttpServlet {
                 "A controller has been registered with name %s", 
                 controller.getName()));
         });
+        
+        LOG.info("All controllers are registered.");
     }
     
-    private void handle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        LOG.info(String.format("Handeling a request : %s.", 
+                request.getContextPath()));
         
         String wrapParameter = request.getParameter(wrapParameterName);
         
         if(wrapParameter == null) {
+            
+            LOG.info("we did not find a section parameter in request, "
+                    + "let's redirect to home !");
+        
             // we did not find a section parameter in request !
             // we may wanted to see the home page.
             // let's redirect to the home page :
@@ -77,42 +85,14 @@ public class RequestHandler extends HttpServlet {
             // we send a not found error.
             // No controllerFound for this section.
             response.sendError(HttpServletResponse.SC_NOT_FOUND, msg);
-        }
-        
-        if(response.isCommitted()) {
             return;
         }
         
-        try {
-            // get controller from controller pool.
-            ControllerInterface controller = controllers.get(wrapParameter);
+        // get controller from controller pool.
+        ControllerInterface controller = controllers.get(wrapParameter);
 
-            // process controller and get the view name.
-            String url = controller.handle(request, response);
-
-            // encode url.
-            url = response.encodeURL(urlPrefix + url + urlSufix);
-
-            // include.
-            getServletContext().getRequestDispatcher(url).include(request, response);
-        
-        } catch (FileNotFoundException notFoundException) {
-            
-            String msg = String.format("No jsp page found at %s.", 
-                notFoundException.getMessage());
-
-            LOG.warning(msg);
-            
-            // we send a not found error.
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, msg);
-        } catch (Exception exc) {
-            
-            exc.printStackTrace();
-            
-            LOG.warning(exc.getMessage());
-            // handle exception.
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, exc.getMessage());
-        }
+        // delegate handling to controller
+        controller.handle(request, response);
         
     }
     
@@ -129,7 +109,19 @@ public class RequestHandler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        handle(request, response);
+        try {
+            
+            handle(request, response);
+            
+        } catch (ServletException exc) {
+            
+            exc.printStackTrace();
+            
+            LOG.warning(exc.getMessage());
+            
+            // handle exception.
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, exc.getMessage());
+        }
         
     }
 

@@ -3,7 +3,7 @@ package exemple.controller;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import kernel.ActionController;
+import kernel.controller.ActionController;
 import restaurant.model.catalogue.Article;
 import restaurant.service.ArticleManagerInterface;
 

@@ -1,6 +1,0 @@
-controller.HomeController
-controller.DefaultController
-controller.ErroneousController
-
-# Exemples 
-exemple.controller.ExempleController

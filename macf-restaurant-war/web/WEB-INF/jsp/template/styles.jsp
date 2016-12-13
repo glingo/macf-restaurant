@@ -6,11 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<!-- import de bootstrap -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<%-- import de bootstrap --%>
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-theme.min.css">
 
 <%-- import des css de l'application --%>
-<link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/custom.css">

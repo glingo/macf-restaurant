@@ -2,13 +2,16 @@ package restaurant.model.salle;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import restaurant.model.commande.Commande;
@@ -23,15 +26,38 @@ public class Emplacement implements Serializable {
     private String numero;
     private int nombrePlace;
     
-    @OneToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Zone zone;
     
     @Enumerated(EnumType.STRING)
     private StatutEmplacement statut;
     
     @OneToMany
-    private List<Commande> commandes = new ArrayList<>();
-
+    private Collection<Commande> commandes = new ArrayList<>();
+    
+    
+    public Emplacement(){
+        
+    }
+    
+    public Emplacement(String numero, int nombrePlace){
+        this();
+        this.numero = numero;
+        this.nombrePlace = nombrePlace;
+        
+    }
+    
+    public Emplacement(String numero, int nombrePlace, StatutEmplacement statut, Zone zone){
+        this(numero, nombrePlace);
+        this.statut = statut;
+        this.zone = zone;
+    }
+    
+    public Emplacement(String numero, int nombrePlace, StatutEmplacement statut, Zone zone, Collection<Commande> commandes){
+        this(numero, nombrePlace, statut, zone);
+        this.commandes = commandes;
+        
+    }
     public Long getId() {
         return id;
     }
@@ -72,11 +98,11 @@ public class Emplacement implements Serializable {
         this.statut = statut;
     }
 
-    public List<Commande> getCommandes() {
+    public Collection<Commande> getCommandes() {
         return commandes;
     }
 
-    public void setCommandes(List<Commande> commandes) {
+    public void setCommandes(Collection<Commande> commandes) {
         this.commandes = commandes;
     }
     

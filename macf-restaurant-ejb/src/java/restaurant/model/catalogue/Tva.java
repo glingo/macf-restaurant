@@ -2,6 +2,7 @@ package restaurant.model.catalogue;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ public class Tva implements Serializable {
     private float taux;
     
     @OneToMany
-    private List<Article> articles = new ArrayList<>();
+    private Collection<Article> articles = new ArrayList<>();
 
     public Tva() {
     }
@@ -44,11 +45,11 @@ public class Tva implements Serializable {
         this.taux = taux;
     }
 
-    public List<Article> getArticles() {
+    public Collection<Article> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(Collection<Article> articles) {
         this.articles = articles;
     }
     
