@@ -11,9 +11,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class ReflectionUtils {
     
     private static final Method[] NO_METHODS = {};
-
-    private ReflectionUtils() {
-    }
     
     /**
      * Cache for {@link Class#getDeclaredMethods()} plus equivalent default

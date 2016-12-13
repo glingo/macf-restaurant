@@ -79,7 +79,7 @@ public abstract class Controller implements ControllerInterface {
     protected void redirect(String location) throws IOException {
         this.response.sendRedirect(location);
     }
-    
+
     protected void sendNotFoundException(String msg) throws IOException {
         this.response.sendError(HttpServletResponse.SC_NOT_FOUND, msg);
     }
