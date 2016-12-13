@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import kernel.controller.ActionController;
 import restaurant.model.catalogue.Categorie;
 import restaurant.model.catalogue.Ingredient;
-import restaurant.service.ArticleManager;
 import restaurant.service.ArticleManagerInterface;
 
 public class CarteController extends ActionController{
@@ -19,19 +18,20 @@ public class CarteController extends ActionController{
         articleManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
     }
     
-    public String list (HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String listArticle (HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.setAttribute("articles", articleManager.getAll());
         return "article/list";
     }
     
-    public String listByCategorie (HttpServletRequest request, HttpServletResponse response, Categorie categorie) throws Exception {
+    public String listArticleByCategorie (HttpServletRequest request, HttpServletResponse response, Categorie categorie) throws Exception {
        request.setAttribute("articles", articleManager.getByCategorie(categorie));
         return "article/list";
     }
     
-    public String listByIngredient (HttpServletRequest request, HttpServletResponse response, Ingredient ingredient) throws Exception {
+    public String listArticleByIngredient (HttpServletRequest request, HttpServletResponse response, Ingredient ingredient) throws Exception {
         request.setAttribute("articles", articleManager.getByIngredient(ingredient));
         return "article/list";
     }
+    
    
 }
