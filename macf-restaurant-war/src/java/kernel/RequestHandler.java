@@ -58,8 +58,8 @@ public class RequestHandler extends HttpServlet {
     
     private void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        LOG.info(String.format("Handling a request : %s.", 
-                request.getRequestURL()));
+        LOG.info(String.format("Handling a request : %s%s.", 
+                request.getPathInfo(), request.getQueryString()));
         
         String wrapParameter = request.getParameter(wrapParameterName);
         
@@ -93,8 +93,10 @@ public class RequestHandler extends HttpServlet {
         // delegate handling to controller
         controller.handle(request, response);
         
-        LOG.info(String.format("Request %s has been handled by %s.", 
-                request.getRequestURL(), controller.getClass().getSimpleName()));
+        LOG.info(String.format("Request %s%s has been handled by %s.", 
+                request.getPathInfo(), 
+                request.getQueryString(), 
+                controller.getClass().getSimpleName()));
     }
     
 
