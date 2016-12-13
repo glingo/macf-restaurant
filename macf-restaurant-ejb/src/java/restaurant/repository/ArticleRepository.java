@@ -10,6 +10,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import restaurant.model.catalogue.Article;
 import restaurant.model.catalogue.Categorie;
+import restaurant.model.catalogue.Ingredient;
 
 @Stateless
 public class ArticleRepository extends EntityRepository<Article> {
@@ -31,7 +32,18 @@ public class ArticleRepository extends EntityRepository<Article> {
         q.select(c).where(equal);
         TypedQuery<Article> query = em.createQuery(q);
         
-        return (Collection<Article>) singleResultOrNull(query);
+        return query.getResultList();
+    }
+    
+    public Collection<Article> findByIngredient (Ingredient ing) {
+         CriteriaBuilder cb = getBuilder();
+        CriteriaQuery<Article> q = cb.createQuery(this.getManagedClass());
+        Root<Article> c = q.from(this.getManagedClass());
+        Predicate equal = cb.equal(c.get("ingredient"), ing);
+        q.select(c).where(equal);
+        TypedQuery<Article> query = em.createQuery(q);
+        
+        return query.getResultList();
     }
 
 }
