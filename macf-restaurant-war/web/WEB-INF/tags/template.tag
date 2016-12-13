@@ -80,9 +80,9 @@
                         </li>
                         
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tests <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Mon action marine</a></li>
                                 <li><a href="#">Another action</a></li>
                                 <li><a href="#">Something else here</a></li>
                                 <li role="separator" class="divider"></li>
@@ -97,11 +97,20 @@
                         <li>
                             <c:choose>
                                 <c:when test="${not empty user}">
-                                    <a href="/macf-restaurant-war/?section=security&action=logout" class="glyphicon glyphicon-log-out"></a>
+                                    <c:url value="/" var="url">
+                                        <c:param name="section" value="security" />
+                                        <c:param name="action" value="logout" />
+                                    </c:url>
+                                    
+                                    <a href="${ url }" class="glyphicon glyphicon-log-out"></a>
                                 </c:when>
 
                                 <c:otherwise>
-                                    <a href="/macf-restaurant-war/?section=security&action=login" class="glyphicon glyphicon-log-in"></a>
+                                     <c:url value="/" var="url">
+                                        <c:param name="section" value="security" />
+                                        <c:param name="action" value="login" />
+                                    </c:url>
+                                    <a href="${ url }" class="glyphicon glyphicon-log-in"></a>
                                 </c:otherwise>
                             </c:choose>
                         </li>

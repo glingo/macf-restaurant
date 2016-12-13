@@ -15,8 +15,6 @@ public class AutreExempleController extends ActionController {
     private SessionBeanLocal sessionBean ;
 
     private static final Logger LOG = Logger.getLogger(AutreExempleController.class.getName());
-
-    
     
     public AutreExempleController() {
         sessionBean = lookupSessionBeanLocal();

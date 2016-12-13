@@ -23,6 +23,8 @@ public class SecurityController extends ActionController {
         
         LOG.entering("SecurityController", "login");
         
+        // validation de la request.
+        
         Object submit = request.getParameter("login_submit");
         
         if(submit == null) {
@@ -33,27 +35,34 @@ public class SecurityController extends ActionController {
         
         String code = (String) request.getParameter("code");
         
+        // on appelle le code métier (ejb)
+        
         Employe employe = employeManager.login(code);
+        
+        // on met des objets dans la request ( pour la jsp )
+        // request.setAttribute("emp", employe);
         
         if(employe == null) {
             LOG.info("Nous ne nous connaissons pas !");
-            // on renvois vers le formulaire.
             danger("Votre code est inconnu !");
+            // on renvois vers le formulaire.
             return "login";
         }
         
+        String type = employe.getClass().getSimpleName().toLowerCase();
+        LOG.info(String.format("c'est un %s !", type));
+        
+        // on met un message pour l'utilisateur.
         success("Bienvenue !");
         
         // store in session :
         getSession().setAttribute("user", employe);
         
-        redirect(request.getContextPath() + "?section=home");
+        // on traite la request.
+        // soit redirect, soit on return le nom de la vue.
+        redirect("?section=home");
         
         // dispatch to jsp :
-        String type = employe.getClass().getSimpleName().toLowerCase();
-        
-        LOG.info(String.format("c'est un %s !", type));
-        
         LOG.exiting("SecurityController", "login");
         
         return "employe/" + type;

@@ -7,7 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<%--<fmt:setLocale />--%>
+<fmt:setBundle basename="config.message" />
 
 <t:template title="macf-restaurant">
 
@@ -20,6 +24,7 @@
     <jsp:body>
         <div class="col-lg-12">
             
+            <fmt:message key="welcome" />
             HELLO WORLD
             
         </div>

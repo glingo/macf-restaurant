@@ -46,6 +46,7 @@ public class ExempleController extends ActionController {
     public String list(HttpServletRequest request, HttpServletResponse response)
         throws Exception {
         
+        
         // on appelle un ejb via son nom en remote.
 //        ArticleManagerInterface articleManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
         

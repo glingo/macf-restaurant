@@ -22,6 +22,11 @@ public class EmployeManager {
         // code != null
         // code.length = 4
         
+        if(code == null || code.length() != 4) {
+            LOG.info("Tentative de login échouée");
+            return null;
+        }
+        
         Employe employe = repository.login(code);
         
         LOG.info(String.format("Tentative de login %s", 
