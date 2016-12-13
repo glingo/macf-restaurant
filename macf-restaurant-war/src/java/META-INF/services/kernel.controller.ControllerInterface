@@ -6,3 +6,5 @@ exemple.controller.ExempleController
 exemple.controller.DefaultController
 exemple.controller.ErroneousController
 exemple.controller.AutreExempleController
+
+controller.AuthentificationController
