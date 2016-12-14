@@ -26,7 +26,7 @@
                         <c:param name="article" value="${ article.id }" />
                     </c:url>
                     
-                    <a href="${ url }"><c:out value="${ article.libelle }"></c:out></a>
+                    <a href="${ url }"><c:out value="${ article.libelle }"></c:out> ${article.prix}</a>
                 </li>
 
             </c:forEach>
