@@ -2,7 +2,7 @@ package restaurant.model.commande;
 
 public enum StatutCommande {
 
-    EN_SELECTION("en sélection", "ES"), EN_ATTENTE_AIDE("en attente d'aide", "EA");
+    EN_SELECTION("en sélection", "ES"), EN_ATTENTE_AIDE("en attente d'aide", "EA"),PRET("prêt", "P"), ENVOYE("envoyé", "E");
 
     private String libelle;
     private String code;

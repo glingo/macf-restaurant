@@ -105,6 +105,8 @@ public class DataProvider implements Provider {
         Article saumon = new Article("Pavé de saumon à l’oseille", 12f, null, 0, false, Categorie.PLAT, tvaBasse);
         
         em.persist(steack);
+        em.persist(entrecote);
+        em.persist(choucroute);
         em.persist(lotte);
         em.persist(bar);
         em.persist(saumon);
@@ -214,14 +216,23 @@ public class DataProvider implements Provider {
         //création de commandes
         Date d01 = new GregorianCalendar(2016, 12, 12).getTime();
         Commande c01 = new Commande(d01, "1", empl10, daniel, StatutCommande.EN_SELECTION);
-        //je dois créer des lignes de commande pour faire avoir une collection de lignes de commande pour la commande
-        
+        Date d02 = new GregorianCalendar(2016, 12, 13).getTime();
+        Commande c02 = new Commande(d02,"2",empl02,michel,StatutCommande.EN_ATTENTE_AIDE);
+        em.persist(c01);
+        em.persist(c02);
+        em.flush();
         
         //création de lignes de commande
-       // LigneDeCommande = new LigneDeCommande(1,20f, 1, soir, );
-        
-        
-        
+       
+        LigneDeCommande ldc02 = new LigneDeCommande(1,15f,c02,TypeCuisson.ROUGE, entrecote, StatutCommande.PRET);
+        LigneDeCommande ldc01 = new LigneDeCommande(1,20f,c01, soir, ldc02,StatutCommande.PRET);
+        LigneDeCommande ldc03 = new LigneDeCommande(1,12f,c01,null,choucroute, StatutCommande.ENVOYE);
+        LigneDeCommande ldc04 = new LigneDeCommande(1,20f,c02, soir, ldc03, StatutCommande.EN_ATTENTE_AIDE);
+        em.persist(ldc01);
+        em.persist(ldc02);
+        em.persist(ldc03);
+        em.persist(ldc04);
+        em.flush();
         
         System.out.println("================== fin jeu de test !!");
     }

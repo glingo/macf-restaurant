@@ -1,6 +1,7 @@
 controller.HomeController
 controller.SecurityController
 controller.EmplacementController
+controller.CommandeController
 
 # Exemples 
 exemple.controller.ExempleController

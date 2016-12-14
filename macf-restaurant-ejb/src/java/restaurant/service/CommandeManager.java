@@ -1,14 +1,25 @@
 package restaurant.service;
 
 import java.util.List;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import restaurant.model.commande.Commande;
 import restaurant.model.commande.LigneDeCommande;
 import restaurant.model.salle.Emplacement;
 import restaurant.model.administratif.Serveur;
 import restaurant.model.commande.StatutCommande;
+import restaurant.repository.CommandeRepository;
 
-public class CommandeManager {
+@Stateless(name="commande-manager")
+public class CommandeManager implements CommandeManagerInterface{
 
+    private static final Logger LOG = Logger.getLogger(CommandeManager.class.getName());
+    
+    @EJB
+    private CommandeRepository repository;
+    
+    
     public float calculerTotal(Commande commande) {
         throw new UnsupportedOperationException();
     }
