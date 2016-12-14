@@ -7,7 +7,6 @@ import kernel.controller.ActionController;
 import restaurant.model.catalogue.Categorie;
 import restaurant.model.catalogue.Ingredient;
 import restaurant.service.ArticleManagerInterface;
-import restaurant.service.MenuManager;
 import restaurant.service.MenuManagerInterface;
 
 public class CarteController extends ActionController{
