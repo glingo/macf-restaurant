@@ -29,10 +29,10 @@ public class EmplacementController extends ActionController {
     
     public String create(HttpServletRequest request, HttpServletResponse response)
             throws Exception{
-        //vérificaiton de l'absence ( ou non ) des infos nécessaires à la création d'un emplacement.
+        //vérification de l'absence ( ou non ) des infos nécessaires à la création d'un emplacement.
         LOG.info("Je crée un emplacement");
         
-        return "home";
+        return "emplacement/create";
  
     }
     
@@ -40,7 +40,7 @@ public class EmplacementController extends ActionController {
             throws Exception{
         
         LOG.info("Je supprime un emplacement");
-        return "home";
+        return "emplacement/create";
     }
     
     public String list(HttpServletRequest request, HttpServletResponse response)
