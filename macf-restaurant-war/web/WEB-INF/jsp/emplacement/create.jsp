@@ -31,13 +31,13 @@
                 <br/>
                 <br/>
                 <!--<input type="text" id="statutEmpl" name="statutEmpl"/>-->
-                <select name="listStatut" onChange="combo(this, 'statutEmpl')">
+                <select name="listStatut">
                     <option>Libre</option>
                     <option>En cours de nettoyage</option>
                     <option>Occupé</option>
                 </select>               
                 <!--<input type="text" id="zoneEmpl" name="zoneEmpl"/>-->
-                <select name="listZone" onChange="combo(this, 'zoneEmpl')">
+                <select name="listZone">
                     <option>Zone 1</option>
                     <option>Zone 2</option>
                     <option>Zone 3</option>
