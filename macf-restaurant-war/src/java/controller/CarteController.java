@@ -7,15 +7,19 @@ import kernel.controller.ActionController;
 import restaurant.model.catalogue.Categorie;
 import restaurant.model.catalogue.Ingredient;
 import restaurant.service.ArticleManagerInterface;
+import restaurant.service.MenuManager;
+import restaurant.service.MenuManagerInterface;
 
 public class CarteController extends ActionController{
     
     private static final Logger LOG = Logger.getLogger(CarteController.class.getName());
     
     private final ArticleManagerInterface articleManager;
+    private final MenuManagerInterface menuManager;
     
     public CarteController(){
         articleManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
+        menuManager = get("java:global/macf-restaurant/macf-restaurant-ejb/menu-manager");
     }
     
     public String listArticle (HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -33,5 +37,9 @@ public class CarteController extends ActionController{
         return "article/list";
     }
     
+    public String listMenu (HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.setAttribute("articles", menuManager.getAll());
+        return "article/list";
+    }
    
 }
