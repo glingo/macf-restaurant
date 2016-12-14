@@ -8,15 +8,15 @@ import restaurant.model.administratif.Serveur;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -40,7 +40,28 @@ public class Commande implements Serializable {
     private Collection<LigneDeCommande> ligneDeCommandes = new ArrayList<>();
     @OneToMany
     private Collection<Paiement>        paiements        = new ArrayList<>();
-
+    
+    @Enumerated(EnumType.STRING)
+    private StatutCommande statut;
+            
+    public Commande(){
+        
+    }
+    
+    public Commande(Date date, String numero){
+        this();
+        this.date = date;
+        this.numero = numero;
+    }
+    
+    public Commande(Date date, String numero, Emplacement emplacement, Serveur serveur, StatutCommande statut){
+        this(date, numero);
+        this.emplacement = emplacement;
+        this.serveur = serveur;
+        this.statut = statut;
+    }
+    
+    
     public Long getId() {
         return id;
     }

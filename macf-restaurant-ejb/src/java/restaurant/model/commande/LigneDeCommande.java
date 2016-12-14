@@ -19,19 +19,19 @@ import restaurant.model.catalogue.Article;
 
 @Entity
 public class LigneDeCommande implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private int quantite;
     private float prix;
-    
+
     @Enumerated(EnumType.STRING)
     private StatutCommande statut;
     @Enumerated(EnumType.STRING)
     private TypeCuisson cuisson;
-    
+
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Commande commande;
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
@@ -40,9 +40,33 @@ public class LigneDeCommande implements Serializable {
     private LigneDeCommande ligneDeCommande;
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Article article;
-    
+
     @OneToMany
     private Collection<LigneDeCommande> sousLigneDeCommande = new ArrayList<>();
+
+    public LigneDeCommande() {
+
+    }
+
+    public LigneDeCommande(int quantite, float prix) {
+        this();
+        this.quantite = quantite;
+        this.prix = prix;
+    }
+
+    public LigneDeCommande(int quantite, float prix, Commande commande, Menu menu, Article article) {
+        this(quantite, prix);
+        this.commande = commande;
+        this.menu = menu;
+        this.article = article;
+    }
+
+    public LigneDeCommande(int quantite, float prix, TypeCuisson cuisson, Commande commande, Article article) {
+        this(quantite, prix);
+        this.cuisson = cuisson;
+        this.commande = commande;
+        this.article = article;
+    }
 
     public Long getId() {
         return id;
@@ -123,6 +147,5 @@ public class LigneDeCommande implements Serializable {
     public void setSousLigneDeCommande(Collection<LigneDeCommande> sousLigneDeCommande) {
         this.sousLigneDeCommande = sousLigneDeCommande;
     }
-    
-    
+
 }

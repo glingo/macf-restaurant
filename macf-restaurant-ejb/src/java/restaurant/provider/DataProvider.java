@@ -1,5 +1,7 @@
 package restaurant.provider;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,9 +13,14 @@ import restaurant.model.catalogue.Article;
 import restaurant.model.catalogue.Categorie;
 import restaurant.model.catalogue.Menu;
 import restaurant.model.catalogue.Tva;
+import restaurant.model.commande.Commande;
+import restaurant.model.commande.LigneDeCommande;
+import restaurant.model.commande.StatutCommande;
+import restaurant.model.commande.TypeCuisson;
 import restaurant.model.salle.Emplacement;
 import restaurant.model.salle.StatutEmplacement;
 import restaurant.model.salle.Zone;
+
 
 @Stateless(name = "data-provider")
 public class DataProvider implements Provider {
@@ -204,6 +211,17 @@ public class DataProvider implements Provider {
         
         em.flush();
 
+        //création de commandes
+        Date d01 = new GregorianCalendar(2016, 12, 12).getTime();
+        Commande c01 = new Commande(d01, "1", empl10, daniel, StatutCommande.EN_SELECTION);
+        //je dois créer des lignes de commande pour faire avoir une collection de lignes de commande pour la commande
+        
+        
+        //création de lignes de commande
+       // LigneDeCommande = new LigneDeCommande(1,20f, 1, soir, );
+        
+        
+        
         
         System.out.println("================== fin jeu de test !!");
     }
