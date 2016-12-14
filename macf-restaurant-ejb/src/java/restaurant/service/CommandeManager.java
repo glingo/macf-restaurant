@@ -1,7 +1,9 @@
 package restaurant.service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import restaurant.model.commande.Commande;
@@ -19,6 +21,10 @@ public class CommandeManager implements CommandeManagerInterface{
     @EJB
     private CommandeRepository repository;
     
+    @PostConstruct
+    public void construct(){
+        
+    }
     
     public float calculerTotal(Commande commande) {
         throw new UnsupportedOperationException();
@@ -39,9 +45,14 @@ public class CommandeManager implements CommandeManagerInterface{
     public Commande update(Object commande) {
         throw new UnsupportedOperationException();
     }
-
+    
+    //je récuoère toutes les commandes
+    @Override
     public List<Commande> getAll() {
-        throw new UnsupportedOperationException();
+        Collection<Commande> all = repository.findAll();
+        return (List<Commande>) all;
+        
+        
     }
 
     public List<Commande> getCommandesByStatut(String codeStatut) {
