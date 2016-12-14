@@ -34,7 +34,30 @@ public class Emplacement implements Serializable {
     
     @OneToMany
     private Collection<Commande> commandes = new ArrayList<>();
-
+    
+    
+    public Emplacement(){
+        
+    }
+    
+    public Emplacement(String numero, int nombrePlace){
+        this();
+        this.numero = numero;
+        this.nombrePlace = nombrePlace;
+        
+    }
+    
+    public Emplacement(String numero, int nombrePlace, StatutEmplacement statut, Zone zone){
+        this(numero, nombrePlace);
+        this.statut = statut;
+        this.zone = zone;
+    }
+    
+    public Emplacement(String numero, int nombrePlace, StatutEmplacement statut, Zone zone, Collection<Commande> commandes){
+        this(numero, nombrePlace, statut, zone);
+        this.commandes = commandes;
+        
+    }
     public Long getId() {
         return id;
     }

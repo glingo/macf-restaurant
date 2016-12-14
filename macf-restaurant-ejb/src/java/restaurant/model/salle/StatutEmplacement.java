@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 
 public enum StatutEmplacement {
 
-    LIBRE("", ""), OCCUPE("", ""), EN_NETTOYAGE("", "");
+    LIBRE("LIB", "Libre"), OCCUPE("OCC", "Occupé"), EN_NETTOYAGE("ENT", "en nettoyage");
 
     private String code;
     private String libelle;
