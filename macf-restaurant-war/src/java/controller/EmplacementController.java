@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import kernel.controller.ActionController;
+import restaurant.model.catalogue.Article;
 import restaurant.service.EmplacementManagerInterface;
 
 //extends d'ActionController dans kernel/controller/action controller ( permet l'appel de plusieurs méthodes)
@@ -18,11 +19,11 @@ public class EmplacementController extends ActionController {
 
     private static final Logger LOG = Logger.getLogger(EmplacementController.class.getName());
 
-   // private final EmplacementManagerInterface emplacementManager;
+   //private final EmplacementManagerInterface emplacementManager;
 
     public EmplacementController() {
         //dans le contructeur on appelle la methode get ( presente dans l'interface controller). Elle est le lookup.
-       // emplacementManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
+       //emplacementManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
     }
     
     //Première etape : LOG des trucs à faire + redirection vers les JSP. BUT : faire le lien entre les JSP et le controller/
@@ -30,8 +31,10 @@ public class EmplacementController extends ActionController {
     public String create(HttpServletRequest request, HttpServletResponse response)
             throws Exception{
         //vérification de l'absence ( ou non ) des infos nécessaires à la création d'un emplacement.
-        LOG.info("Je crée un emplacement");
-        
+       
+            
+            LOG.info("Je crée un emplacement");
+    
         return "emplacement/create";
  
     }
