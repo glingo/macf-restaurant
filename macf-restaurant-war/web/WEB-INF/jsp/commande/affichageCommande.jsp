@@ -19,14 +19,18 @@
     
     <jsp:body>
         <div class="col-lg-12">
+            
              <c:forEach var="commande" items="${ commandes }">
         
                 <li>
-                    <c:url value="commande" var="url">
-                        <c:param name="commande" value="${ commande.id }" />
+                    
+                    <c:url value="/" var="url">
+                        <c:param name="section" value="commande" />
+                        <c:param name="action" value="listDetailCommande" />
+                        <c:param name="numero" value="${ commande.numero }" />
                     </c:url>
                     
-                    <a href="${ url }"><c:out value="${ commande.numero }"></c:out></a>
+                    <a href="${ url }"><c:out value="${ commande.numero } "></c:out></a>
                 </li>
 
             </c:forEach>

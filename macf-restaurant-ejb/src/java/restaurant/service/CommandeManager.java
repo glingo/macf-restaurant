@@ -51,27 +51,38 @@ public class CommandeManager implements CommandeManagerInterface{
     public List<Commande> getAll() {
         Collection<Commande> all = repository.findAll();
         return (List<Commande>) all;
+    }
+
+    @Override
+    public Commande getByNumero(String numero) {
         
+        // verification d'usage ...
+        // numero != null ( peut etre fait dans le controller)
         
+        if(numero == null) {
+            return null;
+        }
+        
+        return repository.findByNumero(numero);
     }
-
-    public List<Commande> getCommandesByStatut(String codeStatut) {
+   
+    public List<Commande> getByStatut(String codeStatut) {
         throw new UnsupportedOperationException();
     }
 
-    public List<Commande> getCommandesByEmplacement(String numTable) {
+    public List<Commande> getByEmplacement(String numTable) {
         throw new UnsupportedOperationException();
     }
 
-    public List<Commande> getCommandesByServeur(int code) {
+    public List<Commande> getByServeur(int code) {
         throw new UnsupportedOperationException();
     }
 
-    public List<Commande> getCommandeByEmplacementAndStatut(Emplacement emplacement, StatutCommande statut) {
+    public List<Commande> getByEmplacementAndStatut(Emplacement emplacement, StatutCommande statut) {
         throw new UnsupportedOperationException();
     }
 
-    public List<Commande> getCommandeUnpaidByEmplacement(Emplacement emplacement) {
+    public List<Commande> getUnpaidByEmplacement(Emplacement emplacement) {
         throw new UnsupportedOperationException();
     }
 

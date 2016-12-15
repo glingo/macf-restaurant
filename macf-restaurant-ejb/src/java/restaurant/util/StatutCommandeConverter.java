@@ -4,7 +4,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 import restaurant.model.commande.StatutCommande;
 
-@Converter(autoApply = true)
+@Converter(autoApply = false)
 public class StatutCommandeConverter implements AttributeConverter<StatutCommande, String> {
 
     @Override
@@ -13,7 +13,7 @@ public class StatutCommandeConverter implements AttributeConverter<StatutCommand
             return null;
         }
         
-        return attribute.getLibelle();
+        return attribute.name();
     }
 
     @Override
