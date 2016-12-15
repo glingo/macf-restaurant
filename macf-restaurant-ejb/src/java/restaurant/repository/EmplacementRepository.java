@@ -48,24 +48,9 @@ public class EmplacementRepository extends EntityRepository<Emplacement> {
         return emplacement;
     }
        
-    public Emplacement updateStatut(Emplacement emplacement){
+    public Emplacement updateStatut(Emplacement emplacement, StatutEmplacement statut){
         
-        StatutEmplacement statutActuel = emplacement.getStatut();
-        
-        if(statutActuel.equals(StatutEmplacement.LIBRE)){
-            
-            //statutActuel = setStatut(StatutEmplacement.OCCUPE);
-            emplacement.setStatut(StatutEmplacement.OCCUPE);
-            
-            
-        }else if(statutActuel.equals(StatutEmplacement.OCCUPE)){
-            
-           emplacement.setStatut(StatutEmplacement.EN_NETTOYAGE);
-            
-        }else if(statutActuel.equals(StatutEmplacement.EN_NETTOYAGE)){
-            
-            emplacement.setStatut(StatutEmplacement.LIBRE);
-        }
+        emplacement.setStatut(statut);
         
         return emplacement;
         

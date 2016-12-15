@@ -70,23 +70,49 @@ public class EmplacementManager {
 //    }
 
     public Emplacement passToVacant(Emplacement emplacement) {
-        if(repository != null){
-            repository.updateStatut(emplacement);
-        }
-        return emplacement;
+ 
+       if(emplacement.getStatut().equals(StatutEmplacement.LIBRE) || emplacement.getStatut().equals(StatutEmplacement.OCCUPE)){
+           LOG.warning("L'emplacement ne peut pas passer au statut demandé");
+       }else{
+           if(repository != null){
+               repository.updateStatut(emplacement, StatutEmplacement.LIBRE);
+               LOG.info("Pass to vacant");
+           }else{
+                LOG.warning("Il manque la requète DAO");
+            }
+       }
+       
+       return emplacement;
     }
 
     public Emplacement passToOccupied(Emplacement emplacement) {
-         if(repository != null){
-            repository.updateStatut(emplacement);
+        
+        if(emplacement.getStatut().equals(StatutEmplacement.OCCUPE) || emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE)){
+            LOG.warning("L'emplacement ne peut pas passer au statut demandé");
+        }else{
+            if(repository != null){
+                repository.updateStatut(emplacement, StatutEmplacement.OCCUPE);
+                LOG.info("pass to occupied");
+            }else{
+                LOG.warning("Il manque la requète DAO");
+            }
         }
+        
         return emplacement;
     }
 
     public Emplacement passToCleaning(Emplacement emplacement) {
-         if(repository != null){
-            repository.updateStatut(emplacement);
+        if(emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE) || emplacement.getStatut().equals(StatutEmplacement.LIBRE)){
+            LOG.warning("L'emplacement ne peut pas passer au statut demandé");
+        }else{
+            if(repository != null){
+                repository.updateStatut(emplacement, StatutEmplacement.EN_NETTOYAGE);
+                LOG.info("pass to cleaning");
+            }else{
+                LOG.warning("Il manque la requète DAO");
+            }
         }
+        
         return emplacement;
     }
 }
