@@ -20,10 +20,10 @@
     <jsp:body>
         <div class="col-lg-12">
 
-            <form>
+            <form method="POST" action="/macf-restaurant-war/?section=carte&action=listArticleByCategorie">
                 <select name="categorie">
                     <c:forEach var="categorie" items="${ categories }">                       
-                        <option><c:out value="${ categorie.libelle }" ></c:out></option>
+                        <option value="${ categorie.name() }"><c:out value="${ categorie.libelle }" ></c:out></option>
                     </c:forEach>
                 </select>
                 <input type="submit" value="choix" />

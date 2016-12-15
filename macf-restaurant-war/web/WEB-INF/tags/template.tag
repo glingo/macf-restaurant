@@ -91,10 +91,6 @@
                                 <li><a href="/macf-restaurant-war/?section=carte&action=afficherCarte">Afficher la carte</a></li>
                                 <li><a href="/macf-restaurant-war/?section=carte&action=listArticle">Afficher la liste des articles</a></li>
                                 <li><a href="/macf-restaurant-war/?section=carte&action=listMenu">Afficher la liste des menus</a></li>
-                                <li><a href="/macf-restaurant-war/?section=carte&action=listArticleByCategorie&categorie=ENTREE">Afficher la liste des Entrées</a></li>
-                                <li><a href="/macf-restaurant-war/?section=carte&action=listArticleByCategorie&categorie=PLAT">Afficher la liste des Plats</a></li>
-                                <li><a href="/macf-restaurant-war/?section=carte&action=listArticleByCategorie&categorie=DESSERT">Afficher la liste des Desserts</a></li>
-                                <li><a href="/macf-restaurant-war/?section=carte&action=listArticleByCategorie&categorie=BOISSON">Afficher la liste des Boissons</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                                 <li role="separator" class="divider"></li>

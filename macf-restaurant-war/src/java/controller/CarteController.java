@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import kernel.controller.ActionController;
 import restaurant.model.catalogue.Categorie;
-import restaurant.model.catalogue.Ingredient;
 import restaurant.service.ArticleManagerInterface;
 import restaurant.service.MenuManagerInterface;
 
@@ -23,9 +22,11 @@ public class CarteController extends ActionController {
 
     public String afficherCarte(HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.setAttribute("categories", Categorie.values());
-//        String cat = request.getParameter("choix");
-//        Categorie categorie = Categorie.valueOf(cat);
-//        request.setAttribute("articles", articleManager.getByCategorie(categorie));
+        if (request.getParameter("categorie") != null) {
+            String cat = request.getParameter("categorie");
+            Categorie categorie = Categorie.valueOf(cat);
+            request.setAttribute("articles", articleManager.getByCategorie(categorie));
+        }
         return "article/list";
     }
 
@@ -35,9 +36,14 @@ public class CarteController extends ActionController {
     }
 
     public String listArticleByCategorie(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String cat = request.getParameter("categorie");
-        Categorie categorie = Categorie.valueOf(cat);
-        request.setAttribute("articles", articleManager.getByCategorie(categorie));
+        try{
+            String cat = request.getParameter("categorie");
+            Categorie categorie = Categorie.valueOf(cat);
+            request.setAttribute("articles", articleManager.getByCategorie(categorie));
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        
         return "article/list";
     }
 
