@@ -75,6 +75,10 @@ public abstract class Controller implements ControllerInterface {
     protected HttpSession getSession() {
         return request.getSession(true);
     }
+    
+    protected void redirect() throws IOException {
+        redirect("");
+    }
 
     protected void redirect(String location) throws IOException {
         this.response.sendRedirect(location);
