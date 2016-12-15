@@ -5,7 +5,6 @@ import kernel.controller.Controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import restaurant.model.administratif.Employe;
-import restaurant.model.administratif.Serveur;
 
 public class HomeController extends Controller {
 
