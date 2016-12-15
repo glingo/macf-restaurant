@@ -53,22 +53,17 @@ public class LigneDeCommande implements Serializable {
         this.quantite = quantite;
         this.prix = prix;
     }
-
-    public LigneDeCommande(int quantite, float prix, Commande commande, Menu menu, LigneDeCommande ligneDeCommande, StatutCommande statut) {
-        this(quantite, prix);
-        this.commande = commande;
-        this.menu = menu;
-        this.ligneDeCommande = ligneDeCommande;
-        this.statut = statut;
+    
+    public LigneDeCommande(int quantite, float prix, StatutCommande statut, TypeCuisson cuisson, Commande commande, Menu menu, LigneDeCommande ligneDeCommande,Article article){
+       this(quantite,prix);
+       this.statut = statut;
+       this.cuisson = cuisson;
+       this.commande = commande;
+       this.menu = menu;
+       this.ligneDeCommande =ligneDeCommande;
+       this.article = article;
     }
 
-    public LigneDeCommande(int quantite, float prix, Commande commande, TypeCuisson cuisson,  Article article, StatutCommande statut) {
-        this(quantite, prix);
-        this.commande = commande;
-        this.cuisson = cuisson;
-        this.article = article;
-        this.statut = statut;
-    }
 
     public Long getId() {
         return id;

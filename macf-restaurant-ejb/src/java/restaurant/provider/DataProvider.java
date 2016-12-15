@@ -218,20 +218,26 @@ public class DataProvider implements Provider {
         Commande c01 = new Commande(d01, "1", empl10, daniel, StatutCommande.EN_SELECTION);
         Date d02 = new GregorianCalendar(2016, 12, 13).getTime();
         Commande c02 = new Commande(d02,"2",empl02,michel,StatutCommande.EN_ATTENTE_AIDE);
+        Date d03 =  new GregorianCalendar(2016, 12, 15).getTime();
+        Commande c03 = new Commande(d03, "3", empl04, jack, StatutCommande.EN_SELECTION);
         em.persist(c01);
         em.persist(c02);
+        em.persist(c03);
         em.flush();
         
         //création de lignes de commande
-       
-        LigneDeCommande ldc02 = new LigneDeCommande(1,15f,c02,TypeCuisson.ROUGE, entrecote, StatutCommande.PRET);
-        LigneDeCommande ldc01 = new LigneDeCommande(1,20f,c01, soir, ldc02,StatutCommande.PRET);
-        LigneDeCommande ldc03 = new LigneDeCommande(1,12f,c01,null,choucroute, StatutCommande.ENVOYE);
-        LigneDeCommande ldc04 = new LigneDeCommande(1,20f,c02, soir, ldc03, StatutCommande.EN_ATTENTE_AIDE);
+        LigneDeCommande ldc01 = new LigneDeCommande(1,20f,StatutCommande.PRET, null, c01, soir, null,null);
+        LigneDeCommande ldc02 = new LigneDeCommande(1,15f,StatutCommande.PRET,TypeCuisson.ROUGE,c02,null, null,entrecote);
+        LigneDeCommande ldc03 = new LigneDeCommande(1,12f,StatutCommande.ENVOYE, null, c01, soir,null, choucroute);
+        LigneDeCommande ldc04 = new LigneDeCommande(1,20f,StatutCommande.EN_ATTENTE_AIDE, null, c02, soir, null, null);
+        LigneDeCommande ldc05 = new LigneDeCommande(1,0f,StatutCommande.PRET,null,c02,soir, null,saumon);
+        LigneDeCommande ldc06 = new LigneDeCommande(1,0f,StatutCommande.PRET,null,c02,soir, null,cremeCaramel);
         em.persist(ldc01);
         em.persist(ldc02);
         em.persist(ldc03);
         em.persist(ldc04);
+        em.persist(ldc05);
+        em.persist(ldc06);
         em.flush();
         
         System.out.println("================== fin jeu de test !!");

@@ -21,7 +21,7 @@ public class CommandeController extends ActionController{
     
      public String listCommande(HttpServletRequest request, HttpServletResponse response) throws Exception{
          request.setAttribute("commandes", commandeManager.getAll());
-         return "commande/commande";
+         return "commande/affichage";
      } 
      
        

@@ -26,7 +26,7 @@
                         <c:param name="commande" value="${ commande.id }" />
                     </c:url>
                     
-                    <a href="${ url }"><c:out value="${ commande.libelle }"></c:out></a>
+                    <a href="${ url }"><c:out value="${ commande.numero }"></c:out></a>
                 </li>
 
             </c:forEach>
