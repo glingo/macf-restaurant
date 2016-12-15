@@ -10,6 +10,10 @@ public interface EmplacementManagerInterface {
     
     Emplacement create(String numero, int nombrePlaces, String numeroZone);
     
+    Emplacement update(Emplacement emplacement);
+    
+    void delete(Emplacement emplacement);
+    
     List<Emplacement> getAll();
     
     List<Emplacement> getByZone(Zone zone);
