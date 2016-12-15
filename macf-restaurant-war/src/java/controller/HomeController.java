@@ -13,6 +13,7 @@ public class HomeController extends Controller {
     @Override
     public String doHandle(HttpServletRequest request, HttpServletResponse response) {
         
+        // modif
         LOG.entering("HomeController", "doHandle");
         
         // retrieve from session :
