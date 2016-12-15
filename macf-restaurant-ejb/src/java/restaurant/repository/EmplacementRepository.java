@@ -52,6 +52,8 @@ public class EmplacementRepository extends EntityRepository<Emplacement> {
         
         emplacement.setStatut(statut);
         
+        save(emplacement);
+        
         return emplacement;
         
     }    
