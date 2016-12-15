@@ -13,47 +13,46 @@ import restaurant.repository.EmplacementRepository;
 
 @Stateless(name = "emplacement-manager")
 public class EmplacementManager {
+
     private static final Logger LOG = Logger.getLogger(EmplacementManager.class.getName());
-    
+
     @EJB
     private EmplacementRepository repository;
-    
-    
-    
+
     @PostConstruct
-    public void construct(){
+    public void construct() {
     }
-    
+
     public Emplacement create(String numero, int nombrePlaces, String numeroZone) {
         Emplacement emplacement = new Emplacement(numero, nombrePlaces, StatutEmplacement.LIBRE, null);
-        
-        if(repository != null){
+
+        if (repository != null) {
             repository.save(emplacement);
         }
         return emplacement;
     }
-    
-    public void delete(Emplacement emplacement){
-        
-        if(repository != null){
+
+    public void delete(Emplacement emplacement) {
+
+        if (repository != null) {
             repository.delete(emplacement);
         }
-        
+
     }
-    
-    public Emplacement update(Emplacement emplacement){
-        
-        if(repository != null){
+
+    public Emplacement update(Emplacement emplacement) {
+
+        if (repository != null) {
             repository.update(emplacement);
-            
+
         }
         return emplacement;
     }
 
     public List<Emplacement> getAll() {
-        
+
         Collection<Emplacement> all = repository.findAll();
-        return (List<Emplacement>) all ;
+        return (List<Emplacement>) all;
     }
 
 //    public List<Emplacement> getByZone(Zone zone) {
@@ -68,51 +67,48 @@ public class EmplacementManager {
 //        Collection<Emplacement> emplByStatut = repository.findByStatut(statut);
 //        return (List<Emplacement>) emplByStatut;
 //    }
-
     public Emplacement passToVacant(Emplacement emplacement) {
- 
-       if(emplacement.getStatut().equals(StatutEmplacement.LIBRE) || emplacement.getStatut().equals(StatutEmplacement.OCCUPE)){
-           LOG.warning("L'emplacement ne peut pas passer au statut demandé");
-       }else{
-           if(repository != null){
-               repository.updateStatut(emplacement, StatutEmplacement.LIBRE);
-               LOG.info("Pass to vacant");
-           }else{
-                LOG.warning("Il manque la requète DAO");
-            }
-       }
-       
-       return emplacement;
+
+        if (!emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE)){
+            //une exception.
+            
+                   
+        }
+
+        repository.updateStatut(emplacement, StatutEmplacement.LIBRE);
+        LOG.info("Pass to vacant");
+        return emplacement;
+
     }
 
     public Emplacement passToOccupied(Emplacement emplacement) {
-        
-        if(emplacement.getStatut().equals(StatutEmplacement.OCCUPE) || emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE)){
+
+        if (emplacement.getStatut().equals(StatutEmplacement.OCCUPE) || emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE)) {
             LOG.warning("L'emplacement ne peut pas passer au statut demandé");
-        }else{
-            if(repository != null){
+        } else {
+            if (repository != null) {
                 repository.updateStatut(emplacement, StatutEmplacement.OCCUPE);
                 LOG.info("pass to occupied");
-            }else{
+            } else {
                 LOG.warning("Il manque la requète DAO");
             }
         }
-        
+
         return emplacement;
     }
 
     public Emplacement passToCleaning(Emplacement emplacement) {
-        if(emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE) || emplacement.getStatut().equals(StatutEmplacement.LIBRE)){
+        if (emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE) || emplacement.getStatut().equals(StatutEmplacement.LIBRE)) {
             LOG.warning("L'emplacement ne peut pas passer au statut demandé");
-        }else{
-            if(repository != null){
+        } else {
+            if (repository != null) {
                 repository.updateStatut(emplacement, StatutEmplacement.EN_NETTOYAGE);
                 LOG.info("pass to cleaning");
-            }else{
+            } else {
                 LOG.warning("Il manque la requète DAO");
             }
         }
-        
+
         return emplacement;
     }
 }
