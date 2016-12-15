@@ -227,11 +227,15 @@ public class DataProvider implements Provider {
         
         //création de lignes de commande
         LigneDeCommande ldc01 = new LigneDeCommande(1,20f,StatutCommande.PRET, null, c01, soir, null,null);
-        LigneDeCommande ldc02 = new LigneDeCommande(1,15f,StatutCommande.PRET,TypeCuisson.ROUGE,c02,null, null,entrecote);
+        LigneDeCommande ldc02 = new LigneDeCommande(1,15f,StatutCommande.PRET, TypeCuisson.ROUGE, c02,null, null,entrecote);
         LigneDeCommande ldc03 = new LigneDeCommande(1,12f,StatutCommande.ENVOYE, null, c01, soir,null, choucroute);
         LigneDeCommande ldc04 = new LigneDeCommande(1,20f,StatutCommande.EN_ATTENTE_AIDE, null, c02, soir, null, null);
         LigneDeCommande ldc05 = new LigneDeCommande(1,0f,StatutCommande.PRET,null,c02,soir, null,saumon);
         LigneDeCommande ldc06 = new LigneDeCommande(1,0f,StatutCommande.PRET,null,c02,soir, null,cremeCaramel);
+        
+        // en général tu vas plutot faire :
+        // commande.addLigneDeCommande(ligne);
+        
         em.persist(ldc01);
         em.persist(ldc02);
         em.persist(ldc03);

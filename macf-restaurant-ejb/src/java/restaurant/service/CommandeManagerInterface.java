@@ -10,4 +10,6 @@ public interface CommandeManagerInterface {
 
     public List<Commande> getAll();
     
+    public Commande getByNumero(String numero);
+    
 }
