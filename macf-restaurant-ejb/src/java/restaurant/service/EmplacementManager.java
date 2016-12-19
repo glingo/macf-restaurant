@@ -67,10 +67,12 @@ public class EmplacementManager {
 //        Collection<Emplacement> emplByStatut = repository.findByStatut(statut);
 //        return (List<Emplacement>) emplByStatut;
 //    }
-    public Emplacement passToVacant(Emplacement emplacement) {
+    public Emplacement passToVacant(Emplacement emplacement){
 
         if (!emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE)){
             //une exception.
+           // throw new BadStatusException bse(emplacement,StatutEmplacement.EN_NETTOYAGE);
+            
             
                    
         }

@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package restaurant.service.exception;
 
 import restaurant.model.salle.Emplacement;
 import restaurant.model.salle.StatutEmplacement;
 
-/**
- *
- * @author cdi309
- */
+
 public class BadStatusEmplacementException extends EmplacementException {
     
     
@@ -22,6 +15,11 @@ public class BadStatusEmplacementException extends EmplacementException {
     
     //methode d'affichage du message derreur en fonction du statut et de lemplacement.
     
-    
+    public String messageErreur(Emplacement emplacement, StatutEmplacement statutEmplacement){
+        String message = null;
+        System.out.println("La table "+emplacement+" ne peut pas changé de statut.Elle doit être en "+statutEmplacement);
+        
+        return message;
+    }
     
 }
