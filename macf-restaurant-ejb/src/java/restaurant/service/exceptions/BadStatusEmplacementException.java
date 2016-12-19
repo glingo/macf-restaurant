@@ -1,5 +1,5 @@
 
-package restaurant.service.exception;
+package restaurant.service.exceptions;
 
 import restaurant.model.salle.Emplacement;
 import restaurant.model.salle.StatutEmplacement;
@@ -9,7 +9,7 @@ public class BadStatusEmplacementException extends EmplacementException {
     
     
     public BadStatusEmplacementException (Emplacement emplacement, StatutEmplacement statutEmplacement){
-        super(emplacement);
+        //super(emplacement);
   
     }
     

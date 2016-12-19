@@ -1,15 +1,9 @@
 package controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Logger;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import kernel.controller.ActionController;
-import restaurant.model.catalogue.Article;
 import restaurant.service.EmplacementManagerInterface;
 
 //extends d'ActionController dans kernel/controller/action controller ( permet l'appel de plusieurs méthodes)
@@ -22,7 +16,7 @@ public class EmplacementController extends ActionController {
 
     public EmplacementController() {
         //dans le contructeur on appelle la methode get ( presente dans l'interface controller). Elle est le lookup.
-        emplacementManager = get("java:global/macf-restaurant/macf-restaurant-ejb/article-manager");
+        emplacementManager = get("java:global/macf-restaurant/macf-restaurant-ejb/emplacement-manager");
     }
 
     //Première etape : LOG des trucs à faire + redirection vers les JSP. BUT : faire le lien entre les JSP et le controller/

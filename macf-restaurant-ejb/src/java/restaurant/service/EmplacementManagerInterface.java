@@ -2,10 +2,11 @@
 package restaurant.service;
 
 import java.util.List;
+import javax.ejb.Remote;
 import restaurant.model.salle.Emplacement;
 import restaurant.model.salle.Zone;
 
-
+@Remote
 public interface EmplacementManagerInterface {
     
     Emplacement create(String numero, int nombrePlaces, String numeroZone);

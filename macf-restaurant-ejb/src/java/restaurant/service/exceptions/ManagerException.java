@@ -1,5 +1,5 @@
 
-package restaurant.service.exception;
+package restaurant.service.exceptions;
 
 public class ManagerException extends Exception {
     
