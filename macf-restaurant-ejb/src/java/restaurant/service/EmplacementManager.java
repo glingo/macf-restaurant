@@ -79,9 +79,7 @@ public class EmplacementManager implements EmplacementManagerInterface {
     public Emplacement passToVacant(Emplacement emplacement) throws EmplacementException{
 
         if (!emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE)){
-            //une exception.
-           //throw new BadStatusException bse(emplacement,StatutEmplacement.EN_NETTOYAGE);
-        
+
         throw new EmplacementException("Impossible de changer le statut", EmplacementException.STATUS_EX);
                    
         }
