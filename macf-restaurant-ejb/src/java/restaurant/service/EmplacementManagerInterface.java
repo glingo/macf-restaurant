@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 import restaurant.model.salle.Emplacement;
 import restaurant.model.salle.Zone;
+import restaurant.service.exceptions.EmplacementException;
 
 @Remote
 public interface EmplacementManagerInterface {
@@ -19,7 +20,7 @@ public interface EmplacementManagerInterface {
     
     List<Emplacement> getByZone(Zone zone);
     
-    Emplacement passToVacant(Emplacement emplacement);
+    Emplacement passToVacant(Emplacement emplacement) throws EmplacementException;
     
     Emplacement passToOccupied(Emplacement emplacement);
     

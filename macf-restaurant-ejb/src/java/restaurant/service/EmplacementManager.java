@@ -11,12 +11,13 @@ import restaurant.model.salle.Emplacement;
 import restaurant.model.salle.StatutEmplacement;
 import restaurant.model.salle.Zone;
 import restaurant.repository.EmplacementRepository;
+import restaurant.service.exceptions.EmplacementException;
 
 @Stateless(name = "emplacement-manager")
 public class EmplacementManager implements EmplacementManagerInterface {
 
     private static final Logger LOG = Logger.getLogger(EmplacementManager.class.getName());
-    HashMap<String, String>erreurs = new HashMap<>();
+   
 
     @EJB
     private EmplacementRepository repository;
@@ -73,48 +74,15 @@ public class EmplacementManager implements EmplacementManagerInterface {
 //        Collection<Emplacement> emplByStatut = repository.findByStatut(statut);
 //        return (List<Emplacement>) emplByStatut;
 //    }
+    
     @Override
-    public Emplacement passToVacant(Emplacement emplacement){
+    public Emplacement passToVacant(Emplacement emplacement) throws EmplacementException{
 
         if (!emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE)){
             //une exception.
            //throw new BadStatusException bse(emplacement,StatutEmplacement.EN_NETTOYAGE);
-        erreurs.put("StatutErreur", emplacement +" ne peut pas passer au statut :"+StatutEmplacement.LIBRE);
         
-        
-        
-            
-            /*
-             public String creerUser(String nom, String email, String mdp) throws CustomException{
-        HashMap<String, String> mp = new HashMap<>();
-        if(nom == null || nom.trim().isEmpty()){
-            mp.put("nomErr", "un nom est obligatoire");
-        }
-        
-        
-       
-       if(mdp == null || mdp.length()<8){
-            mp.put("mdpErr", "le mot de passe doit avoir au moins 8 caracteres");
-        }
-       
-       if(!mp.isEmpty()){
-           CustomException monException =new CustomException("echec de creation du client", CustomException.SAISIE_EX);
-           monException.setErreurs(mp);
-           throw  monException;
-       
-       }
-       
-       // code creation pour renvoyer un client
-       
-       // on triche on retourne un String pour l'exemple
-       
-       
-       return "création du client terminée!";
-        
-    }
-            
-            
-            */
+        throw new EmplacementException("Impossible de changer le statut", EmplacementException.STATUS_EX);
                    
         }
 

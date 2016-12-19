@@ -29,7 +29,7 @@ public class EmplacementException extends Exception{
     }
 
 
-    public EmplacementException(int numException, String message) {
+    public EmplacementException(String message, int numException) {
         super(message);
         this.numException = numException;
     }
