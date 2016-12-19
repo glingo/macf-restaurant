@@ -5,7 +5,6 @@ import kernel.controller.Controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import restaurant.model.administratif.Employe;
-import restaurant.model.administratif.Serveur;
 
 public class HomeController extends Controller {
     private static final Logger LOG = Logger.getLogger(HomeController.class.getName());
@@ -13,6 +12,7 @@ public class HomeController extends Controller {
     @Override
     public String doHandle(HttpServletRequest request, HttpServletResponse response) {
         
+        // modif
         LOG.entering("HomeController", "doHandle");
         
         // retrieve from session :
