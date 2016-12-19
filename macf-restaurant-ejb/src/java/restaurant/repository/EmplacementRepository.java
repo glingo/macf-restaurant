@@ -7,6 +7,7 @@ package restaurant.repository;
 
 import java.util.Collection;
 import java.util.List;
+import javax.persistence.Query;
 import restaurant.model.salle.Emplacement;
 import restaurant.model.salle.StatutEmplacement;
 import restaurant.model.salle.Zone;
@@ -28,44 +29,30 @@ public class EmplacementRepository extends EntityRepository<Emplacement> {
     
     
     public Collection<Emplacement> findByZone(Zone zone){
-         //to do requete JPQL
-        /*
-         System.out.println("\n2) Tous les " + espece);
-        String req02 = "select a from Animal a where a.race= :paramRace";
-        //: indicateur pour dire qu'on a le nom d'un parametre. pas d'espace entre : et nom param. 
-        // :paramRAce = ? (en preparedstatement)
+        
+        String req = "select e from Emplacement where e.zone = :paramZone";
+        Query query = em.createQuery(req);
+        query.setParameter("paramZone", zone);
 
-        Query qr02 = em.createQuery(req02);
-        qr02.setParameter("paramRace", espece);
-        // nom du parametre et valeur
-//        //les requetes qui suivent : quand on ne veut pas tous remonter.
-//        qr02.setFirstResult(2);
-//        qr02.setMaxResults(2);
-        List<Animal> la02 = qr02.getResultList();
-        for (Animal a : la02) {
-            System.out.println(a);
-        }
+        return query.getResultList();
         
         
-        */
+    }
+    
+    public Collection<Emplacement> findByStatut(StatutEmplacement statut){
         
-        
-        
+        String req = "select e from Emplacement where e.statut = :paramStatutEmplacement";
+        Query query = em.createQuery(req);
+        query.setParameter("paramStatutEmplacement", statut);
         
         return query.getResultList();
         
         
     }
     
-//    public Collection<Emplacement> findByStatut(StatutEmplacement statut){
-//        //to do requete JPQL
-//        
-//        
-//        
-//    }
-    
     public void delete(Emplacement emplacement){
         //to do requete JPQL
+        
     }
     
     public Emplacement update(Emplacement emplacement){

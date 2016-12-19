@@ -62,18 +62,19 @@ public class EmplacementManager implements EmplacementManagerInterface {
         return (List<Emplacement>) all;
     }
 
-//    public List<Emplacement> getByZone(Zone zone) {
-//        
-//        Collection<Emplacement> emplByZone = repository.findByZone(zone);
-//        return (List<Emplacement>) emplByZone;
-//        
-//    }
-//    
-//    public List<Emplacement> getByStatut(StatutEmplacement statut){
-//        
-//        Collection<Emplacement> emplByStatut = repository.findByStatut(statut);
-//        return (List<Emplacement>) emplByStatut;
-//    }
+    @Override
+    public List<Emplacement> getByZone(Zone zone) {
+        
+        Collection<Emplacement> emplByZone = repository.findByZone(zone);
+        return (List<Emplacement>) emplByZone;
+        
+    }
+    
+    public List<Emplacement> getByStatut(StatutEmplacement statut){
+        
+        Collection<Emplacement> emplByStatut = repository.findByStatut(statut);
+        return (List<Emplacement>) emplByStatut;
+    }
     
     @Override
     public Emplacement passToVacant(Emplacement emplacement) throws EmplacementException{
@@ -114,8 +115,5 @@ public class EmplacementManager implements EmplacementManagerInterface {
         return emplacement;
     }
 
-    @Override
-    public List<Emplacement> getByZone(Zone zone) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }
