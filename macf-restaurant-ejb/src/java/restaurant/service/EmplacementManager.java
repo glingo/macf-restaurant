@@ -93,35 +93,26 @@ public class EmplacementManager implements EmplacementManagerInterface {
     }
 
     @Override
-    public Emplacement passToOccupied(Emplacement emplacement) {
-
-        if (emplacement.getStatut().equals(StatutEmplacement.OCCUPE) || emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE)) {
-            LOG.warning("L'emplacement ne peut pas passer au statut demandé");
-        } else {
-            if (repository != null) {
-                repository.updateStatut(emplacement, StatutEmplacement.OCCUPE);
-                LOG.info("pass to occupied");
-            } else {
-                LOG.warning("Il manque la requète DAO");
-            }
+    public Emplacement passToOccupied(Emplacement emplacement) throws EmplacementException{
+        
+        if(!emplacement.getStatut().equals(StatutEmplacement.LIBRE)){
+            throw new EmplacementException("Impossible de changer le statut", EmplacementException.STATUS_EX);
         }
-
+        
+        repository.updateStatut(emplacement, StatutEmplacement.OCCUPE);
+        LOG.info("pass to occupied");
         return emplacement;
+
     }
 
     @Override
-    public Emplacement passToCleaning(Emplacement emplacement) {
-        if (emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE) || emplacement.getStatut().equals(StatutEmplacement.LIBRE)) {
-            LOG.warning("L'emplacement ne peut pas passer au statut demandé");
-        } else {
-            if (repository != null) {
-                repository.updateStatut(emplacement, StatutEmplacement.EN_NETTOYAGE);
-                LOG.info("pass to cleaning");
-            } else {
-                LOG.warning("Il manque la requète DAO");
-            }
+    public Emplacement passToCleaning(Emplacement emplacement) throws EmplacementException {
+        if(!emplacement.getStatut().equals(StatutEmplacement.OCCUPE)){
+            throw new EmplacementException("Impossible de changer le statut", EmplacementException.STATUS_EX);
         }
-
+        
+        repository.updateStatut(emplacement, StatutEmplacement.EN_NETTOYAGE);
+        LOG.info("pass to cleaning");
         return emplacement;
     }
 

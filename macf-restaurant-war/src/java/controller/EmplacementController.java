@@ -4,7 +4,10 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import kernel.controller.ActionController;
+import restaurant.model.salle.Emplacement;
+import restaurant.model.salle.StatutEmplacement;
 import restaurant.service.EmplacementManagerInterface;
+import restaurant.service.exceptions.EmplacementException;
 
 //extends d'ActionController dans kernel/controller/action controller ( permet l'appel de plusieurs méthodes)
 public class EmplacementController extends ActionController {
@@ -53,11 +56,17 @@ public class EmplacementController extends ActionController {
         return "emplacement/list";
     }
 
-    public String updateStatut(HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
-        LOG.info("je change le statut de l'emplacement");
-
+    public String updateStatut(HttpServletRequest request, HttpServletResponse response, Emplacement emplacement, StatutEmplacement statut)
+            throws EmplacementException {
+        if(statut.equals(StatutEmplacement.LIBRE)){
+            request.setAttribute("emplacement", emplacementManager.passToCleaning(emplacement));
+            
+        }
+    
+        
+        
         return "emplacement/list";
+        
     }
 
 }

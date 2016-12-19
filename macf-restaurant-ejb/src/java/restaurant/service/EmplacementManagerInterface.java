@@ -22,9 +22,9 @@ public interface EmplacementManagerInterface {
     
     Emplacement passToVacant(Emplacement emplacement) throws EmplacementException;
     
-    Emplacement passToOccupied(Emplacement emplacement);
+    Emplacement passToOccupied(Emplacement emplacement)throws EmplacementException;
     
-    Emplacement passToCleaning(Emplacement emplacement);
+    Emplacement passToCleaning(Emplacement emplacement)throws EmplacementException;
             
     
 }
