@@ -8,15 +8,19 @@ import restaurant.model.administratif.Serveur;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -29,6 +33,8 @@ public class Commande implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date    date;
+    
+    @Column(unique = true)
     private String  numero;
     
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
@@ -36,11 +42,33 @@ public class Commande implements Serializable {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Serveur     serveur;
     
+    @OneToMany(fetch = FetchType.EAGER)
+    private Collection<LigneDeCommande> ligneDeCommandes;
     @OneToMany
-    private Collection<LigneDeCommande> ligneDeCommandes = new ArrayList<>();
-    @OneToMany
-    private Collection<Paiement>        paiements        = new ArrayList<>();
+    private Collection<Paiement>        paiements;
+    
+    @Enumerated(EnumType.ORDINAL)
+    private StatutCommande statut;
 
+    public Commande(){
+        this.ligneDeCommandes = new ArrayList<>();
+        this.paiements = new ArrayList<>();
+    }
+    
+    public Commande(Date date, String numero){
+        this();
+        this.date = date;
+        this.numero = numero;
+    }
+    
+    public Commande(Date date, String numero, Emplacement emplacement, Serveur serveur, StatutCommande statut){
+        this(date, numero);
+        this.emplacement = emplacement;
+        this.serveur = serveur;
+        this.statut = statut;
+    }
+    
+    
     public Long getId() {
         return id;
     }
@@ -95,6 +123,14 @@ public class Commande implements Serializable {
 
     public void setPaiements(Collection<Paiement> paiements) {
         this.paiements = paiements;
+    }
+
+    public StatutCommande getStatut() {
+        return statut;
+    }
+
+    public void setStatut(StatutCommande statut) {
+        this.statut = statut;
     }
     
 }
