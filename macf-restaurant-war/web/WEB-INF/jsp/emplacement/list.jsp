@@ -24,7 +24,7 @@
             
 
             <c:forEach var="emplacement" items="${ emplacements }">
-                <!-- attention à mettre le meme nom ici que dans le setattribute dans le controller-->
+                <!-- attention à mettre le meme nom ici que dans le setAttribute dans le controller-->
                 <li>
                     <c:url value="emplacement" var="url">
                        <c:param name="section" value="emplacement" />
@@ -32,9 +32,16 @@
                         <c:param name="numero" value="${ emplacement.numero }" />
                     </c:url>
 
-                    Emplacement n° <a href="${ url }"><c:out value="${ emplacement.numero }" ></c:out></a>
+                    Emplacement n° ${ emplacement.numero }
+                    <br>
+                    <input type="submit" name="passToValidate_submit" value="Libre"/>
+                    <br>
+                    <input type="submit" name="passToCleaning_submit" value="A nettoyer"/>
+                    <br>
+                    <input type="submit" name="passToOccupied_submit" value="Occupé"/>
+                    <br>
                 </li>
-
+          
             </c:forEach>
 
 

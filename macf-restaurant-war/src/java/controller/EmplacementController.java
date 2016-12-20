@@ -63,10 +63,16 @@ public class EmplacementController extends ActionController {
         return "emplacement/list";
     }
 
-    public String updateStatut(HttpServletRequest request, HttpServletResponse response, Emplacement emplacement, StatutEmplacement statut)
+    public String updateStatut(HttpServletRequest request, HttpServletResponse response)
             throws EmplacementException {
-        
-            request.setAttribute("emplacement", emplacementManager.passToCleaning(emplacement));
+           // request.getServletContext().setAttribute("clef", "dans scope application");
+        //request.getParameter( idEmplacement ( contenu dans l'url ?section=""url="", id...).
+        //ici on recupere les parametre donc l'id de lemplacement. 
+        //ensuiteon appel la methode fibnd by id avec en parametre l'id des paramrtres
+        //emplacement p = emplacementManager.findById(idPArametre)
+        //enfin on stock dans le scope request l'objet emplacement sur lequel on a appliqué la methode update Statut.
+        //la jsp peut donc y acceder via la clé "emplacement".
+            //request.setAttribute("emplacement", emplacementManager.passToCleaning(p));
             
         
     
