@@ -26,7 +26,7 @@ public class Menu implements Serializable {
     @ManyToMany(mappedBy = "menus", cascade = CascadeType.PERSIST)
     private Collection<Article>         articles;
     
-    @OneToMany
+    @OneToMany(mappedBy = "menu")
     private Collection<LigneDeCommande> ligneDeCommandes;
 
     public Menu() {
@@ -35,6 +35,7 @@ public class Menu implements Serializable {
     }
 
     public Menu(String libelle, float prix) {
+        this();
         this.libelle = libelle;
         this.prix = prix;
         this.articles = new ArrayList<>();
@@ -42,6 +43,7 @@ public class Menu implements Serializable {
     }
     
     public Menu(String libelle, float prix, Article... articles) {
+        this();
         this.libelle = libelle;
         this.prix = prix;
         
