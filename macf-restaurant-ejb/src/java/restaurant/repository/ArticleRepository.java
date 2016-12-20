@@ -14,7 +14,7 @@ import restaurant.model.catalogue.Ingredient;
 
 @Stateless
 public class ArticleRepository extends EntityRepository<Article> {
-    
+
     public ArticleRepository() {
         super();
     }
@@ -31,18 +31,18 @@ public class ArticleRepository extends EntityRepository<Article> {
         Predicate equal = cb.equal(c.get("categorie"), cat);
         q.select(c).where(equal);
         TypedQuery<Article> query = em.createQuery(q);
-        
+
         return query.getResultList();
     }
-    
-    public Collection<Article> findByIngredient (Ingredient ing) {
-         CriteriaBuilder cb = getBuilder();
+
+    public Collection<Article> findByIngredient(Ingredient ing) {
+        CriteriaBuilder cb = getBuilder();
         CriteriaQuery<Article> q = cb.createQuery(this.getManagedClass());
         Root<Article> c = q.from(this.getManagedClass());
         Predicate equal = cb.equal(c.get("ingredient"), ing);
         q.select(c).where(equal);
         TypedQuery<Article> query = em.createQuery(q);
-        
+
         return query.getResultList();
     }
 

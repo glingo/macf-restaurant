@@ -4,7 +4,7 @@ public enum Categorie {
     
     ENTREE("Entrée", "ENT"), 
     PLAT("Plat", "PLT"), 
-    DESSERT("Déssert", "DSR"), 
+    DESSERT("Dessert", "DSR"), 
     BOISSON("Boisson", "BSN");
 //    BOISSON_ALCOOL("Boisson alcoolisée", "BSA");
 
