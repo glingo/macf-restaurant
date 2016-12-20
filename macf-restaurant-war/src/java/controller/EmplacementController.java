@@ -42,7 +42,7 @@ public class EmplacementController extends ActionController {
 
     public String list(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-
+        request.setAttribute("emplacement", emplacementManager.getAll());
         LOG.info("J'affiche la liste de tous les emplacement");
 
         return "emplacement/list";
