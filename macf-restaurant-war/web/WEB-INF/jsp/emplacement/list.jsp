@@ -23,15 +23,17 @@
             Liste(s) emplacements
             
 
-            <c:forEach var="emplacement" items="${emplacements}">
+            <c:forEach var="emplacement" items="${ emplacements }">
+                <!-- attention à mettre le meme nom ici que dans le setattribute dans le controller-->
                 <li>
                     <c:url value="emplacement" var="url">
-                        <c:param name="emplacement" value="${emplacement.id}"/>
+                       <c:param name="section" value="emplacement" />
+                        <c:param name="action" value="list" />
+                        <c:param name="numero" value="${ emplacement.numero }" />
                     </c:url>
 
-                    <a href="${url}"><c:out value="${emplacement.numero}"></c:out></a>
-
-                    </li>
+                    Emplacement n° <a href="${ url }"><c:out value="${ emplacement.numero }" ></c:out></a>
+                </li>
 
             </c:forEach>
 

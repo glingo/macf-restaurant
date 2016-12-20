@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.List;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,10 +43,16 @@ public class EmplacementController extends ActionController {
 
     public String list(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        request.setAttribute("emplacement", emplacementManager.getAll());
-        LOG.info("J'affiche la liste de tous les emplacement");
-
+        LOG.info("Afficher liste commande");
+        
+            
+        List<Emplacement> emplacements= emplacementManager.getAll();
+        request.setAttribute("emplacements", emplacements);
+        
+        LOG.info("affichage reussi");
         return "emplacement/list";
+   
+        
     }
 
     public String listZone(HttpServletRequest request, HttpServletResponse response)
