@@ -35,15 +35,13 @@ public class Menu implements Serializable {
     }
 
     public Menu(String libelle, float prix) {
+        this();
         this.libelle = libelle;
         this.prix = prix;
-        this.articles = new ArrayList<>();
-        this.ligneDeCommandes = new ArrayList<>();
     }
     
     public Menu(String libelle, float prix, Article... articles) {
-        this.libelle = libelle;
-        this.prix = prix;
+        this(libelle, prix);
         
         if(articles != null) {
             for (Article article : articles) {
