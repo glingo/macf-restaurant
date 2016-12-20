@@ -16,18 +16,28 @@
 
     <jsp:attribute name="scripts">
     </jsp:attribute>
-    
+
     <jsp:body>
         <div class="col-lg-12">
-             <c:forEach var="article" items="${ articles }">
-        
+
+            <form method="POST" action="/macf-restaurant-war/?section=carte&action=afficherCarte">
+                <select name="categorie">
+                    <c:forEach var="categorie" items="${ categories }">                       
+                        <option value="${ categorie.name() }"><c:out value="${ categorie.libelle }" ></c:out></option>
+                    </c:forEach>
+                </select>
+                <input type="submit" value="choix" />
+            </form>
+
+            <c:forEach var="article" items="${ articles }">
+
                 <li>
                     <c:url value="article" var="url">
                         <c:param name="article" value="${ article.id }" />
                     </c:url>
-                    
-                    <a href="${ url }"><c:out value="${ article.libelle }"></c:out></a>
-                </li>
+
+                    <a href="${ url }"><c:out value="${ article.libelle }"></c:out>. . . . . . . . . . . . . .${ article.prix }</a>
+                    </li>
 
             </c:forEach>
         </div>
