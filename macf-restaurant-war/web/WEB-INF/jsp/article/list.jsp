@@ -36,7 +36,7 @@
                         <c:param name="article" value="${ article.id }" />
                     </c:url>
 
-                    <a href="${ url }"><c:out value="${ article.libelle }"></c:out>. . . . . . . . . . . . . .${ article.prix }</a>
+                    <a href="/macf-restaurant-war/?section=carte&action=afficherDetailArticle&article=${ article.id }"><c:out value="${ article.libelle }"></c:out>. . . . . . . . . . . . . .${ article.prix }</a>
                     </li>
 
             </c:forEach>

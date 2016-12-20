@@ -57,6 +57,12 @@ public class ArticleManager implements ArticleManagerInterface {
         Collection<Article> ing = repository.findByIngredient(ingredient);
         return (List<Article>) ing;
     }
+    
+    @Override
+    public Article getById (Long id){
+        Article article = repository.findById(id);
+        return article;
+    }
 
     @Override
     public boolean isDisponible(Article article) {

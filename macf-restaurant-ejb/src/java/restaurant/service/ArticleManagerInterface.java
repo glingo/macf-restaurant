@@ -23,5 +23,7 @@ public interface ArticleManagerInterface {
     boolean isDisponible(Article article);
 
     Article update(Article article);
+
+    public Article getById(Long id);
     
 }
