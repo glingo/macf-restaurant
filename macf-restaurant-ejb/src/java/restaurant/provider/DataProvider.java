@@ -229,8 +229,10 @@ public class DataProvider implements Provider {
 
         LigneDeCommande ldc02 = new LigneDeCommande(1, StatutCommande.PRET, TypeCuisson.ROUGE, entrecote);
 
-        c01.getLigneDeCommandes().add(ldc01);
-        c01.getLigneDeCommandes().add(ldc02);
+//        c01.getLigneDeCommandes().add(ldc01);
+//        c01.getLigneDeCommandes().add(ldc02);
+        ldc01.setCommande(c01);
+        ldc02.setCommande(c01);
 
         LigneDeCommande ldc03 = new LigneDeCommande(1, StatutCommande.ENVOYE, null, midi);
         Collection<LigneDeCommande> sousLignesDeCommande03 = new ArrayList<>();
