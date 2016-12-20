@@ -222,9 +222,7 @@ public class DataProvider implements Provider {
         LigneDeCommande lcg01 = new LigneDeCommande(1, null, null, flamiche);
         LigneDeCommande lcg02 = new LigneDeCommande(1, null, null, choucroute);
         LigneDeCommande lcg03 = new LigneDeCommande(1, null, null, cremeCaramel);
-//        sousLignesDeCommande01.add(lcg01);
-//        sousLignesDeCommande01.add(lcg02);
-//        sousLignesDeCommande01.add(lcg03);
+
         lcg01.setLigneDeCommande(ldc01);
         lcg02.setLigneDeCommande(ldc01);
         lcg03.setLigneDeCommande(ldc01);
@@ -232,8 +230,7 @@ public class DataProvider implements Provider {
 
         LigneDeCommande ldc02 = new LigneDeCommande(1, StatutCommande.PRET, TypeCuisson.ROUGE, entrecote);
 
-//        c01.getLigneDeCommandes().add(ldc01);
-//        c01.getLigneDeCommandes().add(ldc02);
+
         ldc01.setCommande(c01);
         ldc02.setCommande(c01);
 
@@ -242,9 +239,6 @@ public class DataProvider implements Provider {
         LigneDeCommande lcg04 = new LigneDeCommande(1, null, null, salade);
         LigneDeCommande lcg05 = new LigneDeCommande(1, null, TypeCuisson.SAIGNANT, steack);
         LigneDeCommande lcg06 = new LigneDeCommande(1, null, null, ile);
-//        sousLignesDeCommande03.add(lcg04);
-//        sousLignesDeCommande03.add(lcg05);
-//        sousLignesDeCommande03.add(lcg06);
         lcg04.setLigneDeCommande(ldc03);
         lcg05.setLigneDeCommande(ldc03);
         lcg06.setLigneDeCommande(ldc03);
@@ -252,8 +246,7 @@ public class DataProvider implements Provider {
 
         LigneDeCommande ldc04 = new LigneDeCommande(1, StatutCommande.PRET, null, croque);
 
-//        c02.getLigneDeCommandes().add(ldc03);
-//        c02.getLigneDeCommandes().add(ldc04);
+
         ldc03.setCommande(c02);
         ldc04.setCommande(c02);
         
@@ -263,15 +256,11 @@ public class DataProvider implements Provider {
         Collection<LigneDeCommande> sousLignesDeCommande06 = new ArrayList<>();
         LigneDeCommande lcg07 = new LigneDeCommande(1, null, null, cremeChocolat);
         LigneDeCommande lcg08 = new LigneDeCommande(1, null, TypeCuisson.SAIGNANT, steack);
-//        sousLignesDeCommande03.add(lcg07);
-//        sousLignesDeCommande03.add(lcg08);
         lcg07.setLigneDeCommande(ldc06);
         lcg08.setLigneDeCommande(ldc06);
         sousLignesDeCommande06.add(new LigneDeCommande(1, null, TypeCuisson.SAIGNANT, steack));
         ldc06.setSousLigneDeCommande(sousLignesDeCommande06);
-        
-//        c03.getLigneDeCommandes().add(ldc05);
-//        c03.getLigneDeCommandes().add(ldc06);
+
         ldc05.setCommande(c03);
         ldc06.setCommande(c03);
 

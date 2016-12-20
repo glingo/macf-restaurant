@@ -25,18 +25,18 @@
             <c:choose>
                 <c:when test="${ not empty commande.getLigneDeCommandes() }">
                     <ul>
-                        <c:forEach var="ligne" items="${ commande.getLigneDeCommandes() }">
+                        <c:forEach var="ligne" items="${ commande.getLigneDeCommandes() }"><br>
 
                             <li>
-                                <c:out value="${ ligne.getLibelle() } : ${ ligne.statut }" />
+                                <c:out value="${ ligne.getLibelle() } ${ ligne.statut }" />
                                 <c:if test="${ not empty ligne.menu }">
                                     <ul>
                                         <c:forEach var="sousLigne" items="${ ligne.sousLigneDeCommande }">
                                             <li>
-                                                <c:out value="${ sousLigne.getLibelle() } : ${ sousLigne.statut }" />
+                                                <c:out value="${ sousLigne.getLibelle() } ${ sousLigne.statut }" />
                                             </li>
                                         </c:forEach>
-                                    </ul>
+                                    </ul><br>
                                 </c:if>
                             </li>
 

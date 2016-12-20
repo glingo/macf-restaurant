@@ -1,6 +1,7 @@
 package restaurant.service;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -36,13 +37,25 @@ public class CommandeManager implements CommandeManagerInterface{
         throw new UnsupportedOperationException();
     }
 
+    public Commande create(Emplacement emplacement) {
+        Date date = new Date();
+        
+        //solution temporaire en attendant la generation numero
+        String numero = String.valueOf(date.getTime());
+        
+        Commande commande = new Commande(date, numero, emplacement, StatutCommande.EN_SELECTION);
+        
+        // on persiste la commande
+        repository.save(commande);
+        
+        return commande;
+    }
+     
     public Commande create(Emplacement emplacement, Serveur serveur) {
         throw new UnsupportedOperationException();
     }
 
-    public Commande create(Emplacement emplacement) {
-        throw new UnsupportedOperationException();
-    }
+   
 
     public Commande update(Object commande) {
         throw new UnsupportedOperationException();

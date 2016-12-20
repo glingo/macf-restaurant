@@ -38,7 +38,7 @@ public class CommandeController extends ActionController {
 
     public String listDetailCommande(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        // on recupere depuis la request le numero commande (qui doit etre unique)
+        // on recupère depuis la request le numero commande (qui doit etre unique)
         String numero = (String) request.getParameter("numero");
         
         LOG.info(String.format("Le numero dans la request est : %s", numero));
@@ -58,8 +58,17 @@ public class CommandeController extends ActionController {
         
         request.setAttribute("commande", commande);
         
-        // on renvois vers la jsp de detail commande.
+        // on renvoie vers la jsp le détail commande.
         return "commande/detailCommande";
         
     }
+    
+    public String create(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        
+        
+    }
+    
+    
+    
 }

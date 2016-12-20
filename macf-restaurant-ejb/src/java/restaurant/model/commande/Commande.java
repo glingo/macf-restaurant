@@ -42,7 +42,7 @@ public class Commande implements Serializable {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Serveur     serveur;
     
-    //@OneToMany(fetch = FetchType.EAGER)
+  
     @OneToMany(mappedBy = "commande", fetch = FetchType.EAGER)
     private Collection<LigneDeCommande> ligneDeCommandes;
     @OneToMany (mappedBy = "commande")
@@ -69,6 +69,11 @@ public class Commande implements Serializable {
         this.statut = statut;
     }
     
+    public Commande(Date date, String numero, Emplacement emplacement, StatutCommande statut){
+        this(date, numero);
+        this.emplacement = emplacement;
+        this.statut = statut;
+    }
     
     public Long getId() {
         return id;
