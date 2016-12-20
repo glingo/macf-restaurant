@@ -33,13 +33,16 @@
                     </c:url>
 
                     Emplacement n° ${ emplacement.numero }
+                    
                     <br>
+                    <form name="emplacement" method="POST" action="macf-restaurant-war/?section=emplacement&action=updateStatut">
                     <input type="submit" name="passToValidate_submit" value="Libre"/>
                     <br>
                     <input type="submit" name="passToCleaning_submit" value="A nettoyer"/>
                     <br>
                     <input type="submit" name="passToOccupied_submit" value="Occupé"/>
                     <br>
+                    </form>
                 </li>
           
             </c:forEach>

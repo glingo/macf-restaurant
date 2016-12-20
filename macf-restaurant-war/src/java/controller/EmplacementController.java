@@ -27,7 +27,9 @@ public class EmplacementController extends ActionController {
     public String create(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         //vérification de l'absence ( ou non ) des infos nécessaires à la création d'un emplacement.
-
+//        //List<StatutEmplacement> status = emplacement
+//        Emplacement empl = new Emplacement();
+//        request.setAttribute("emplacement", empl);
         LOG.info("Je crée un emplacement");
 
         return "emplacement/create";
@@ -65,7 +67,9 @@ public class EmplacementController extends ActionController {
 
     public String updateStatut(HttpServletRequest request, HttpServletResponse response)
             throws EmplacementException {
-           // request.getServletContext().setAttribute("clef", "dans scope application");
+        //exemple scope application
+        // request.getServletContext().setAttribute("clef", "dans scope application");
+        
         //request.getParameter( idEmplacement ( contenu dans l'url ?section=""url="", id...).
         //ici on recupere les parametre donc l'id de lemplacement. 
         //ensuiteon appel la methode fibnd by id avec en parametre l'id des paramrtres

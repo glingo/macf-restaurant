@@ -61,6 +61,11 @@ public class EmplacementManager implements EmplacementManagerInterface {
         Collection<Emplacement> all = repository.findAll();
         return (List<Emplacement>) all;
     }
+    
+//    public List<StatutEmplacement> getAllStatut(){
+//        Collection<StatutEmplacement> allStatus = repository.findAllStatut();
+//        return(List<StatutEmplacement>) allStatus;
+//    }
 
     @Override
     public List<Emplacement> getByZone(Zone zone) {
@@ -75,6 +80,8 @@ public class EmplacementManager implements EmplacementManagerInterface {
         Collection<Emplacement> emplByStatut = repository.findByStatut(statut);
         return (List<Emplacement>) emplByStatut;
     }
+    
+   
     
     @Override
     public Emplacement passToVacant(Emplacement emplacement) throws EmplacementException{
