@@ -10,14 +10,14 @@
 <%--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script> --%>
 
 <%-- import de jQuery --%>
-<script src="/macf-restaurant-war/vendor/jQuery/js/jquery-1.11.2.min.js"></script>
+<script src="vendor/jQuery/js/jquery-1.11.2.min.js"></script>
 
 <%-- import de bootstrap --%>
-<script src="/macf-restaurant-war/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <%-- import des scripts de l'application --%>
-<script src="/macf-restaurant-war/js/plugins.js"></script>
-<script src="/macf-restaurant-war/js/main.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
 
 <%-- Google Analytics: change UA-XXXXX-X to be your site's ID.
 

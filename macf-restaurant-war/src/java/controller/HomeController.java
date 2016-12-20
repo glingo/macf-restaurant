@@ -7,9 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import restaurant.model.administratif.Employe;
 
 public class HomeController extends Controller {
-
     private static final Logger LOG = Logger.getLogger(HomeController.class.getName());
-    
+
     @Override
     public String doHandle(HttpServletRequest request, HttpServletResponse response) {
         

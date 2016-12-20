@@ -61,8 +61,8 @@
                     </button>
                     
                     <a class="navbar-brand" href="/macf-restaurant-war/">
-                        <img alt="" src="/macf-restaurant-war/images/logo.png" class="logo visible-md visible-lg">
-                        <img alt="" src="/macf-restaurant-war/images/mobile-logo.png" class="logo hidden-md hidden-lg">
+                        <img alt="" src="images/logo.png" class="logo visible-md visible-lg">
+                        <img alt="" src="images/mobile-logo.png" class="logo hidden-md hidden-lg">
                     </a>
                 </div>
 

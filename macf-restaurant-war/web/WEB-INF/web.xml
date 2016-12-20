@@ -9,12 +9,12 @@
     
     <error-page>
         <exception-type>java.lang.Exception</exception-type>  
-        <location>/WEB-INF/jsp/error.jsp</location>
+        <location>/WEB-INF/error.jsp</location>
     </error-page>
     
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/404.jsp</location>
+        <location>/404.jsp</location>
     </error-page>
     
 </web-app>

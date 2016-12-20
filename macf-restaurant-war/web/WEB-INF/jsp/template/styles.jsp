@@ -7,9 +7,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%-- import de bootstrap --%>
-<link rel="stylesheet" href="/macf-restaurant-war/vendor/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="/macf-restaurant-war/vendor/bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-theme.min.css">
 
 <%-- import des css de l'application --%>
-<link rel="stylesheet" href="/macf-restaurant-war/css/main.css">
-<link rel="stylesheet" href="/macf-restaurant-war/css/custom.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/custom.css">
