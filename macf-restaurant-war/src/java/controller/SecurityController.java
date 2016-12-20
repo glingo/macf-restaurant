@@ -50,9 +50,6 @@ public class SecurityController extends ActionController {
             return "login";
         }
         
-        String type = employe.getClass().getSimpleName().toLowerCase();
-        LOG.info(String.format("c'est un %s !", type));
-        
         // on met un message pour l'utilisateur.
         success("Bienvenue !");
         
@@ -60,13 +57,10 @@ public class SecurityController extends ActionController {
         getSession().setAttribute("user", employe);
         
         // on traite la request.
-        // soit redirect, soit on return le nom de la vue.
-        redirect("?section=home");
+        redirect();
         
         LOG.exiting("SecurityController", "login");
-        
-        // dispatch to jsp :
-        return "employe/" + type;
+        return null;
     }
     
     public void logout(HttpServletRequest request, HttpServletResponse response)
@@ -77,6 +71,7 @@ public class SecurityController extends ActionController {
         if(session != null) {
             session.removeAttribute("user");
             session.invalidate();
+            success("Vous etes bien déconnecté !");
         }
         
         redirect(request.getContextPath());
