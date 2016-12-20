@@ -21,6 +21,7 @@
         <div class="col-lg-12">
 
             Liste(s) emplacements
+            
 
             <c:forEach var="emplacement" items="${emplacements}">
                 <li>
