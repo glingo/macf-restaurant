@@ -88,6 +88,9 @@
                                 <li><a href="/macf-restaurant-war/?section=emplacement&action=list">Afficher liste emplacements</a></li>
                                 <li><a href="/macf-restaurant-war/?section=emplacement&action=listZone">Afficher liste par zone</a></li>
                                 <li><a href="/macf-restaurant-war/?section=emplacement&action=updateStatut">Changer statut emplacement</a></li>
+                                <li><a href="/macf-restaurant-war/?section=carte&action=afficherCarte">Afficher la carte</a></li>
+                                <li><a href="/macf-restaurant-war/?section=carte&action=listArticle">Afficher la liste des articles</a></li>
+                                <li><a href="/macf-restaurant-war/?section=carte&action=listMenu">Afficher la liste des menus</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                                 <li role="separator" class="divider"></li>
