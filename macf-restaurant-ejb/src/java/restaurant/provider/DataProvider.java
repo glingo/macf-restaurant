@@ -23,7 +23,7 @@ import restaurant.model.salle.Emplacement;
 import restaurant.model.salle.StatutEmplacement;
 import restaurant.model.salle.Zone;
 
-@Stateless(mappedName = "java:global/macf-restaurant/macf-restaurant-ejb/data-provider", name = "data-provider")
+@Stateless(name = "data-provider")
 public class DataProvider implements Provider {
 
     @PersistenceContext
