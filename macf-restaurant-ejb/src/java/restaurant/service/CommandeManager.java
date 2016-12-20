@@ -6,6 +6,8 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import restaurant.model.commande.Commande;
 import restaurant.model.commande.LigneDeCommande;
 import restaurant.model.salle.Emplacement;
@@ -17,10 +19,10 @@ import restaurant.repository.CommandeRepository;
 public class CommandeManager implements CommandeManagerInterface{
 
     private static final Logger LOG = Logger.getLogger(CommandeManager.class.getName());
-    
+   
     @EJB
     private CommandeRepository repository;
-    
+  
     @PostConstruct
     public void construct(){
         

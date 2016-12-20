@@ -28,10 +28,18 @@
                         <c:forEach var="ligne" items="${ commande.getLigneDeCommandes() }">
 
                             <li>
-                                <c:out value="${ ligne.getStatut() }" />
+                                <c:out value="${ ligne.getLibelle() } : ${ ligne.statut }" />
+                                <c:if test="${ not empty ligne.menu }">
+                                    <ul>
+                                        <c:forEach var="sousLigne" items="${ ligne.sousLigneDeCommande }">
+                                            <c:out value="${ sousLigne.getLibelle() } : ${ sousLigne.statut }" />
+                                        </c:forEach>
+                                    </ul>
+                                </c:if>
                             </li>
 
                         </c:forEach>
+                       
                     </ul>
                 </c:when>
                 <c:otherwise>

@@ -24,12 +24,14 @@ public class Menu implements Serializable {
     private float prix;
     
     @ManyToMany(mappedBy = "menus", cascade = CascadeType.PERSIST)
-    private Collection<Article>         articles         = new ArrayList<>();
+    private Collection<Article>         articles;
     
     @OneToMany
-    private Collection<LigneDeCommande> ligneDeCommandes = new ArrayList<>();
+    private Collection<LigneDeCommande> ligneDeCommandes;
 
     public Menu() {
+        this.articles = new ArrayList();
+        this.ligneDeCommandes = new ArrayList();
     }
 
     public Menu(String libelle, float prix) {

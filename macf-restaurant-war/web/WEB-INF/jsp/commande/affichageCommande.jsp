@@ -8,6 +8,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <t:template title="liste des commandes">
 
@@ -29,8 +30,8 @@
                         <c:param name="action" value="listDetailCommande" />
                         <c:param name="numero" value="${ commande.numero }" />
                     </c:url>
-                    
-                    <a href="${ url }"><c:out value="${ commande.numero } "></c:out></a>
+                 
+                    Commande n° <a href="${ url }"><c:out value="${ commande.numero }" ></c:out></a> <fmt:formatDate value="${commande.date}" pattern="dd/MM/yyyy" />
                 </li>
 
             </c:forEach>

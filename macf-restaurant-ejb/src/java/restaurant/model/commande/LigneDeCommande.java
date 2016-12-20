@@ -41,29 +41,28 @@ public class LigneDeCommande implements Serializable {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Article article;
 
-    @OneToMany
-    private Collection<LigneDeCommande> sousLigneDeCommande = new ArrayList<>();
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private Collection<LigneDeCommande> sousLigneDeCommande;
 
     public LigneDeCommande() {
-        
+        this.sousLigneDeCommande = new ArrayList<>();
     }
 
-    public LigneDeCommande(int quantite, float prix) {
-        this();
+    public LigneDeCommande(int quantite, StatutCommande statut, TypeCuisson cuisson, Menu menu) {
         this.quantite = quantite;
-        this.prix = prix;
-    }
-    
-    public LigneDeCommande(int quantite, float prix, StatutCommande statut, TypeCuisson cuisson, Commande commande, Menu menu, LigneDeCommande ligneDeCommande,Article article){
-       this(quantite,prix);
-       this.statut = statut;
-       this.cuisson = cuisson;
-       this.commande = commande;
-       this.menu = menu;
-       this.ligneDeCommande =ligneDeCommande;
-       this.article = article;
+        this.statut = statut;
+        this.cuisson = cuisson;
+        this.menu = menu;
+        prix = menu.getPrix();
     }
 
+    public LigneDeCommande(int quantite, StatutCommande statut, TypeCuisson cuisson, Article article) {
+        this.quantite = quantite;
+        this.statut = statut;
+        this.cuisson = cuisson;
+        this.article = article;
+        prix = article.getPrix();
+    }
 
     public Long getId() {
         return id;
@@ -143,6 +142,14 @@ public class LigneDeCommande implements Serializable {
 
     public void setSousLigneDeCommande(Collection<LigneDeCommande> sousLigneDeCommande) {
         this.sousLigneDeCommande = sousLigneDeCommande;
+    }
+    
+    public String getLibelle(){
+        if(article != null ){
+            return article.getLibelle();
+        }else {
+            return menu.getLibelle();
+        }
     }
 
 }

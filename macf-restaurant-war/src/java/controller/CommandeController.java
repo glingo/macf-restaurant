@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,10 @@ public class CommandeController extends ActionController {
         List<Commande> commandes = commandeManager.getAll();
 
         request.setAttribute("commandes", commandes);
-
+        
+        Date d = new Date();
+        request.setAttribute("today", d);
+        
         return "commande/affichageCommande";
     }
 
@@ -49,9 +53,8 @@ public class CommandeController extends ActionController {
             return listCommande(request, response);
         }
         
-        // on inject la commande dans la request (setAttribute)
-        
-        // a partir d'ici nous sommes sur que la commande existe.
+        // on injecte la commande dans la request (setAttribute)
+        // à partir d'ici nous sommes sûr que la commande existe.
         
         request.setAttribute("commande", commande);
         
