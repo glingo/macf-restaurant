@@ -21,6 +21,7 @@ public class SecurityController extends ActionController {
     public String login(HttpServletRequest request, HttpServletResponse response)
         throws Exception {
         
+        // modif
         LOG.entering("SecurityController", "login");
         
         // validation de la request.
