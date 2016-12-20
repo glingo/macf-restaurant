@@ -19,19 +19,19 @@ import restaurant.model.catalogue.Article;
 
 @Entity
 public class LigneDeCommande implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private int quantite;
     private float prix;
-    
+
     @Enumerated(EnumType.STRING)
     private StatutCommande statut;
     @Enumerated(EnumType.STRING)
     private TypeCuisson cuisson;
-    
+
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Commande commande;
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
@@ -40,9 +40,29 @@ public class LigneDeCommande implements Serializable {
     private LigneDeCommande ligneDeCommande;
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Article article;
-    
-    @OneToMany
-    private Collection<LigneDeCommande> sousLigneDeCommande = new ArrayList<>();
+
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private Collection<LigneDeCommande> sousLigneDeCommande;
+
+    public LigneDeCommande() {
+        this.sousLigneDeCommande = new ArrayList<>();
+    }
+
+    public LigneDeCommande(int quantite, StatutCommande statut, TypeCuisson cuisson, Menu menu) {
+        this.quantite = quantite;
+        this.statut = statut;
+        this.cuisson = cuisson;
+        this.menu = menu;
+        prix = menu.getPrix();
+    }
+
+    public LigneDeCommande(int quantite, StatutCommande statut, TypeCuisson cuisson, Article article) {
+        this.quantite = quantite;
+        this.statut = statut;
+        this.cuisson = cuisson;
+        this.article = article;
+        prix = article.getPrix();
+    }
 
     public Long getId() {
         return id;
@@ -124,5 +144,12 @@ public class LigneDeCommande implements Serializable {
         this.sousLigneDeCommande = sousLigneDeCommande;
     }
     
-    
+    public String getLibelle(){
+        if(article != null ){
+            return article.getLibelle();
+        }else {
+            return menu.getLibelle();
+        }
+    }
+
 }

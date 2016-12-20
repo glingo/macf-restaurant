@@ -1,8 +1,8 @@
 package restaurant.model.salle;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Zone {
+public class Zone implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,4 +30,13 @@ public class Zone {
         this();
         this.numero = numero;
     }
+
+    public Collection<Emplacement> getEmplacements() {
+        return emplacements;
+    }
+
+    public void setEmplacements(Collection<Emplacement> emplacements) {
+        this.emplacements = emplacements;
+    }
+    
 }

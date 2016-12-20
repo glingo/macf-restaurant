@@ -58,10 +58,10 @@ public class EmplacementController extends ActionController {
 
     public String updateStatut(HttpServletRequest request, HttpServletResponse response, Emplacement emplacement, StatutEmplacement statut)
             throws EmplacementException {
-        if(statut.equals(StatutEmplacement.LIBRE)){
+        
             request.setAttribute("emplacement", emplacementManager.passToCleaning(emplacement));
             
-        }
+        
     
         
         
