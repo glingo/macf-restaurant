@@ -31,8 +31,10 @@
                         <c:param name="action" value="list" />
                         <c:param name="numero" value="${ emplacement.numero }" />
                     </c:url>
-
-                    Emplacement n° ${ emplacement.numero }
+                    
+                    <a href="${url}">Emplacement n°<c:out value="${emplacement.numero}"></c:out></a>
+                    
+                    
                     
                     <br>
                     <form name="emplacement" method="POST" action="macf-restaurant-war/?section=emplacement&action=updateStatut">
