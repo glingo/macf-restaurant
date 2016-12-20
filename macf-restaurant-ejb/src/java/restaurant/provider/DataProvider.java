@@ -13,6 +13,7 @@ import restaurant.model.administratif.Etablissement;
 import restaurant.model.administratif.Serveur;
 import restaurant.model.catalogue.Article;
 import restaurant.model.catalogue.Categorie;
+import restaurant.model.catalogue.Ingredient;
 import restaurant.model.catalogue.Menu;
 import restaurant.model.catalogue.Tva;
 import restaurant.model.commande.Commande;
@@ -282,6 +283,19 @@ public class DataProvider implements Provider {
         em.persist(ldc04);
         em.persist(ldc05);
         em.persist(ldc06);
+        em.flush();
+        
+        // Création des ingrédients
+        Ingredient steackHache = new Ingredient("Steack haché", true);
+        Ingredient frite = new Ingredient("Frites", true);
+        
+        
+        Collection<Ingredient> ingredientSteack = new ArrayList<>();
+        ingredientSteack.add(steackHache);
+        ingredientSteack.add(frite);
+        
+        em.persist(steackHache);
+        em.persist(frite);
         em.flush();
 
         System.out.println("================== fin jeu de test !!");

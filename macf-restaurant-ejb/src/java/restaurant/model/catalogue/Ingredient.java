@@ -24,6 +24,16 @@ public class Ingredient implements Serializable {
     @ManyToMany (mappedBy = "ingredients")
     private Collection<Article> articles = new ArrayList<>();
 
+    public Ingredient() {
+    }
+
+    public Ingredient(String nom, boolean disponible) {
+        this.nom = nom;
+        this.disponible = disponible;
+    }
+    
+    
+
     public Long getId() {
         return id;
     }
