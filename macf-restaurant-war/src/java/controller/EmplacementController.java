@@ -97,11 +97,37 @@ public class EmplacementController extends ActionController {
         //la jsp peut donc y acceder via la clé "emplacement".
             //request.setAttribute("emplacement", emplacementManager.passToCleaning(p));
             
+        //recupere id de l'emplacement choisi
+        String idString = (String) request.getParameter("id");
+        //conversion String Long
+        Long id = Long.valueOf(idString);
+        //recuperation du futur statut choisi pour l'emplacement.
+        String newStatus = request.getParameter("statut");
         
+        LOG.info("afficher : " + id);
+        LOG.info("afficher : " + newStatus);
+        
+        //identification de l'emplacement par l'id.
+        Emplacement emplacement = emplacementManager.getById(id);
+        
+        
+        
+        if(newStatus.equals("libre")){
+            LOG.info("je vais passer le statut à libre");
+            request.setAttribute("empl01", emplacementManager.passToVacant(emplacement));
+            LOG.info("jai passe le statut à libre");
+        }else if(newStatus.equals("nettoyer")){
+            emplacementManager.passToCleaning(emplacement);
+        }else if(newStatus.equals("occupe")){
+            emplacementManager.passToOccupied(emplacement);
+        }
+ 
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< dans updateStatut !!!");
         
+        //retour à la liste des emplacements. 
         List<Emplacement> emplacements= emplacementManager.getAll();
         request.setAttribute("emplacements", emplacements);
+        
         return "emplacement/list";
         
     }

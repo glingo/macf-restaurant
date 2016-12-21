@@ -4,6 +4,7 @@ package restaurant.service;
 import java.util.List;
 import javax.ejb.Remote;
 import restaurant.model.salle.Emplacement;
+import restaurant.model.salle.StatutEmplacement;
 import restaurant.model.salle.Zone;
 import restaurant.service.exceptions.EmplacementException;
 
@@ -13,6 +14,8 @@ public interface EmplacementManagerInterface {
     Emplacement create(String numero, int nombrePlaces, String numeroZone);
     
     Emplacement update(Emplacement emplacement);
+    
+    //Emplacement updateStatus(Emplacement emplacement, String statut);
     
     void delete(Emplacement emplacement);
     

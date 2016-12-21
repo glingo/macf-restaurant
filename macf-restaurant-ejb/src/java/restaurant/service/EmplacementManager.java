@@ -3,6 +3,7 @@ package restaurant.service;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -54,6 +55,8 @@ public class EmplacementManager implements EmplacementManagerInterface {
         }
         return emplacement;
     }
+    
+    
 
     @Override
     public List<Emplacement> getAll() {
@@ -146,6 +149,40 @@ public class EmplacementManager implements EmplacementManagerInterface {
         LOG.info("pass to cleaning");
         return emplacement;
     }
+    
+   // @Override
+   /* public Emplacement updateStatus(Emplacement emplacement, String statut){
+        
+        if(statut.equals("libre")){
+            try {
+                passToVacant(emplacement);
+            } catch (EmplacementException ex) {
+                Logger.getLogger(EmplacementManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        
+        if(statut.equals("occupe")){
+            try {
+                passToOccupied(emplacement);
+            } catch (EmplacementException ex) {
+                Logger.getLogger(EmplacementManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if(statut.equals("nettoyer")){
+            try {
+                passToCleaning(emplacement);
+            } catch (EmplacementException ex) {
+                Logger.getLogger(EmplacementManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        
+        return emplacement;
+        
+        
+    }*/
 
    
 }
