@@ -20,11 +20,15 @@ public interface EmplacementManagerInterface {
     
     List<Emplacement> getByZone(Zone zone);
     
+    Emplacement getByNumero(String numero);
+    
     Emplacement passToVacant(Emplacement emplacement) throws EmplacementException;
     
     Emplacement passToOccupied(Emplacement emplacement)throws EmplacementException;
     
     Emplacement passToCleaning(Emplacement emplacement)throws EmplacementException;
+
+    public Emplacement getById(Long id);
             
     
 }

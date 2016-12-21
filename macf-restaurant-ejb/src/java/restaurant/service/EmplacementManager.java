@@ -75,6 +75,31 @@ public class EmplacementManager implements EmplacementManagerInterface {
         
     }
     
+    @Override
+    public Emplacement getById(Long id){
+        if(id == null){
+            return null;
+        }
+        
+        return repository.findById(id);
+    }
+    
+    
+    @Override
+    public Emplacement getByNumero(String numero){
+        
+        if(numero == null){
+            return null;
+            
+        }
+        
+        return repository.findByNumero(numero);
+        
+        
+    }
+    
+    
+    
     public List<Emplacement> getByStatut(StatutEmplacement statut){
         
         Collection<Emplacement> emplByStatut = repository.findByStatut(statut);

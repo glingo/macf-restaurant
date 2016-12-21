@@ -22,14 +22,14 @@
 
             Liste(s) emplacements
             
-
+            <ul>
             <c:forEach var="emplacement" items="${ emplacements }">
                 <!-- attention à mettre le meme nom ici que dans le setAttribute dans le controller-->
                 <li>
-                    <c:url value="emplacement" var="url">
+                    <c:url value="" var="url">
                        <c:param name="section" value="emplacement" />
-                        <c:param name="action" value="list" />
-                        <c:param name="numero" value="${ emplacement.numero }" />
+                        <c:param name="action" value="listDetailEmplacement" />
+                        <c:param name="id" value="${ emplacement.id }" />
                     </c:url>
                     
                     <a href="${url}">Emplacement n°<c:out value="${emplacement.numero}"></c:out></a>
@@ -37,18 +37,18 @@
                     
                     
                     <br>
-                    <form name="emplacement" method="POST" action="macf-restaurant-war/?section=emplacement&action=updateStatut">
+                    <!--<form name="emplacement" method="POST" action="macf-restaurant-war/?section=emplacement&action=updateStatut">
                     <input type="submit" name="passToValidate_submit" value="Libre"/>
                     <br>
                     <input type="submit" name="passToCleaning_submit" value="A nettoyer"/>
                     <br>
                     <input type="submit" name="passToOccupied_submit" value="Occupé"/>
                     <br>
-                    </form>
+                    </form>-->
                 </li>
           
             </c:forEach>
-
+            </ul>    
 
         </div>
     </jsp:body>

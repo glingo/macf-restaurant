@@ -45,7 +45,7 @@ public class EmplacementController extends ActionController {
 
     public String list(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        LOG.info("Afficher liste commande");
+        LOG.info("Afficher liste emplacement");
         
             
         List<Emplacement> emplacements= emplacementManager.getAll();
@@ -64,6 +64,25 @@ public class EmplacementController extends ActionController {
 
         return "emplacement/list";
     }
+    
+    public String listDetailEmplacement(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        //on recupere le numero de l'emplacement en parametre ( emplacement qu'on a choisi)
+        String idString = (String) request.getParameter("id");
+        Long id = Long.valueOf(idString);
+        LOG.info("afficher : "+ id);
+        //on retrouve l'emplacement qui correspond à ce numero
+        Emplacement emplacement = emplacementManager.getById(id);
+        
+        System.out.println("===============>>> emplacement : "+emplacement);
+        
+        //place l'objet emplacement identifié dans le scope request.
+        request.setAttribute("empl01", emplacement);
+        
+        
+        return "emplacement/detailEmplacement";
+    }
+    
+    
 
     public String updateStatut(HttpServletRequest request, HttpServletResponse response)
             throws EmplacementException {
@@ -79,9 +98,10 @@ public class EmplacementController extends ActionController {
             //request.setAttribute("emplacement", emplacementManager.passToCleaning(p));
             
         
-    
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< dans updateStatut !!!");
         
-        
+        List<Emplacement> emplacements= emplacementManager.getAll();
+        request.setAttribute("emplacements", emplacements);
         return "emplacement/list";
         
     }

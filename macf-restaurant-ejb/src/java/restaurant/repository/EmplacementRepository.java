@@ -33,6 +33,8 @@ public class EmplacementRepository extends EntityRepository<Emplacement> {
         
     }
     
+    
+    
     public Collection<Emplacement> findByStatut(StatutEmplacement statut){
         
         String req = "select e from Emplacement where e.statut = :paramStatutEmplacement";
@@ -44,6 +46,17 @@ public class EmplacementRepository extends EntityRepository<Emplacement> {
         
     }
     
+    public Emplacement findByNumero(String numero){
+        
+        String req = "select e from Emplacement where e.numero= :paramNumero";
+        Query query = em.createQuery(req);
+        query.setParameter("paramNumero", numero);
+        
+        return (Emplacement) query.getSingleResult();
+    }
+    
+    
+      
     public Collection<StatutEmplacement> findAllStatus(){
         String req = null;
         Query query = em.createQuery(req);
