@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package restaurant.repository;
 
 import java.util.Collection;
@@ -37,6 +33,8 @@ public class EmplacementRepository extends EntityRepository<Emplacement> {
         
     }
     
+    
+    
     public Collection<Emplacement> findByStatut(StatutEmplacement statut){
         
         String req = "select e from Emplacement where e.statut = :paramStatutEmplacement";
@@ -46,6 +44,25 @@ public class EmplacementRepository extends EntityRepository<Emplacement> {
         return query.getResultList();
         
         
+    }
+    
+    public Emplacement findByNumero(String numero){
+        
+        String req = "select e from Emplacement where e.numero= :paramNumero";
+        Query query = em.createQuery(req);
+        query.setParameter("paramNumero", numero);
+        
+        return (Emplacement) query.getSingleResult();
+    }
+    
+    
+      
+    public Collection<StatutEmplacement> findAllStatus(){
+        String req = null;
+        Query query = em.createQuery(req);
+        
+        
+        return query.getResultList();
     }
     
     public void delete(Emplacement emplacement){
