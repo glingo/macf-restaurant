@@ -15,15 +15,20 @@ import restaurant.model.salle.Emplacement;
 import restaurant.model.administratif.Serveur;
 import restaurant.model.commande.StatutCommande;
 import restaurant.repository.CommandeRepository;
+import restaurant.repository.EmplacementRepository;
 
 @Stateless(name="commande-manager")
 public class CommandeManager implements CommandeManagerInterface{
+    
 
     private static final Logger LOG = Logger.getLogger(CommandeManager.class.getName());
    
     @EJB
     private CommandeRepository repository;
-  
+    
+    @EJB
+    private EmplacementRepository emplacementRepository;
+    
     @PostConstruct
     public void construct(){
         
@@ -37,10 +42,12 @@ public class CommandeManager implements CommandeManagerInterface{
         throw new UnsupportedOperationException();
     }
 
-    public Commande create(Emplacement emplacement) {
+    public Commande create(Long idEmplacement) {
         Date date = new Date();
         
-        //solution temporaire en attendant la generation numero
+        Emplacement emplacement = emplacementRepository.findById(idEmplacement);
+        
+        // numero de commande temporaire
         String numero = String.valueOf(date.getTime());
         
         Commande commande = new Commande(date, numero, emplacement, StatutCommande.EN_SELECTION);

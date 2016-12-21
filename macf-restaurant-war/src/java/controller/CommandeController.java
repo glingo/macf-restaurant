@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import kernel.controller.ActionController;
 import restaurant.model.commande.Commande;
-import restaurant.model.commande.LigneDeCommande;
 import restaurant.service.CommandeManagerInterface;
 
 //extends d'ActionController dans kernel/controller/action controller ( permet l'appel de plusieurs méthodes)

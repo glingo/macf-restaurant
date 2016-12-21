@@ -7,15 +7,13 @@ package restaurant.repository;
 
 import java.util.Collection;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.Query;
 import restaurant.model.salle.Emplacement;
 import restaurant.model.salle.StatutEmplacement;
 import restaurant.model.salle.Zone;
 
-/**
- *
- * @author cdi309
- */
+@Stateless
 public class EmplacementRepository extends EntityRepository<Emplacement> {
     
     public EmplacementRepository(){
