@@ -54,7 +54,11 @@
                             <li><a href="/macf-restaurant-war/?section=carte&action=afficherCarte">Afficher la carte</a></li>
                             <li><a href="/macf-restaurant-war/?section=carte&action=listArticle">Afficher la liste des articles</a></li>
                             <li><a href="/macf-restaurant-war/?section=carte&action=listMenu">Afficher la liste des menus</a></li>
-                                    
+                                  
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header"> Commande</li>
+                            <li><a href="/macf-restaurant-war/?section=commande&action=listCommande">Afficher les commandes</a></li>
+                            <li><a href="/macf-restaurant-war/?section=commande&action=listDetailCommande">Afficher detail commandes</a></li>
                         </ul>
                     </li>
 
