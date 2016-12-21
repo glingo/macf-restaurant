@@ -41,7 +41,7 @@ public class LigneDeCommande implements Serializable {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Article article;
 
-    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "ligneDeCommande", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Collection<LigneDeCommande> sousLigneDeCommande;
 
     public LigneDeCommande() {

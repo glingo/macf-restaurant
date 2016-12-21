@@ -12,14 +12,14 @@ import restaurant.model.commande.LigneDeCommande;
 
 @Stateless
 public class CommandeRepository extends EntityRepository<Commande> {
-    
+
     @PersistenceContext(unitName = "macf-restaurant-PU")
     private EntityManager em;
 
     public CommandeRepository() {
         super();
     }
-    
+
     @Override
     protected Class<Commande> getManagedClass() {
         return Commande.class;
@@ -27,47 +27,42 @@ public class CommandeRepository extends EntityRepository<Commande> {
 
     public Commande findByNumero(String numero) {
 
-         // créer la requete jpql.
+        // créer la requete jpql.
         // on recupère l'EntityManager ( fournit par JPA)
         // puis on écrit la requete à effectuer.
         TypedQuery<Commande> query = this.em.createQuery("SELECT c FROM Commande AS c WHERE c.numero = :paramNumero", Commande.class);
-        
+
         // on injecte les paramètres (marqués par des ':' dans la requete.
         query.setParameter("paramNumero", numero);
-        
+
         // on execute la requette.
         // query.getSingleResult();
-        
         Commande cmd = singleResultOrNull(query);
-      
-        if(cmd != null){
+
+        if (cmd != null) {
             Collection<LigneDeCommande> lcs = findLignesCommandeByIdCmd(cmd.getId());
-            for(LigneDeCommande l : lcs){
-                if(l.getMenu() != null){
-                    System.out.println("===>> ligne cmd "+l.getId());
-                    System.out.println("===>> ligne cmd "+l.getMenu().getLibelle());
+            for (LigneDeCommande l : lcs) {
+                if (l.getMenu() != null) {
                     Collection<LigneDeCommande> slc = findSousLigneCommandeByIdLigneCmd(l.getId());
-                    System.out.println("=================>> choix : "+slc);
                     l.setSousLigneDeCommande(slc);
-                    System.out.println("-----------------------------------------------------------------------------\n");
                 }
             }
-            cmd.setLigneDeCommandes(lcs);   
+            cmd.setLigneDeCommandes(lcs);
         }
         return cmd;
     }
-      
-    private Collection<LigneDeCommande> findLignesCommandeByIdCmd(Long idCmd){
-       String req01 = "SELECT lc FROM LigneDeCommande AS lc WHERE lc.commande.id = :paramId";
-       Query query = em.createQuery(req01);
-       query.setParameter("paramId", idCmd);
-       return query.getResultList();
+
+    private Collection<LigneDeCommande> findLignesCommandeByIdCmd(Long idCmd) {
+        String req01 = "SELECT lc FROM LigneDeCommande AS lc WHERE lc.commande.id = :paramId";
+        Query query = em.createQuery(req01);
+        query.setParameter("paramId", idCmd);
+        return query.getResultList();
     }
-    
-    private Collection<LigneDeCommande> findSousLigneCommandeByIdLigneCmd(Long idLigneCmd){
-       String req01 = "SELECT lc.sousLigneDeCommande FROM LigneDeCommande AS lc WHERE lc.id= :paramId";
-       Query query = em.createQuery(req01);
-       query.setParameter("paramId", idLigneCmd);
-       return query.getResultList();
+
+    private Collection<LigneDeCommande> findSousLigneCommandeByIdLigneCmd(Long idLigneCmd) {
+        String req01 = "SELECT lc FROM LigneDeCommande AS lc WHERE lc.ligneDeCommande.id= :paramId";
+        Query query = em.createQuery(req01);
+        query.setParameter("paramId", idLigneCmd);
+        return query.getResultList();
     }
 }
