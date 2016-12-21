@@ -38,5 +38,12 @@ public class Zone implements Serializable {
     public void setEmplacements(Collection<Emplacement> emplacements) {
         this.emplacements = emplacements;
     }
+
+    @Override
+    public String toString() {
+        return numero;
+    }
+    
+    
     
 }
