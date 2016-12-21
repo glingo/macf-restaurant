@@ -293,6 +293,7 @@ public class DataProvider implements Provider {
         Collection<Ingredient> ingredientSteack = new ArrayList<>();
         ingredientSteack.add(steackHache);
         ingredientSteack.add(frite);
+        steack.setIngredients(ingredientSteack);
         
         em.persist(steackHache);
         em.persist(frite);

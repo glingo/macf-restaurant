@@ -32,7 +32,7 @@
             <c:forEach var="article" items="${ articles }">
 
                 <li>
-                    <c:url value="article" var="url">
+                    <c:url value="" var="url">
                         <c:param name="article" value="${ article.id }" />
                     </c:url>
 

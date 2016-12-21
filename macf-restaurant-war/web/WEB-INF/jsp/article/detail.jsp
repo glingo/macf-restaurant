@@ -15,13 +15,13 @@
 
     <jsp:body>
         <div class="col-lg-12"> 
-
+            
             <c:out value="${ article.libelle }" />. . . . . . . . . . . . . .${ article.prix }</a>
             <c:forEach var="ingredient" items="${article.ingredients}">
-            <li>
-                ${article.ingrdient.nom}
-            </li>        
-        </c:forEach>
-    </div>
+                <li>
+                    ${article.ingredient.nom}
+                </li>        
+            </c:forEach>
+        </div>
 </jsp:body>
 </t:template>
