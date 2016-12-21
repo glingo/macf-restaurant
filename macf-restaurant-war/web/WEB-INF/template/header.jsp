@@ -4,12 +4,14 @@
     Author     : cdi305
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:if test="${empty lang}">
     <c:set var="lang" value="${ pageContext.request.locale.language }" />
+    <fmt:setLocale value="${ lang }"/>
 </c:if>
 
 <header>
@@ -30,7 +32,7 @@
                 </button>
             </div>
 
-            <div id="navbar" class="navbar-collapse animated fadeIn collapse" aria-expanded="false">
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
                 
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
@@ -66,29 +68,10 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     
-                    <li>
-                        <c:choose>
-                            <c:when test="${not empty user}">
-                                
-                                <span class="glyphicon glyphicon-user"></span>
-                                
-                                <c:url value="/" var="url">
-                                    <c:param name="section" value="security" />
-                                    <c:param name="action" value="logout" />
-                                </c:url>
-
-                                <a href="${ url }"> Se déconnecter </a>
-                            </c:when>
-
-                            <c:otherwise>
-                                <c:url value="/" var="url">
-                                    <c:param name="section" value="security" />
-                                    <c:param name="action" value="login" />
-                                </c:url>
-                                <a href="${ url }"> Se connecter </a>
-                            </c:otherwise>
-                        </c:choose>
+                    <li <c:if test="${not empty user}"> class="dropdown" </c:if>>
+                        <c:import url="/WEB-INF/template/user.jsp"/>
                     </li>
+                            
                     <li class="dropdown">
 
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">

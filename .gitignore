@@ -54,3 +54,4 @@ Temporary Items
 /dist/
 /build/
 build.xml
+macf-restaurant-ejb/src/conf/persistence.xml
