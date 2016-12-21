@@ -60,7 +60,13 @@ public class ArticleManager implements ArticleManagerInterface {
     
     @Override
     public Article getById (Long id){
-        Article article = repository.findById(id);
+        Article article = repository.findById(id);        
+        return article;
+    }
+    
+    @Override
+    public Article getIngredientsByArticle (Long id){
+        Article article = repository.findArticleWithIngredients(id);
         System.out.println("--------------------------------------->> article"+article.getLibelle());
         System.out.println("--------------------------------------->> ingrédients : "+article.getIngredients());
         return article;

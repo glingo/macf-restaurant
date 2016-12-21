@@ -25,5 +25,7 @@ public interface ArticleManagerInterface {
     Article update(Article article);
 
     public Article getById(Long id);
+
+    public Article getIngredientsByArticle(Long id);
     
 }

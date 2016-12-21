@@ -29,6 +29,7 @@
                 <input type="submit" value="choix" />
             </form>
 
+            <ul>
             <c:forEach var="article" items="${ articles }">
 
                 <li>
@@ -40,6 +41,7 @@
                     </li>
 
             </c:forEach>
+            </ul>
         </div>
     </jsp:body>
 </t:template>
