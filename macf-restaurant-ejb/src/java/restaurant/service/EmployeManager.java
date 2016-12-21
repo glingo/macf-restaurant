@@ -19,8 +19,9 @@ public class EmployeManager {
         LOG.info("Tentative de login");
         
         // verification d'usage ...
-        // code != null
-        // code.length = 4
+        if(code == null || code.length() != 4) {
+            return null;
+        }
         
         Employe employe = repository.login(code);
         
