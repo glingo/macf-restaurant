@@ -41,7 +41,7 @@ public class Article implements Serializable {
     @ManyToMany
     private Collection<Menu>            menus            = new ArrayList<>();
     
-    @OneToMany
+    @OneToMany(mappedBy = "article")
     private Collection<LigneDeCommande> ligneDeCommandes = new ArrayList<>();
 
     public Article() {

@@ -42,9 +42,10 @@ public class Commande implements Serializable {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Serveur     serveur;
     
-    @OneToMany(fetch = FetchType.EAGER)
+    //@OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "commande", fetch = FetchType.EAGER)
     private Collection<LigneDeCommande> ligneDeCommandes;
-    @OneToMany
+    @OneToMany (mappedBy = "commande")
     private Collection<Paiement>        paiements;
     
     @Enumerated(EnumType.ORDINAL)

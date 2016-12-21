@@ -32,7 +32,9 @@
                                 <c:if test="${ not empty ligne.menu }">
                                     <ul>
                                         <c:forEach var="sousLigne" items="${ ligne.sousLigneDeCommande }">
-                                            <c:out value="${ sousLigne.getLibelle() } : ${ sousLigne.statut }" />
+                                            <li>
+                                                <c:out value="${ sousLigne.getLibelle() } : ${ sousLigne.statut }" />
+                                            </li>
                                         </c:forEach>
                                     </ul>
                                 </c:if>

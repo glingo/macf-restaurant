@@ -216,15 +216,18 @@ public class DataProvider implements Provider {
         Date d03 = new GregorianCalendar(2016, 12, 15).getTime();
         Commande c03 = new Commande(d03, "3", empl04, jack, StatutCommande.EN_SELECTION);
 
-        //création de lignes de commande
+        //création de lignes de commande et sous lignes de commande (menu)
         LigneDeCommande ldc01 = new LigneDeCommande(1, StatutCommande.PRET, null, soir);
         Collection<LigneDeCommande> sousLignesDeCommande01 = new ArrayList<>();
         LigneDeCommande lcg01 = new LigneDeCommande(1, null, null, flamiche);
         LigneDeCommande lcg02 = new LigneDeCommande(1, null, null, choucroute);
         LigneDeCommande lcg03 = new LigneDeCommande(1, null, null, cremeCaramel);
-        sousLignesDeCommande01.add(lcg01);
-        sousLignesDeCommande01.add(lcg02);
-        sousLignesDeCommande01.add(lcg03);
+//        sousLignesDeCommande01.add(lcg01);
+//        sousLignesDeCommande01.add(lcg02);
+//        sousLignesDeCommande01.add(lcg03);
+        lcg01.setLigneDeCommande(ldc01);
+        lcg02.setLigneDeCommande(ldc01);
+        lcg03.setLigneDeCommande(ldc01);
         ldc01.setSousLigneDeCommande(sousLignesDeCommande01);
 
         LigneDeCommande ldc02 = new LigneDeCommande(1, StatutCommande.PRET, TypeCuisson.ROUGE, entrecote);
@@ -239,40 +242,41 @@ public class DataProvider implements Provider {
         LigneDeCommande lcg04 = new LigneDeCommande(1, null, null, salade);
         LigneDeCommande lcg05 = new LigneDeCommande(1, null, TypeCuisson.SAIGNANT, steack);
         LigneDeCommande lcg06 = new LigneDeCommande(1, null, null, ile);
-        sousLignesDeCommande03.add(lcg04);
-        sousLignesDeCommande03.add(lcg05);
-        sousLignesDeCommande03.add(lcg06);
+//        sousLignesDeCommande03.add(lcg04);
+//        sousLignesDeCommande03.add(lcg05);
+//        sousLignesDeCommande03.add(lcg06);
+        lcg04.setLigneDeCommande(ldc03);
+        lcg05.setLigneDeCommande(ldc03);
+        lcg06.setLigneDeCommande(ldc03);
         ldc03.setSousLigneDeCommande(sousLignesDeCommande03);
 
         LigneDeCommande ldc04 = new LigneDeCommande(1, StatutCommande.PRET, null, croque);
 
-        c02.getLigneDeCommandes().add(ldc03);
-        c02.getLigneDeCommandes().add(ldc04);
-
+//        c02.getLigneDeCommandes().add(ldc03);
+//        c02.getLigneDeCommandes().add(ldc04);
+        ldc03.setCommande(c02);
+        ldc04.setCommande(c02);
+        
         LigneDeCommande ldc05 = new LigneDeCommande(1, null, null, saumon);
 
         LigneDeCommande ldc06 = new LigneDeCommande(1, StatutCommande.PRET, null, enfant);
         Collection<LigneDeCommande> sousLignesDeCommande06 = new ArrayList<>();
         LigneDeCommande lcg07 = new LigneDeCommande(1, null, null, cremeChocolat);
         LigneDeCommande lcg08 = new LigneDeCommande(1, null, TypeCuisson.SAIGNANT, steack);
-        sousLignesDeCommande03.add(lcg07);
-        sousLignesDeCommande03.add(lcg08);
+//        sousLignesDeCommande03.add(lcg07);
+//        sousLignesDeCommande03.add(lcg08);
+        lcg07.setLigneDeCommande(ldc06);
+        lcg08.setLigneDeCommande(ldc06);
         sousLignesDeCommande06.add(new LigneDeCommande(1, null, TypeCuisson.SAIGNANT, steack));
         ldc06.setSousLigneDeCommande(sousLignesDeCommande06);
         
-        c03.getLigneDeCommandes().add(ldc05);
-        c03.getLigneDeCommandes().add(ldc06);
+//        c03.getLigneDeCommandes().add(ldc05);
+//        c03.getLigneDeCommandes().add(ldc06);
+        ldc05.setCommande(c03);
+        ldc06.setCommande(c03);
 
         // en général tu vas plutot faire :
         // commande.addLigneDeCommande(ligne);
-        em.persist(lcg01);
-        em.persist(lcg02);
-        em.persist(lcg03);
-        em.persist(lcg04);
-        em.persist(lcg05);
-        em.persist(lcg06);
-        em.persist(lcg07);
-        em.persist(lcg08);
         em.persist(c01);
         em.persist(c02);
         em.persist(c03);
@@ -282,6 +286,16 @@ public class DataProvider implements Provider {
         em.persist(ldc04);
         em.persist(ldc05);
         em.persist(ldc06);
+        
+        em.persist(lcg01);
+        em.persist(lcg02);
+        em.persist(lcg03);
+        em.persist(lcg04);
+        em.persist(lcg05);
+        em.persist(lcg06);
+        em.persist(lcg07);
+        em.persist(lcg08);
+       
         em.flush();
 
         System.out.println("================== fin jeu de test !!");
