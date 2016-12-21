@@ -63,9 +63,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     
-                    <li <c:if test="${not empty user}"> class="dropdown" </c:if>>
-                        <c:import url="/WEB-INF/template/user.jsp"/>
-                    </li>
+                    <c:import url="/WEB-INF/template/user.jsp"/>
                     
                     <c:import url="/WEB-INF/template/locale.jsp"/>
 

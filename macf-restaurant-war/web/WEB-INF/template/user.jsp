@@ -11,22 +11,23 @@
 <c:choose>
     <c:when test="${not empty user}">
 
-        <c:url value="/" var="url">
-            <c:param name="section" value="security" />
-            <c:param name="action" value="logout" />
-        </c:url>
-        
-        <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-            <span class="glyphicon glyphicon-user"></span>
-            <span class="caret"></span>
-        </a>
-        
-        <ul class="dropdown-menu">
-            <li class="dropdown-header"> <c:out value="${ user.nom }" /> </li>
-            
-            <li><a href="${ url }"> Se déconnecter </a></li>
-        </ul>
+        <li class="dropdown">
+            <c:url value="/" var="url">
+                <c:param name="section" value="security" />
+                <c:param name="action" value="logout" />
+            </c:url>
 
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="caret"></span>
+            </a>
+
+            <ul class="dropdown-menu">
+                <li class="dropdown-header"> <c:out value="${ user.nom }" /> </li>
+
+                <li><a href="${ url }"> Se déconnecter </a></li>
+            </ul>
+        </li>
     </c:when>
 
     <c:otherwise>
@@ -34,6 +35,8 @@
             <c:param name="section" value="security" />
             <c:param name="action" value="login" />
         </c:url>
-        <a href="${ url }"> Se connecter </a>
+        <li>
+            <a href="${ url }"> Se connecter </a>
+        </li>
     </c:otherwise>
 </c:choose>
