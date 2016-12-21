@@ -32,7 +32,7 @@ public class Emplacement implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatutEmplacement statut;
     
-    @OneToMany
+    @OneToMany(mappedBy = "emplacement")
     private Collection<Commande> commandes = new ArrayList<>();
     
     

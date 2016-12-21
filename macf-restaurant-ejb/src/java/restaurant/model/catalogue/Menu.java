@@ -26,7 +26,7 @@ public class Menu implements Serializable {
     @ManyToMany(mappedBy = "menus", cascade = CascadeType.PERSIST)
     private Collection<Article>         articles;
     
-    @OneToMany
+    @OneToMany(mappedBy = "menu")
     private Collection<LigneDeCommande> ligneDeCommandes;
 
     public Menu() {
@@ -42,7 +42,6 @@ public class Menu implements Serializable {
     
     public Menu(String libelle, float prix, Article... articles) {
         this(libelle, prix);
-        
         if(articles != null) {
             for (Article article : articles) {
                 addArticle(article);
