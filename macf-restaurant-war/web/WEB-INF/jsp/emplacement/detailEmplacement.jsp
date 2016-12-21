@@ -23,7 +23,7 @@
                     Nombre de place : ${ empl01.nombrePlace }
                 </li>
                 <li>
-                    Zone : ${ empl01.zone }
+                    Zone : <c:out value="${ empl01.getZone() }"/>
                 </li>
                 <li>
                     Statut : ${ empl01.statut }

@@ -39,10 +39,10 @@ public class Zone implements Serializable {
         this.emplacements = emplacements;
     }
 
-    @Override
-    public String toString() {
-        return numero;
-    }
+//    @Override
+//    public String toString() {
+//        return numero;
+//    }
     
     
     
