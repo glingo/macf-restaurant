@@ -48,7 +48,7 @@ public class CommandeController extends ActionController {
         if(commande == null) {
             // dans le cas ou nous n'avons renseigné de numero de commande
             danger("La commande que vous demandez n'existe pas.");
-            // on renvois l'utilisateur vers la liste avec un message d'erreur.
+            // on renvoie l'utilisateur vers la liste avec un message d'erreur.
             return listCommande(request, response);
         }
         
@@ -63,7 +63,8 @@ public class CommandeController extends ActionController {
     }
     
     public String create(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        
+        String idEmplacement = request.getParameter("idEmplacment");
+        Commande commande = commandeManager.create(idEmplacement);
         
         
     }

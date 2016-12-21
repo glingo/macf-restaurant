@@ -11,5 +11,9 @@ public interface CommandeManagerInterface {
     public List<Commande> getAll();
     
     public Commande getByNumero(String numero);
+
+    public Commande create(Long idEmplacement);
+
+    public Commande create(String idEmplacement);
     
 }
