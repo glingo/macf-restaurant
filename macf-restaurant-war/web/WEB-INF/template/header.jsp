@@ -4,15 +4,10 @@
     Author     : cdi305
 --%>
 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<c:if test="${empty lang}">
-    <c:set var="lang" value="${ pageContext.request.locale.language }" />
-    <fmt:setLocale value="${ lang }"/>
-</c:if>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <header>
 
@@ -71,23 +66,9 @@
                     <li <c:if test="${not empty user}"> class="dropdown" </c:if>>
                         <c:import url="/WEB-INF/template/user.jsp"/>
                     </li>
-                            
-                    <li class="dropdown">
+                    
+                    <c:import url="/WEB-INF/template/locale.jsp"/>
 
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-                            Langues
-                            <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li <c:if test="${lang eq 'en'}"> class="active"</c:if>>
-                                <a href="/macf-restaurant-war/?section=locale&lang=en">Anglais</a>
-                            </li>
-                            <li <c:if test="${lang eq 'fr'}"> class="active"</c:if>>
-                                <a href="/macf-restaurant-war/?section=locale&lang=fr">Francais</a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
 
