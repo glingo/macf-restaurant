@@ -10,7 +10,7 @@ import restaurant.model.commande.Commande;
 @Entity
 public class Serveur extends Caissier {
 
-    @OneToMany
+    @OneToMany(mappedBy = "serveur")
     public Collection<Commande> commandes = new ArrayList<>();
 
     public Serveur() {

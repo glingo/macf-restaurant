@@ -30,6 +30,8 @@
                 <input id="nbrPlace" type="number" name="nbrPlace"/>
                 <br/>
                 <br/>
+                
+                
                 <!--<input type="text" id="statutEmpl" name="statutEmpl"/>-->
                 <select name="listStatut" onChange="combo(this, 'statutEmpl')">
                     <option>Libre</option>
@@ -37,14 +39,19 @@
                     <option>Occupé</option>
                 </select>               
                 <!--<input type="text" id="zoneEmpl" name="zoneEmpl"/>-->
-                <select name="listZone" onChange="combo(this, 'zoneEmpl')">
+               <select name="listZone" onChange="combo(this, 'zoneEmpl')">
                     <option>Zone 1</option>
                     <option>Zone 2</option>
                     <option>Zone 3</option>
                     <option>Zone 4</option>
                 </select>  
                 
-                
+               <!-- <select name="statutEmplacement">
+                    <c:forEach items="${ emplacement.statut }" var="e">
+                        <option value="${ e.statut.code}">${e.statut.libelle}</option>
+                    </c:forEach>
+                </select>
+               -->
                 <input type="submit" name="emplacement_submit" value="créer"/>
             </form> 
             
