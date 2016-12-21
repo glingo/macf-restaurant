@@ -5,7 +5,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<t:template title="liste des articles">
+<t:template title="Détail d'un menu">
 
     <jsp:attribute name="styles">
     </jsp:attribute>
@@ -16,11 +16,11 @@
     <jsp:body>
         <div class="col-lg-12"> 
             
-            <c:out value="${ article.libelle }" />. . . . . . . . . . . . . .${ article.prix }</a>
+            <c:out value="${ menu.libelle }" /> . . . . . . . . . . . . . .${ menu.prix }</a>
         <ul>
-            <c:forEach var="ingredient" items="${article.ingredients}">
+            <c:forEach var="article" items="${menu.articles}">
                 <li>
-                    ${ingredient.nom}
+                    ${article.libelle}
                 </li>        
             </c:forEach>
         </ul>
