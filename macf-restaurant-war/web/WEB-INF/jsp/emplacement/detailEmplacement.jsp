@@ -48,9 +48,9 @@
                 <c:param name="id" value="${ empl01.id }" />
                 <c:param name="statut" value="occupe" />
             </c:url>  
-            <a href="${url01}" class="btn bg-primary">Libre</a>
-            <a href="${url02}" class="btn bg-primary">A nettoyer</a>
-            <a href="${url03}" class="btn bg-primary">Occupé</a>
+            <a href="${url01}" class="btn bg-success">Libre</a>
+            <a href="${url02}" class="btn bg-warning">A nettoyer</a>
+            <a href="${url03}" class="btn bg-danger">Occupé</a>
 
         </div>
     </jsp:body>
