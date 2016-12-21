@@ -11,32 +11,33 @@ import restaurant.model.catalogue.Categorie;
 import restaurant.model.catalogue.Ingredient;
 import restaurant.repository.ArticleRepository;
 
-@Stateless(name="article-manager")
+@Stateless(name = "article-manager")
 public class ArticleManager implements ArticleManagerInterface {
+
     private static final Logger LOG = Logger.getLogger(ArticleManager.class.getName());
-    
+
     @EJB
     private ArticleRepository repository;
-    
+
     @PostConstruct
-    public void construct(){
+    public void construct() {
     }
 
     @Override
     public Article create(String libelle, float prix, String image, int valeurNutritive, boolean choixCuisson) {
-        
+
         Article article = new Article(libelle, prix, image, valeurNutritive, choixCuisson);
-        
-        if(repository != null) {
+
+        if (repository != null) {
             repository.save(article);
         }
-        
+
         return article;
     }
 
     @Override
     public Article update(Article article) {
-        
+
         throw new UnsupportedOperationException();
     }
 
@@ -57,18 +58,16 @@ public class ArticleManager implements ArticleManagerInterface {
         Collection<Article> ing = repository.findByIngredient(ingredient);
         return (List<Article>) ing;
     }
-    
+
     @Override
-    public Article getById (Long id){
-        Article article = repository.findById(id);        
+    public Article getById(Long id) {
+        Article article = repository.findById(id);
         return article;
     }
-    
+
     @Override
-    public Article getIngredientsByArticle (Long id){
+    public Article getIngredientsByArticle(Long id) {
         Article article = repository.findArticleWithIngredients(id);
-        System.out.println("--------------------------------------->> article"+article.getLibelle());
-        System.out.println("--------------------------------------->> ingrédients : "+article.getIngredients());
         return article;
     }
 
