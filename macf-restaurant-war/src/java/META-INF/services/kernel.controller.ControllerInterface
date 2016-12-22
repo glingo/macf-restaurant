@@ -3,6 +3,7 @@ controller.SecurityController
 controller.CarteController
 controller.EmplacementController
 controller.CommandeController
+controller.LocaleController
 
 
 # Exemples 

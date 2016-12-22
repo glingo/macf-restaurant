@@ -10,13 +10,6 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:template title="macf-restaurant">
-
-    <jsp:attribute name="styles">
-    </jsp:attribute>
-
-    <jsp:attribute name="scripts">
-    </jsp:attribute>
-    
     <jsp:body>
         <div class="col-lg-12">
             

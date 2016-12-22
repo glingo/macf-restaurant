@@ -3,6 +3,7 @@ package restaurant.repository;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -44,6 +45,26 @@ public class ArticleRepository extends EntityRepository<Article> {
         TypedQuery<Article> query = em.createQuery(q);
 
         return query.getResultList();
+    }
+    
+    public Article findArticleWithIngredients(Long idArticle){
+        if(idArticle == null){
+            return null;
+        }
+        Article a = findById(idArticle);
+        if(a != null){
+            Collection<Ingredient> ingredients = findIngredientsByArticle(idArticle);
+            a.setIngredients(ingredients);
+        }
+        return a;
+    }
+    
+    private List<Ingredient> findIngredientsByArticle(Long idArticle){
+        String rq01 = "select a.ingredients from Article a where a.id = :paramId";
+        Query qr01 = em.createQuery(rq01);
+        qr01.setParameter("paramId", idArticle);
+        List<Ingredient> ingredients = qr01.getResultList();
+        return ingredients;
     }
 
 }

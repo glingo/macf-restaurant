@@ -46,6 +46,13 @@ public class CarteController extends ActionController {
         
         return "article/list";
     }
+    
+    public String afficherDetailArticle (HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String ids = request.getParameter("article");
+        Long id = Long.parseLong(ids);
+        request.setAttribute("article", articleManager.getIngredientsByArticle(id));
+        return "article/detail";
+    }
 
 //    public String listArticleByIngredient (HttpServletRequest request, HttpServletResponse response) throws Exception {
 //        String ing = request.getParameter("ingredient");
