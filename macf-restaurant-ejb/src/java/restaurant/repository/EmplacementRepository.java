@@ -72,21 +72,9 @@ public class EmplacementRepository extends EntityRepository<Emplacement> {
     
     public Emplacement update(Emplacement emplacement){
         //to do requete JPQL
-        
+        emplacement = em.merge(emplacement);
         return emplacement;
     }
-       
-    public Emplacement updateStatut(Emplacement emplacement, StatutEmplacement statut){
-        
-        emplacement.setStatut(statut);
-        
-        save(emplacement);
-        
-        return emplacement;
-        
-    }    
     
-    
-    
-    
+ 
 }
