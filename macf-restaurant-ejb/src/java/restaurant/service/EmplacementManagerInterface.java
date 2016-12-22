@@ -4,33 +4,25 @@ package restaurant.service;
 import java.util.List;
 import javax.ejb.Remote;
 import restaurant.model.salle.Emplacement;
-import restaurant.model.salle.StatutEmplacement;
 import restaurant.model.salle.Zone;
-import restaurant.service.exceptions.EmplacementException;
 
 @Remote
 public interface EmplacementManagerInterface {
     
-    Emplacement create(String numero, int nombrePlaces, String numeroZone);
+    public Emplacement create(String numero, int nombrePlaces, String numeroZone);
     
-    Emplacement update(Emplacement emplacement);
+    public Emplacement update(Emplacement emplacement);
     
-    //Emplacement updateStatus(Emplacement emplacement, String statut);
+    public Emplacement updateStatus(Long idEmplacement, String statut);
     
-    void delete(Emplacement emplacement);
+    public void delete(Emplacement emplacement);
     
-    List<Emplacement> getAll();
+    public List<Emplacement> getAll();
     
-    List<Emplacement> getByZone(Zone zone);
+    public List<Emplacement> getByZone(Zone zone);
     
-    Emplacement getByNumero(String numero);
+    public Emplacement getByNumero(String numero);
     
-    Emplacement passToVacant(Emplacement emplacement) throws EmplacementException;
-    
-    Emplacement passToOccupied(Emplacement emplacement)throws EmplacementException;
-    
-    Emplacement passToCleaning(Emplacement emplacement)throws EmplacementException;
-
     public Emplacement getById(Long id);
             
     

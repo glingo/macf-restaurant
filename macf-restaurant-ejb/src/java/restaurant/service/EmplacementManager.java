@@ -110,79 +110,37 @@ public class EmplacementManager implements EmplacementManagerInterface {
     }
     
    
-    
+   
     @Override
-    public Emplacement passToVacant(Emplacement emplacement) throws EmplacementException{
-
-        if (!emplacement.getStatut().equals(StatutEmplacement.EN_NETTOYAGE)){
-
-        throw new EmplacementException("Impossible de changer le statut", EmplacementException.STATUS_EX);
-                   
+   public Emplacement updateStatus(Long idEmplacement, String statut){
+        if(statut == null || idEmplacement == null){
+            return null;
         }
-
-        repository.updateStatut(emplacement, StatutEmplacement.LIBRE);
-        LOG.info("Pass to vacant");
-        return emplacement;
-
+        
+        statut = statut.trim();
+        StatutEmplacement statuts[] = StatutEmplacement.values();
+        Emplacement emplacement = getById(idEmplacement);
+        
+//        si jamais c'est pas le nom de l'enum mais libelle
+//        if(emplacement != null){
+//            for(StatutEmplacement s : statuts){
+//                if(s.getLibelle().equals(statut)){
+//                    System.out.println("================================>>> nouveau statut : "+s.getLibelle());
+//                    emplacement.setStatut(s);
+//                    emplacement = repository.update(emplacement);
+//                }
+//            }
+            
+//        }
+        
+        // ici c'est le nom de l'enum
+        StatutEmplacement st = StatutEmplacement.valueOf(statut);
+        if(emplacement != null && st != null){
+            emplacement.setStatut(st);
+            emplacement = repository.update(emplacement);
+        }   
+        return emplacement;                
     }
-
-    @Override
-    public Emplacement passToOccupied(Emplacement emplacement) throws EmplacementException{
-        
-        if(!emplacement.getStatut().equals(StatutEmplacement.LIBRE)){
-            throw new EmplacementException("Impossible de changer le statut", EmplacementException.STATUS_EX);
-        }
-        
-        repository.updateStatut(emplacement, StatutEmplacement.OCCUPE);
-        LOG.info("pass to occupied");
-        return emplacement;
-
-    }
-
-    @Override
-    public Emplacement passToCleaning(Emplacement emplacement) throws EmplacementException {
-        if(!emplacement.getStatut().equals(StatutEmplacement.OCCUPE)){
-            throw new EmplacementException("Impossible de changer le statut", EmplacementException.STATUS_EX);
-        }
-        
-        repository.updateStatut(emplacement, StatutEmplacement.EN_NETTOYAGE);
-        LOG.info("pass to cleaning");
-        return emplacement;
-    }
-    
-   // @Override
-   /* public Emplacement updateStatus(Emplacement emplacement, String statut){
-        
-        if(statut.equals("libre")){
-            try {
-                passToVacant(emplacement);
-            } catch (EmplacementException ex) {
-                Logger.getLogger(EmplacementManager.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           
-        }
-        
-        if(statut.equals("occupe")){
-            try {
-                passToOccupied(emplacement);
-            } catch (EmplacementException ex) {
-                Logger.getLogger(EmplacementManager.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        if(statut.equals("nettoyer")){
-            try {
-                passToCleaning(emplacement);
-            } catch (EmplacementException ex) {
-                Logger.getLogger(EmplacementManager.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        
-        return emplacement;
-        
-        
-    }*/
 
    
 }

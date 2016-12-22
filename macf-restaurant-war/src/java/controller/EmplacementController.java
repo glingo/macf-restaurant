@@ -107,24 +107,8 @@ public class EmplacementController extends ActionController {
         LOG.info("afficher : " + id);
         LOG.info("afficher : " + newStatus);
         
-        //identification de l'emplacement par l'id.
-        Emplacement emplacement = emplacementManager.getById(id);
+        emplacementManager.updateStatus(id, newStatus);
         
-        
-        
-        if(newStatus.equals("libre")){
-            LOG.info("je vais passer le statut à libre");
-            //request.setAttribute("empl01", emplacementManager.passToVacant(emplacement));
-            LOG.info("jai passe le statut à libre");
-        }else if(newStatus.equals("nettoyer")){
-            LOG.info("je vais passer le statut à nettoyer");
-            emplacementManager.passToCleaning(emplacement);
-            //request.setAttribute("empl01", emplacementManager.passToCleaning(emplacement));
-            LOG.info("passage du statut : check !");
-        }else if(newStatus.equals("occupe")){
-            LOG.info("je vais passer le statut à occupé");
-            emplacementManager.passToOccupied(emplacement);
-        }
  
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< dans updateStatut !!!");
         
