@@ -85,7 +85,7 @@ public class EmplacementController extends ActionController {
     
 
     public String updateStatut(HttpServletRequest request, HttpServletResponse response)
-            throws EmplacementException {
+            throws EmplacementException, Exception {
         //exemple scope application
         // request.getServletContext().setAttribute("clef", "dans scope application");
         
@@ -97,12 +97,26 @@ public class EmplacementController extends ActionController {
         //la jsp peut donc y acceder via la clé "emplacement".
             //request.setAttribute("emplacement", emplacementManager.passToCleaning(p));
             
+        //recupere id de l'emplacement choisi
+        String idString = request.getParameter("id");
+        //conversion String Long
+        Long id = Long.valueOf(idString);
+        //recuperation du futur statut choisi pour l'emplacement.
+        String newStatus = request.getParameter("statut");
         
+        LOG.info("afficher : " + id);
+        LOG.info("afficher : " + newStatus);
+        
+        emplacementManager.updateStatus(id, newStatus);
+        
+ 
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< dans updateStatut !!!");
         
-        List<Emplacement> emplacements= emplacementManager.getAll();
-        request.setAttribute("emplacements", emplacements);
-        return "emplacement/list";
+        //retour à la liste des emplacements. en appelant le methode list. 
+
+        
+        return list(request, response);
+        //return "emplacement/list";
         
     }
 
