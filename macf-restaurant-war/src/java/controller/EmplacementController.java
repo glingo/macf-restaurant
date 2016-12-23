@@ -31,6 +31,31 @@ public class EmplacementController extends ActionController {
 //        Emplacement empl = new Emplacement();
 //        request.setAttribute("emplacement", empl);
         LOG.info("Je crée un emplacement");
+        
+        // pour trouvre tout les statutEmplacement :
+        request.setAttribute("statuts", StatutEmplacement.values());
+        
+        StatutEmplacement[] values = StatutEmplacement.values();
+        
+        
+        for (StatutEmplacement value : values) {
+            LOG.info(value.name() + " : " + value.getLibelle());
+        }
+        
+        // pour trouver un statutEmplacement depuis la request.
+        
+        // pour afficher la valeur d'une enumeration dans la jsp on appelle name();
+        StatutEmplacement statut = StatutEmplacement.EN_NETTOYAGE;
+        
+        // <select name="statut">
+        //      <option value="${ statut.name()}"> ${ statut.libelle } </option>
+        // </select>
+        String st = statut.name();
+        LOG.info("Le statut : " + st);
+        
+        // pour retrouver l'énum depuis la valeur string :
+        StatutEmplacement autre = StatutEmplacement.valueOf(st);
+        LOG.info("Le statut retrouvé avec le name : " + autre.getLibelle());
 
         return "emplacement/create";
 

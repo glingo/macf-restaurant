@@ -26,7 +26,7 @@
                             Zone : <c:out value="${ empl01.zone.numero }"/>
                         </li>
                         <li>
-                            Statut :<c:out value=" ${ empl01.statut }"/>
+                            Statut :<c:out value=" ${ empl01.statut}"/>
                         </li>
                     </ul>
 

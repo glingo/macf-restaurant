@@ -31,7 +31,10 @@
                 <br/>
                 <br/>
                 
-                
+                <select name="listStatus">
+                    
+                    
+                </select>
                 <!--<input type="text" id="statutEmpl" name="statutEmpl"/>-->
                 <select name="listStatut" onChange="combo(this, 'statutEmpl')">
                     <option>Libre</option>
@@ -46,12 +49,7 @@
                     <option>Zone 4</option>
                 </select>  
                 
-               <!-- <select name="statutEmplacement">
-                    <c:forEach items="${ emplacement.statut }" var="e">
-                        <option value="${ e.statut.code}">${e.statut.libelle}</option>
-                    </c:forEach>
-                </select>
-               -->
+               
                 <input type="submit" name="emplacement_submit" value="créer"/>
             </form> 
             
