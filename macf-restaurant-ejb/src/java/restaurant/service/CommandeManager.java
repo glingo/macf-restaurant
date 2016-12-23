@@ -1,6 +1,7 @@
 package restaurant.service;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -14,15 +15,20 @@ import restaurant.model.salle.Emplacement;
 import restaurant.model.administratif.Serveur;
 import restaurant.model.commande.StatutCommande;
 import restaurant.repository.CommandeRepository;
+import restaurant.repository.EmplacementRepository;
 
 @Stateless(name="commande-manager")
 public class CommandeManager implements CommandeManagerInterface{
+    
 
     private static final Logger LOG = Logger.getLogger(CommandeManager.class.getName());
    
     @EJB
     private CommandeRepository repository;
-  
+    
+    @EJB
+    private EmplacementRepository emplacementRepository;
+    
     @PostConstruct
     public void construct(){
         
@@ -36,13 +42,33 @@ public class CommandeManager implements CommandeManagerInterface{
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public Commande create(Long idEmplacement) {
+        Date date = new Date();
+        
+        Emplacement emplacement = emplacementRepository.findById(idEmplacement);
+        
+        // numero de commande temporaire
+        String numero = String.valueOf(date.getTime());
+        
+        
+         // essayer de recuperer une commande EN_SELECTION sur l'emplacement
+        // si on en trouve unn on l'utilise
+        // sinon il n'y a pas de commande EN_SELECTION sur l'emplacement, on créé un nouveau et le persister
+        Commande commande = new Commande(date, numero, emplacement, StatutCommande.EN_SELECTION);
+        repository.save(commande);
+        
+        
+       
+        
+        return commande;
+    }
+     
     public Commande create(Emplacement emplacement, Serveur serveur) {
         throw new UnsupportedOperationException();
     }
 
-    public Commande create(Emplacement emplacement) {
-        throw new UnsupportedOperationException();
-    }
+   
 
     public Commande update(Object commande) {
         throw new UnsupportedOperationException();
@@ -122,5 +148,10 @@ public class CommandeManager implements CommandeManagerInterface{
 
     public Commande passToPaid(LigneDeCommande ligneDeCommande) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Commande create(String idEmplacement) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

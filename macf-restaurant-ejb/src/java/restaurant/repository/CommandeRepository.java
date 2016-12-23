@@ -2,19 +2,13 @@ package restaurant.repository;
 
 import java.util.Collection;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import restaurant.model.catalogue.Menu;
 import restaurant.model.commande.Commande;
 import restaurant.model.commande.LigneDeCommande;
 
 @Stateless
 public class CommandeRepository extends EntityRepository<Commande> {
-
-    @PersistenceContext(unitName = "macf-restaurant-PU")
-    private EntityManager em;
 
     public CommandeRepository() {
         super();
@@ -65,4 +59,6 @@ public class CommandeRepository extends EntityRepository<Commande> {
         query.setParameter("paramId", idLigneCmd);
         return query.getResultList();
     }
+    
+
 }

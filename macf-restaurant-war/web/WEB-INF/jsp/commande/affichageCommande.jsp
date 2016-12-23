@@ -21,7 +21,7 @@
     <jsp:body>
         <div class="col-lg-12">
             
-             <c:forEach var="commande" items="${ commandes }">
+            <c:forEach var="commande" items="${ commandes }"><br>
         
                 <li>
                     
