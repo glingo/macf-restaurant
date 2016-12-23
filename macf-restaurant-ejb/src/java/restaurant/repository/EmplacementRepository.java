@@ -56,15 +56,6 @@ public class EmplacementRepository extends EntityRepository<Emplacement> {
     }
     
     
-      
-    public Collection<StatutEmplacement> findAllStatus(){
-        String req = null;
-        Query query = em.createQuery(req);
-        
-        
-        return query.getResultList();
-    }
-    
     public void delete(Emplacement emplacement){
         //to do requete JPQL
         
