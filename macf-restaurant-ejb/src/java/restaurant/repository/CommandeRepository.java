@@ -59,4 +59,6 @@ public class CommandeRepository extends EntityRepository<Commande> {
         query.setParameter("paramId", idLigneCmd);
         return query.getResultList();
     }
+    
+
 }

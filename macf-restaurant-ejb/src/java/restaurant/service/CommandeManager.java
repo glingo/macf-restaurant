@@ -42,6 +42,7 @@ public class CommandeManager implements CommandeManagerInterface{
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public Commande create(Long idEmplacement) {
         Date date = new Date();
         
@@ -50,10 +51,15 @@ public class CommandeManager implements CommandeManagerInterface{
         // numero de commande temporaire
         String numero = String.valueOf(date.getTime());
         
-        Commande commande = new Commande(date, numero, emplacement, StatutCommande.EN_SELECTION);
         
-        // on persiste la commande
+         // essayer de recuperer une commande EN_SELECTION sur l'emplacement
+        // si on en trouve unn on l'utilise
+        // sinon il n'y a pas de commande EN_SELECTION sur l'emplacement, on créé un nouveau et le persister
+        Commande commande = new Commande(date, numero, emplacement, StatutCommande.EN_SELECTION);
         repository.save(commande);
+        
+        
+       
         
         return commande;
     }
@@ -142,5 +148,10 @@ public class CommandeManager implements CommandeManagerInterface{
 
     public Commande passToPaid(LigneDeCommande ligneDeCommande) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Commande create(String idEmplacement) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

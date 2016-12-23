@@ -65,8 +65,8 @@ public class CommandeController extends ActionController {
     public String create(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String idEmplacement = request.getParameter("idEmplacment");
         Commande commande = commandeManager.create(idEmplacement);
-        
-        
+        request.setAttribute("commande", commande);
+        return "commande/commandeEmplacement";
     }
     
     
