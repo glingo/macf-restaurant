@@ -1,6 +1,6 @@
 <%-- 
-    Document   : detailCommande
-    Created on : 15 déc. 2016, 15:06:56
+    Document   : creationCommande
+    Created on : 22 déc. 2016, 14:26:09
     Author     : cdi301
 --%>
 
@@ -20,7 +20,7 @@
     <jsp:body>
         <div class="col-lg-12">
 
-            Detail de la commande numero : <c:out value="${ commande.getNumero() }" />
+            Commandes par emplacement : <c:out value="${ commande.emplacement.id }" />
 
             <c:choose>
                 <c:when test="${ not empty commande.getLigneDeCommandes() }">
