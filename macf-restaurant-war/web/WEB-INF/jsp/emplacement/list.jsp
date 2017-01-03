@@ -74,7 +74,14 @@
                             <c:if test="${ emplacement.statut.code != 'LIB'}"> <a href="${url01}" class="btn bg-success">Libre</a></c:if>
                             <c:if test="${ emplacement.statut.code != 'ENT'}"><a href="${url02}" class="btn bg-warning">A nettoyer</a></c:if>
                             <c:if test="${ emplacement.statut.code != 'OCC'}"><a href="${url03}" class="btn bg-danger">Occupé</a></c:if>
-
+                            <br>
+                            <br>
+                            <c:url value="" var="url04">
+                                <c:param name="section" value="commande"/>
+                                <c:param name="action" value="listCommande"/>
+                            </c:url>
+                            <a href="${url04}" class="btn bg-primary">Passer une commande</a>
+                            
                         
                         </c:forEach>
                     </td>
