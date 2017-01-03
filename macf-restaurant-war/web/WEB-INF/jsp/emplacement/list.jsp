@@ -20,7 +20,8 @@
     <jsp:body>
         <div class="col-lg-12">
             <table style="width:100%">
-
+            
+            
 
 
 
@@ -34,8 +35,8 @@
                                 <c:param name="action" value="listDetailEmplacement" />
                                 <c:param name="id" value="${ emplacement.id }" />
                             </c:url>
-
-                            <a href="${url}">Emplacement n°<c:out value="${emplacement.numero}"></c:out></a>
+                            
+                            <h3>Emplacement numéro : <c:out value="${ emplacement.getNumero() }" /><h3>
 
                                 <ul>
                                     <li>
