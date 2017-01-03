@@ -44,23 +44,18 @@ public class CommandeManager implements CommandeManagerInterface{
 
     @Override
     public Commande create(Long idEmplacement) {
-        Date date = new Date();
-        
+        Date date = new Date(); 
         Emplacement emplacement = emplacementRepository.findById(idEmplacement);
         
         // numero de commande temporaire
         String numero = String.valueOf(date.getTime());
-        
-        
+
          // essayer de recuperer une commande EN_SELECTION sur l'emplacement
         // si on en trouve unn on l'utilise
         // sinon il n'y a pas de commande EN_SELECTION sur l'emplacement, on créé un nouveau et le persister
         Commande commande = new Commande(date, numero, emplacement, StatutCommande.EN_SELECTION);
         repository.save(commande);
-        
-        
-       
-        
+    
         return commande;
     }
      

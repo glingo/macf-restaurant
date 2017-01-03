@@ -36,7 +36,7 @@
                                                 <c:out value="${ sousLigne.getLibelle() } ${ sousLigne.statut }" />
                                             </li>
                                         </c:forEach>
-                                    </ul><br>
+                                    </ul>
                                 </c:if>
                             </li>
 
