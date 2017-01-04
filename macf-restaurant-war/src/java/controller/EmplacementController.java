@@ -135,13 +135,13 @@ public class EmplacementController extends ActionController {
         emplacementManager.updateStatus(id, newStatus);
         
  
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< dans updateStatut !!!");
+       // System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< dans updateStatut !!!");
         
         //retour à la liste des emplacements. en appelant le methode list. 
 
-        
+        success("Le statut de l'emplacement a bien été changé (°.°)");
         return list(request, response);
-        //return "emplacement/list";
+       
         
     }
 
