@@ -139,7 +139,7 @@ public class EmplacementController extends ActionController {
         
         //retour à la liste des emplacements. en appelant le methode list. 
 
-        
+        success("Le statut de l'emplacement a bien été changé (°.°)");
         return list(request, response);
         //return "emplacement/list";
         
