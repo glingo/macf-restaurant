@@ -56,6 +56,7 @@
                             <li class="dropdown-header"> Commande</li>
                             <li><a href="/macf-restaurant-war/?section=commande&action=listCommande">Afficher les commandes</a></li>
                             <li><a href="/macf-restaurant-war/?section=commande&action=listDetailCommande">Afficher detail commandes</a></li>
+                            <li><a href="/macf-restaurant-war/?section=commande&action=create">Afficher detail commandes par emplacement</a></li>
                         </ul>
                     </li>
 
