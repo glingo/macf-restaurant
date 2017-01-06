@@ -34,6 +34,19 @@ public class CommandeController extends ActionController {
         
         return "commande/affichageCommande";
     }
+    
+    //Test interface cuisine 
+    public String listCommandeAttente(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        LOG.info("liste des commandes en attente pour l'interface du cuisinier");
+        
+        //appelle commande manager
+        //List<Commande> commandes = commandeManager.getByStatus();
+        //request.setAttribute("commandesAttentes", commandes);
+        List<Commande> commandes = commandeManager.getAll();
+
+        request.setAttribute("commandes", commandes);
+        return"cuisine/gestionCommandes";
+    }
 
     public String listDetailCommande(HttpServletRequest request, HttpServletResponse response) throws Exception {
 

@@ -72,9 +72,12 @@ public class EmplacementController extends ActionController {
     public String list(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         LOG.info("Afficher liste emplacement");
-        //test refresh page web 
+        
+        LOG.info("test refresh");
         
         request.setAttribute("today", new Date());
+        
+        LOG.info("test réussi : rafraichissement de la page toutes les 5 minutes");
             
         List<Emplacement> emplacements= emplacementManager.getAll();
         request.setAttribute("emplacements", emplacements);
