@@ -45,6 +45,8 @@ public class CommandeRepository extends EntityRepository<Commande> {
         }
         return cmd;
     }
+    
+    //commande findbystatus
 
     private Collection<LigneDeCommande> findLignesCommandeByIdCmd(Long idCmd) {
         String req01 = "SELECT lc FROM LigneDeCommande AS lc WHERE lc.commande.id = :paramId";
