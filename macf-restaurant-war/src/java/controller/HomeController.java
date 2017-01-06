@@ -31,6 +31,7 @@ public class HomeController extends Controller {
         // affichons lui sa page d'acceuil.
         String type = employe.getClass().getSimpleName().toLowerCase();
         
+        
 //        LOG.info(type);
 //        LOG.info(isGranted(Serveur.class) ? "C'est un serveur" : "ce n'est pas un serveur");
         

@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -71,13 +72,18 @@ public class EmplacementController extends ActionController {
     public String list(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         LOG.info("Afficher liste emplacement");
+        //test refresh page web 
         
+        request.setAttribute("today", new Date());
             
         List<Emplacement> emplacements= emplacementManager.getAll();
         request.setAttribute("emplacements", emplacements);
         
         LOG.info("affichage reussi");
+        
+        
         return "emplacement/list";
+        
    
         
     }
@@ -111,6 +117,10 @@ public class EmplacementController extends ActionController {
 
     public String updateStatut(HttpServletRequest request, HttpServletResponse response)
             throws EmplacementException, Exception {
+        
+        
+        
+        
         //exemple scope application
         // request.getServletContext().setAttribute("clef", "dans scope application");
         
@@ -138,8 +148,8 @@ public class EmplacementController extends ActionController {
        // System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< dans updateStatut !!!");
         
         //retour à la liste des emplacements. en appelant le methode list. 
-
-        success("Le statut de l'emplacement a bien été changé (°.°)");
+        
+        success("Le statut de l'emplacement a bien été changé (>.<)");
         return list(request, response);
        
         

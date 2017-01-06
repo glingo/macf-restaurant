@@ -18,6 +18,12 @@
     </jsp:attribute>
 
     <jsp:body>
+        <div>
+            <meta http-equiv="refresh" content="5">
+             
+             
+             <p>Nous sommes le ${today}.</p>
+        </div>
         <div class="col-lg-12">
             <table style="width:100%">
             

@@ -88,6 +88,8 @@ public class RequestHandler extends HttpServlet {
             return;
         }
         
+                LOG.info( ">>>>>>>>>>>>>wrapParameter:"+wrapParameter);
+        
         // get controller from controller pool.
         ControllerInterface controller = controllers.get(wrapParameter);
 

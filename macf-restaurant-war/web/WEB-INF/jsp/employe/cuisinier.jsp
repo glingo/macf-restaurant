@@ -16,12 +16,17 @@
 
     <jsp:attribute name="scripts">
     </jsp:attribute>
-    
+
     <jsp:body>
         <div class="col-lg-12">
-            
+
             Bienvenue cuisinier !
-            
+
         </div>
+
+       
+
+        </div>
+
     </jsp:body>
 </t:template>

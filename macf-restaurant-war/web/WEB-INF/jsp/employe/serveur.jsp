@@ -20,8 +20,9 @@
     <jsp:body>
         <div class="col-lg-12">
             
-            Bienvenue serveur !
+            Bienvenue world serveur !
             
         </div>
+       
     </jsp:body>
 </t:template>

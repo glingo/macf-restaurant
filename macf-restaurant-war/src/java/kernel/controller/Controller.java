@@ -104,7 +104,7 @@ public abstract class Controller implements ControllerInterface {
             // forward to jsp.
             request.getRequestDispatcher(url).forward(request, response);
             
-            LOG.info("The response has been rendered.");
+            LOG.info("The response has been rendered."+ url);
             
         } catch (FileNotFoundException notFoundException) {
 
