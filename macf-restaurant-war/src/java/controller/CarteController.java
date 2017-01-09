@@ -48,10 +48,17 @@ public class CarteController extends ActionController {
     }
     
     public String afficherDetailArticle (HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String ids = request.getParameter("article");
-        Long id = Long.parseLong(ids);
+        String idS = request.getParameter("article");
+        Long id = Long.parseLong(idS);
         request.setAttribute("article", articleManager.getIngredientsByArticle(id));
-        return "article/detail";
+        return "article/detailArticle";
+    }
+    
+    public String afficherDetailMenu (HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String idM = request.getParameter("menu");
+        Long id = Long.parseLong(idM);
+        request.setAttribute("menu", menuManager.getArticleByMenu(id));
+        return "article/detailMenu";
     }
 
 //    public String listArticleByIngredient (HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -61,8 +68,8 @@ public class CarteController extends ActionController {
 //        return "article/list";
 //    }
     public String listMenu(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        request.setAttribute("articles", menuManager.getAll());
-        return "article/list";
+        request.setAttribute("menus", menuManager.getAll());
+        return "article/listMenu";
     }
 
 }
