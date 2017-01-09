@@ -31,7 +31,7 @@
                         <c:param name="numero" value="${ commande.numero }" />
                     </c:url>
                  
-                    Commande n° <a href="${ url }"><c:out value="${ commande.numero }" ></c:out></a> <fmt:formatDate value="${commande.date}" pattern="dd/MM/yyyy" />
+                    Commande n° <a href="${ url }"> <c:out value="${ commande.numero }" ></c:out></a> <fmt:formatDate value="${commande.date}" pattern="dd/MM/yyyy" /> Emplacement n°: <c:out value="${ commande.emplacement.id }"></c:out> 
                 </li>
 
             </c:forEach>
