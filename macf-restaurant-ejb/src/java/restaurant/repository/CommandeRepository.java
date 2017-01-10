@@ -1,11 +1,13 @@
 package restaurant.repository;
 
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import restaurant.model.commande.Commande;
 import restaurant.model.commande.LigneDeCommande;
+import restaurant.model.commande.StatutCommande;
 
 @Stateless
 public class CommandeRepository extends EntityRepository<Commande> {
@@ -47,6 +49,13 @@ public class CommandeRepository extends EntityRepository<Commande> {
     }
     
     //commande findbystatus
+    public List<Commande> findByOneStatus(){
+        
+        String req = "SELECT c FROM Commande AS c WHERE c.statut = 2";
+        Query query = em.createQuery(req);
+        
+        return query.getResultList();
+    }
 
     private Collection<LigneDeCommande> findLignesCommandeByIdCmd(Long idCmd) {
         String req01 = "SELECT lc FROM LigneDeCommande AS lc WHERE lc.commande.id = :paramId";

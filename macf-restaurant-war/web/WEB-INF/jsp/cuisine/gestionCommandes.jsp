@@ -18,15 +18,10 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div>
-            <meta http-equiv="refresh" content="5">
-             
-             
-             <p>Nous sommes le ${today}.</p>
-        </div>
+       
         <div class="col-lg-12">
             
-            <c:forEach var="commande" items="${ commandes }"><br>
+            <c:forEach var="commandes" items="${ commandes }"><br>
         
                 <li>
                     
@@ -36,7 +31,7 @@
                         <c:param name="numero" value="${ commande.numero }" />
                     </c:url>
                  
-                    Commande n° <a href="${ url }"><c:out value="${ commande.numero }" ></c:out></a> <fmt:formatDate value="${commande.date}" pattern="dd/MM/yyyy" />
+                    Commande n° : ${ commande.numero }
                 </li>
 
             </c:forEach>

@@ -93,6 +93,12 @@ public class CommandeManager implements CommandeManagerInterface{
         
         return repository.findByNumero(numero);
     }
+    
+    @Override
+    public List<Commande> getByOneStatus(){
+        
+        return repository.findByOneStatus();
+    }
    
     public List<Commande> getByStatut(String codeStatut) {
         throw new UnsupportedOperationException();

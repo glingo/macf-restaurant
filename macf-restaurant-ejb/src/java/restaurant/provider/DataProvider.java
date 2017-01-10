@@ -216,6 +216,20 @@ public class DataProvider implements Provider {
         Commande c02 = new Commande(d02, "2", empl02, michel, StatutCommande.EN_ATTENTE_AIDE);
         Date d03 = new GregorianCalendar(2016, 12, 15).getTime();
         Commande c03 = new Commande(d03, "3", empl04, jack, StatutCommande.EN_SELECTION);
+        
+        //test interface cuisine 
+        Date d04 = new GregorianCalendar(2017, 01, 01).getTime();
+        Commande c04 = new Commande(d04, "4", empl03, michel, StatutCommande.En_ATTENTE);
+        Date d05 = new GregorianCalendar(2017, 01, 02).getTime();
+        Commande c05 = new Commande(d05, "5", empl10, michel, StatutCommande.En_ATTENTE);
+        Date d06 = new GregorianCalendar(2017, 01, 03).getTime();
+        Commande c06 = new Commande(d06, "6", empl09, michel, StatutCommande.En_ATTENTE);
+        
+//        public Commande(Date date, String numero, Emplacement emplacement, StatutCommande statut){
+//        this(date, numero);
+//        this.emplacement = emplacement;
+//        this.statut = statut;
+//    }
 
         //création de lignes de commande et sous lignes de commande (menu)
         LigneDeCommande ldc01 = new LigneDeCommande(1, StatutCommande.PRET, null, soir);
@@ -270,6 +284,9 @@ public class DataProvider implements Provider {
         em.persist(c01);
         em.persist(c02);
         em.persist(c03);
+        em.persist(c04);
+        em.persist(c05);
+        em.persist(c06);
         em.persist(ldc01);
         em.persist(ldc02);
         em.persist(ldc03);

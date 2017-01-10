@@ -4,6 +4,8 @@ public enum StatutCommande {
 
     EN_SELECTION("en sélection", "ES"), 
     EN_ATTENTE_AIDE("en attente d'aide", "EA"),
+    En_ATTENTE("En attente", "CUI"),
+    PRISE_EN_CHARGE("Prise en charge", "PC"),
     PRET("prêt", "P"), 
     ENVOYE("envoyé", "E");
 

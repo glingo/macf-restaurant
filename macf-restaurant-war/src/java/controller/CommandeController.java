@@ -38,12 +38,11 @@ public class CommandeController extends ActionController {
     //Test interface cuisine 
     public String listCommandeAttente(HttpServletRequest request, HttpServletResponse response) throws Exception{
         LOG.info("liste des commandes en attente pour l'interface du cuisinier");
+        System.out.println("==============================avant ");
         
-        //appelle commande manager
-        //List<Commande> commandes = commandeManager.getByStatus();
-        //request.setAttribute("commandesAttentes", commandes);
-        List<Commande> commandes = commandeManager.getAll();
-
+        List<Commande> commandes = commandeManager.getByOneStatus();
+        
+        System.out.println("=============================apres");
         request.setAttribute("commandes", commandes);
         return"cuisine/gestionCommandes";
     }
