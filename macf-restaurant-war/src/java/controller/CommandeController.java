@@ -9,7 +9,7 @@ import kernel.controller.ActionController;
 import restaurant.model.commande.Commande;
 import restaurant.service.CommandeManagerInterface;
 
-//extends d'ActionController dans kernel/controller/action controller ( permet l'appel de plusieurs méthodes)
+//extends d'ActionController dans kernel/controller/action controller (permet l'appel de plusieurs méthodes)
 public class CommandeController extends ActionController {
 
     //appel du LOG pour pouvoir tester le controller 

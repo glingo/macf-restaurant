@@ -23,6 +23,7 @@ public class MenuManager implements MenuManagerInterface{
         return (List<Menu>) all;
     }
     
+   
     @Override
     public Menu getArticleByMenu (Long idMenu){
         Menu menu = repository.findMenuWithArticles(idMenu);
