@@ -9,5 +9,7 @@ import restaurant.model.catalogue.Menu;
 public interface MenuManagerInterface {
 
     public List<Menu> getAll();
+
+    public Menu getArticleByMenu(Long idMenu);
     
 }

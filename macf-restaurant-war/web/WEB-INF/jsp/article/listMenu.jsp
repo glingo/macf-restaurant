@@ -1,15 +1,7 @@
-<%-- 
-    Document   : home
-    Created on : 30 nov. 2016, 15:41:43
-    Author     : cdi305
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:template title="liste des articles">
+<t:template title="liste des menus">
 
     <jsp:attribute name="styles">
     </jsp:attribute>
@@ -30,16 +22,16 @@
             </form>
 
             <ul>
-            <c:forEach var="article" items="${ articles }">
+            <c:forEach var="menu" items="${ menus }">
 
                 <li>
                     <c:url value="" var="url">
                         <c:param name="section" value="carte" />
-                        <c:param name="action" value="afficherDetailArticle" />
-                        <c:param name="article" value="${ article.id }" />
+                        <c:param name="action" value="afficherDetailMenu" />
+                        <c:param name="menu" value="${ menu.id }" />
                     </c:url>
 
-                    <a href="${url}"><c:out value="${ article.libelle }"></c:out>. . . . . . . . . . . . . .${ article.prix }</a>
+                    <a href="${url}"><c:out value="${ menu.libelle }"></c:out>. . . . . . . . . . . . . .${ menu.prix }</a>
                     </li>
 
             </c:forEach>
